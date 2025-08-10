@@ -1,0 +1,10 @@
+
+.password-see {
+  z-index: 999 !important;
+}
+.red{ color:#EA3030;}
+
+.cpa-social-icons.cpa-social-icons-login {
+  margin-top: 63px;
+}
+.cpa-social-icons.cpa-social-icons-login ul:after{background-color: #16844C; width: 81px;}

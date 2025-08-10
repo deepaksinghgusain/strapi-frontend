@@ -1,0 +1,28 @@
+<section class="hero-image"
+    style="background-image:url({{environmentUrl+heroeSection?.background?.data?.attributes?.formats?.large?.url}}); background-size:cover;">
+    <div class="container">
+        <div class="hero-caption">
+            <div class="left-hero-caption">
+                <div class="top-caption">
+                    <h1> {{heroeSection?.title}}</h1>
+                    <!-- <h1>CPE <br/> warehouse</h1> -->
+                    <h2 class="subtitle">{{heroeSection?.subtitle}}</h2>
+
+                </div>
+
+            </div>
+           
+        </div>
+    </div>
+
+</section>
+<ng-template #template>
+
+
+    <div class="modal-body">
+
+        <video width="100%" height="575" controls>
+            <source [src]="videolink" type="video/mp4">
+        </video>
+    </div>
+</ng-template>

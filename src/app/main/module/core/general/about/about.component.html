@@ -1,0 +1,212 @@
+<div class="nn">
+  <app-hero class="course-hero-image"></app-hero>
+</div>
+<section class="cpa-about cpa-about-custom">
+  <div class="container">
+    <div class="testimonial-head">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2 class="head-title" style="max-width: 500px;">{{getabouteam?.title}}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-inner-container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="about-media">
+            <img src="{{imageUrl + getabouteam?.image?.data?.attributes?.url}}" class="img-fluid">
+          </div>
+
+        </div>
+        <div class="col-sm-8">
+          <div class="about-content">
+
+            <markdown [data]="markdowndata"> </markdown>
+
+            <!-- <h3>Our team is dedicated to providing all CPAs and EAs that enroll in our courses with the ultimate learning experience. You are the base of our business, so we take your continued education seriously.</h3>
+            <p>CPE Warehouse is committed to providing a seamless and exceptional continuing education to finance and accounting professionals. Our courses are relevant and practical, conducted by the best instructors in North America.</p>
+  
+            <p>  Located in Washington DC, CPE Warehouse is owned by Asterid Group Inc. (Headquartered in Toronto, ON, Canada).</p> -->
+            <div class="btn-custom-style text-center mt-4">
+              <a class="btn btn-primary btn-lg mt-1"
+                routerLink="/course/course-listing">{{getabouteam?.button?.label}}</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cpa-about cpa-about-custom right-image">
+  <div class="container">
+    <div class="testimonial-head">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2 class="head-title head-title_with_line mb-4">{{ourValueSection?.title}}</h2>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="about-inner-container mt-0">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="about-media">
+            <!-- <img src="{{imageUrl + ourValueSection?.image?.data?.attributes?.url}}" class="img-fluid"> -->
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="about-content">
+            <!-- <h3>{{ourValueSection?.title}}</h3> -->
+            <div class="about-list about-custom-grid mt-0">
+              <!-- <p>{{ourValueSection?.description}}</p> -->
+              <ul class="values-list">
+
+                <li *ngFor='let line of ourValueSection?.lines;'>
+                  <h4> {{line.title}} </h4> {{line.item}}
+                </li>
+
+                <!-- <li> Honesty and transparency! It's the best policy</li>
+             <li> We will always strive to make our customer experience ‘Simple’. That’s our definition of ‘Innovation</li>
+             <li> Our refund policy is pretty straightforward. You don’t like our product, or you can’t attend an event… we will refund your money. No fixed terms or questions asked!</li>
+             <li> We respect our colleagues, vendors, customers, and stakeholders and treat them the way we want to be treated</li>
+             <li> We donate a part of our revenues to support cancer patients and fund cancer research. NOT NEGOTIABLE!</li> -->
+              </ul>
+            </div>
+            <div class="btn-custom-style text-center mt-4">
+              <a routerLink="{{ourValueSection?.button.href}}"
+                class="btn btn-primary btn-lg btn-blue btbn-icon">{{ourValueSection?.button?.label}}
+                <img alt="" src="../../../../assets/params/images/icons/arrow-white.svg"></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cpa-get-from cpa-testimonial-about">
+  <div class="container">
+    <div class="testimonial-head">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="head-title mb-4">{{getFromCpe?.title}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-7 mt-4">
+          <div class="testimonials-discription">
+            <p>{{getFromCpe?.subtitle}}</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="cpa-get-from-container">
+      <div class="row">
+        <div class="col-sm-4" *ngFor='let cpe of getFromCpe?.features;'>
+          <div class="cpa-get-box">
+            <h4>/{{cpe?.index}}</h4>
+            <div class="text-des">
+              <h5>{{cpe?.title}}</h5>
+
+              <p>{{cpe?.subtitle}}</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- <div class="col-sm-4">
+    <div class="cpa-get-box">
+      <h4>{{cpe?.index}}</h4>
+        <div class="text-des">
+           <h5>{{cpe?.title}}</h5>
+          
+            <p>{{cpe?.subtitle}}</p>
+        </div>
+  
+    </div>
+  </div> -->
+        <!-- <div class="col-sm-4">
+    <div class="cpa-get-box">
+      <h4>/03</h4>
+        <div class="text-des">
+           <h5>TOP EXPERTS</h5>
+          
+            <p>Our faculty members are top-tier experts in the field of tax law, with an average experience of more than 2 decades.</p>
+        </div>
+  
+    </div>
+  </div> -->
+      </div>
+    </div>
+    <a class="btn btn-primary btn-lg" routerLink="{{getFromCpe?.button.href}}">{{getFromCpe?.button?.label}}</a>
+    <div class="btn-custom-style text-center mt-5">
+    </div>
+
+
+  </div>
+</section>
+
+<section class="cpa-members cpa-members-about">
+  <div class="container">
+    <div class="cpa-members-outer">
+      <div class="page-title text-center ">
+        <h1>{{getRecommendations?.title}}</h1>
+      </div>
+      <div class="cpa-members-inner">
+        <div class="row">
+          <div class="col-sm-4" *ngFor='let Items of getRecommendations?.recommendationItems;'>
+            <div class="member-box">
+              <h2>{{Items?.title}}</h2>
+              <div class="member-area-content">
+
+                <p>{{Items?.subtitle}}</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+<section class="cpa-how-works cpa-how-works-about">
+  <div class="container">
+
+    <div class="work-container">
+      <div class="row">
+
+        <div class="col-sm-5">
+          <div class="work-content">
+            <div class="page-title page-title-left">
+              <h1>{{getQuestionsSection?.title}}</h1>
+            </div>
+
+            <p>{{getQuestionsSection?.subtitle}}</p>
+            <div class="custom-btn mt-5">
+              <a routerLink="{{getQuestionsSection?.button.href}}"
+                class="btn  btn-primary btn-lg">{{getQuestionsSection?.button?.label}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="work-media">
+            <img src="{{imageUrl + getQuestionsSection?.image?.data?.attributes?.formats?.small?.url	}}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

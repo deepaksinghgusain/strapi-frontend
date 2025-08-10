@@ -1,0 +1,249 @@
+<div class="home-hero">
+    <app-hero></app-hero>
+</div>
+<section class="cpa-about">
+    <div class="container ">
+        <div class="page-title text-center">
+            <h1>{{highlightsimple?.title}}</h1>
+        </div>
+        <div class="cpa-inner">
+            <h2>{{highlightsimple?.subtitle}}</h2>
+            <p> {{highlightsimple?.description}}</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="cpa-featured-courses pt-0">
+    <div class="container">
+        <!-- <div class="page-title text-center">
+            <h1>{{coursedata?.title}}</h1>
+        </div> -->
+
+        <div class="cpa-featured-courses-inner cpa-featured-courses-home">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-4 accordion"
+                    *ngFor="let course of homeCourses?.slice(0,6);let i = index">
+                    <div class="courses-list accordion-item accordion" id="accordionExample">
+                        <div class="courses-list-collapse">
+
+                            <div class="courses-header accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#collapseOne'+i" aria-expanded="false"
+                                    aria-controls="collapseOne">
+                                    {{ (course?.title.length>80)? (course?.title |
+                                    slice:0:80)+'......':(course?.title) }}
+                                    <!-- <h2>{{course?.attributes?.title}}</h2> -->
+                                </button>
+                            </div>
+                            <div class="instructor-deatil">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h6>{{course?.instructor}}</h6>
+                                        <ul>
+                                            <li>{{course?.startDate | date:'ccc,dd MMMM, y'}}</li>
+
+                                            <li>{{course?.startDate | date:'h:mm a'}} -
+                                                {{course?.endDate | date:'h:mm a'}} {{twoLettertimezone || ''}}</li>
+                                            <!-- <li>Tue, 03 Mar, 2022</li> -->
+                                            <!-- <li>1:00pm–2:00pm EST</li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="profile-image">
+                                            <img alt="coursesmalllogo" src="{{environmentUrl+course?.image}}"
+                                                width="100px" height="100px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="courses-all-list">
+                            <div id="{{'collapseOne'+i}}" class="accordion-collapse collapse course-discription"
+                                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p [innerHTML]="sanitize(course?.shortDesc)"> </p>
+                                    <!-- <p> {{ (course?.attributes?.shortDesc.length>65)? (course?.attributes?.shortDesc | slice:0:65)+'......':(course?.attributes?.shortDesc) }}</p> -->
+                                </div>
+                                <div class="course-footer">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <a class="course-logo">
+                                                <img alt="courselogo"
+                                                    src="../../../../assets/params/images/banner/course-logo.svg"></a>
+
+                                        </div>
+                                        <div class="col-6">
+                                            <a routerLink="/course/course-detail/{{course?.slug}}"
+                                                class="learn-more">read more
+                                                <img src="../../../../assets/params/images/banner/icon-arrow.svg"></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="course-discription">
+                                <p>{{course?.attributes?.shortDesc}}</p>
+
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="btn-custom-style text-center mt-3">
+                <a href="{{coursedata?.button.href}}" class="btn btn-primary btn-lg">{{coursedata?.button.label}} </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="cpa-testimonial">
+    <div class="container">
+        <div class="testimonial-head">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h2 class="head-title head-title-testimonials">{{testimonials?.title}}</h2>
+                </div>
+                <div class="col-sm-7">
+                    <div class="testimonials-discription">
+                        <p>{{testimonials?.subtitle}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="testimonials-container">
+            <div class="row">
+                <owl-carousel-o class="news-slider-custom" [options]="testimonialOwl">
+                    <ng-container *ngFor="let item of testimonials?.items; let i = index">
+                        <ng-template carouselSlide>
+                            <div class="testimonials-box">
+                                <h3>{{item?.title}}</h3>
+                                <div class="text-des">
+                                    <div class="rating-container" *ngIf="item?.rating === 'five'">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>
+                                    <div class="rating-container" *ngIf="item?.rating === 'four'">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>
+                                    <div class="rating-container" *ngIf="item?.rating === 'three'">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <!-- <span class="fa fa-star checked"></span> -->
+                                    </div>
+                                    <div class="rating-container" *ngIf="item?.rating === 'two'">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>
+                                    <div class="rating-container" *ngIf="item?.rating === 'one'">
+                                        <span class="fa fa-star checked"></span>
+
+                                    </div>
+                                    <p>{{item?.text}}</p>
+                                </div>
+                            </div>
+
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="cpa-members cpa-members-cta">
+    <div class="container">
+        <div class="cpa-members-outer">
+            <div class="page-title ">
+                <h1>{{InstructorData?.title}}</h1>
+            </div>
+            <div class="cpa-members-inner">
+                <owl-carousel-o class="news-slider-custom" [options]="custommembers">
+
+                    <ng-container *ngFor="let facultymember of homepagefacultymembers; let i=index">
+                        <ng-template carouselSlide>
+                            <div class="member-box">
+                                <span>/0{{i+1}}</span>
+                                <div class="member-area-content">
+                                    <div class="member-area-media">
+                                        <img *ngIf="facultymember?.attributes?.image?.data !== null" alt="instructor"
+                                            src="{{environmentUrl+facultymember?.attributes?.image?.data?.attributes?.url}}">
+
+                                        <img *ngIf="facultymember?.attributes?.image?.data === null   " alt="instructor"
+                                            src="../../../../assets/params/images/img/faculty.png">
+                                    </div>
+                                    <p>{{facultymember?.attributes?.firstName + ' ' +
+                                        facultymember?.attributes?.lastName}}</p>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+
+                </owl-carousel-o>
+                <div class="custom-btn mt-5">
+                    <a class="btn  btn-primary btn-secondary btn-lg btbn-icon"
+                        routerLink="{{InstructorData?.button.href}}">{{InstructorData?.button.label}}
+                        <img alt="gotoListingimage" src="../../../../assets/params/images/banner/icon-arrow.svg"></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<section class="cpa-how-works cpa-how-works-homes">
+    <div class="container">
+        <div class="testimonial-head">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title page-title-left">
+                        <h1>{{feature?.title}}</h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="work-container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="work-media">
+                        <img src="{{environmentUrl+feature?.image?.data?.attributes?.url}}">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="work-content">
+                        <ul *ngFor="let feature of feature?.features">
+                            <li>
+                                <h4>{{feature?.title}}</h4>
+                                <p>{{feature?.subtitle}}</p>
+                            </li>
+
+                        </ul>
+                        <div class="custom-btn mt-5">
+                            <a routerLink="/auth/signup" class="btn  btn-primary">{{feature?.button?.label}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

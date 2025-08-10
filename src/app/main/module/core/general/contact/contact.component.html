@@ -1,0 +1,319 @@
+<section class="contact-container">
+    <form [formGroup]="contactusForm" (ngSubmit)="onSubmit(template)">
+        <div class="container">
+            <div class="modal-email-touch modal-dialog modal-lg modal-popupemail">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="email-popup-left">
+                            <a routerLink="/" class="back-action position-top"><img
+                                    src="../../../../assets/params/images/icons/arrow-back.svg"></a>
+                            <h2>{{title}}</h2>
+                            <h4>{{subtitle}}</h4>
+
+
+                            <div class="form-row">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <span class="required">*</span>
+                                            <img src="../../../../assets/params/images/icons/icon-user.svg"
+                                                class="icon-input">
+                                            <input autocomplete="off" type="text" class="form-control form-control-sm"
+                                                [ngClass]="{ 'is-invalid': (f['firstName'].touched || submitted) && f['firstName'].errors}"
+                                                formControlName="firstName" placeholder="First Name">
+                                            <div class="error-message-show"
+                                                *ngIf="(f['firstName'].touched || submitted) && f['firstName'].errors">
+                                                <div *ngIf="f['firstName'].errors['required']"><span>! &nbsp; Enter First
+                                                        Name</span></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--6-->
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <span class="required">*</span>
+                                            <img src="../../../../assets/params/images/icons/icon-user.svg"
+                                                class="icon-input">
+                                            <input autocomplete="off" type="text" class="form-control form-control-sm"
+                                                [ngClass]="{ 'is-invalid': (f['lastName'].touched || submitted) && f['lastName'].errors}"
+                                                formControlName="lastName" placeholder="Last Name">
+                                            <div class="error-message-show"
+                                                *ngIf="(f['lastName'].touched || submitted) && f['lastName'].errors">
+                                                <div *ngIf="f['lastName'].errors['required']"><span>! &nbsp; Enter Last
+                                                        Name</span></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--6-->
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <span class="required">*</span>
+                                            <img src="../../../../assets/params/images/icons/icon-email.svg"
+                                                class="icon-input">
+                                            <input type="email" class="form-control form-control-sm"
+                                                formControlName="email"
+                                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" id="email"
+                                                placeholder="Email Address">
+                                            <div class="error-message-show"
+                                                *ngIf="(f['email'].touched || submitted ) && f['email'].errors">
+                                                <div *ngIf="f['email'].errors['required']">! &nbsp; Enter Email</div>
+                                                <div *ngIf="f['email'].errors['email']">! &nbsp; Email must be a valid
+                                                    email address
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--6-->
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <img src="../../../../assets/params/images/icons/icon-company.svg"
+                                                class="icon-input">
+                                            <input type="text" class="form-control form-control-sm"
+                                                formControlName="company"
+                                                [ngClass]="{ 'is-invalid': submitted && f['company'].errors }" id="company"
+                                                placeholder="Firm/Company">
+                                        </div>
+                                    </div>
+                                    <!--6-->
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+
+                                            <img src="../../../../assets/params/images/icons/icon-phone.svg"
+                                                class="icon-input">
+                                            <input type="text" class="form-control form-control-sm"
+                                                formControlName="phone"
+                                                maxlength="10"
+                                                minlength="10"
+                                                [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }" id="phone"
+                                                placeholder="Phone">
+                                            <div class="error-message-show"
+                                                *ngIf="(f['phone'].touched || submitted)  && f['phone'].errors">
+
+                                                <div *ngIf="f['phone'].errors['pattern']">! &nbsp; Only Numbers are
+                                                    allowed</div>
+                                                <div *ngIf="f['phone'].errors['minlength']">! &nbsp; Phone must not be
+                                                    less than 10 digits
+                                                </div>
+                                                <div *ngIf="f['phone'].errors['maxlength']">! &nbsp; Phone must not
+                                                    exceed 10 digits </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--6-->
+
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <div class="input-group">
+                                                <img src="../../../../assets/params/images/icons/icon-question.svg"
+                                                    alt="company" class="icon-input">
+
+                                                <select type="text"
+                                                    class="form-control form-control-sm select-form-control"
+                                                    formControlName="qType">
+                                                    <option value="">Select the Question Category</option>
+                                                    <option *ngFor="let item of questionCategory" [value]="item">
+                                                        {{item}}</option>
+
+                                                </select>
+                                                    <div class="error-message-show"
+                                                        *ngIf="(f['qType'].touched || submitted)  && f['qType'].errors">
+                                                        <div *ngIf="f['qType'].errors['required']">! &nbsp; Enter
+                                                            Question Category
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="error-message-show">
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--6-->
+
+                                </div>
+                            </div>
+
+                            <!--<div class="form-row">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6 pr-4">
+                                                <div class="input-group">
+                                                    <span class="required">*</span>
+                                                    <img src="../../../../assets/params/images/icons/icon-flag.svg"
+                                                        alt="company" class="icon-input">
+
+                                                    <select (change)="getState()" type="text"
+                                                        class="form-control form-control-sm select-form-control"
+                                                        formControlName="country">
+                                                        <option value="">Select the country</option>
+                                                        <option *ngFor="let item of countries" [value]="item.name">
+                                                            {{item.name}}</option>
+
+                                                    </select>
+                                                    <div class="error-message-show "
+                                                        *ngIf="(f['country'].touched || submitted)  && f['country'].errors">
+                                                        <div *ngIf="f['country'].errors['required']">! &nbsp; Enter
+                                                            Country
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="error-message-show">
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 pr-4">
+                                                <div class="input-group">
+                                                    <span class="required">*</span>
+                                                    <img src="../../../../assets/params/images/icons/icon-flag.svg"
+                                                        alt="flag" class="icon-input">
+
+                                                    <select type="text"
+                                                        class="form-control form-control-sm select-form-control"
+                                                        formControlName="province">
+                                                        <option value="">Select the State</option>
+                                                        <option *ngFor="let item of states" [value]="item.name">
+                                                            {{item.name}}</option>
+
+                                                    </select>
+                                                    <div class="error-message-show "
+                                                        *ngIf="(f['province'].touched || submitted)  && f['province'].errors">
+                                                        <div *ngIf="f['province'].errors['required']">! &nbsp; Enter
+                                                            Province / State
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="error-message-show">
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div> -->
+
+                            <div class="form-row">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <span class="required">*</span>
+                                            <img src="../../../../assets/params/images/icons/icon-email.svg"
+                                                class="icon-input">
+
+                                            <textarea class="form-control form-control-sm" formControlName="message"
+                                                [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"
+                                                id="message" placeholder="Message">MESSAGE</textarea>
+
+                                        </div>
+                                        <div class="error-message-show"
+                                            *ngIf="(f['message'].touched || submitted) && f['message'].errors">
+                                            <div *ngIf="f['message'].errors['required']"><span>! &nbsp; Enter your
+                                                    message</span></div>
+                                        </div>
+                                    </div>
+                                    <!--6-->
+                                    <div class="col-sm-6">
+
+                                    </div>
+                                    <!--6-->
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <span class="case-required">* Required</span>
+                            </div>
+                            <div class="form-row">
+                                <div class="captcha">
+                                    <re-captcha (resolved)="resolved($event)"
+                                        siteKey="6LcrQDIqAAAAAHZp0vr3mx-g1pVmGxVezeRg8-tR"></re-captcha>
+                                </div>
+
+                            </div>
+
+                            <div class="form-row mt-4">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="input-group mt-1">
+                                            <button class="w-100 btn nga-btn nga-btn-primary mb-4" type="submit">
+                                                {{button}}
+
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--6-->
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </form>
+</section>
+
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="close()">
+            <img alt="close" src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body modal-thanks">
+
+        <img *ngIf="errorMsg" src="../../../../assets/params/images/icons/icon-cross-red.svg" alt="logo">
+        <img *ngIf="!errorMsg" src="../../../../assets/params/images/banner/icon-tick.svg" alt="logo">
+        <!-- <div *ngIf="successMsg">
+
+        </div> -->
+        <h3>{{thankyouText}}</h3>
+        <p>{{successText}}</p>
+
+
+        <div class="message-button">
+            <button type="button" class="btn btn-custom-default btn-custom-blue" (click)="close()">Close</button>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <p>{{footerData.title}}</p>
+    </div>
+</ng-template>

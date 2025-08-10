@@ -1,0 +1,290 @@
+/**about**/
+section.cpa-how-works.cpa-how-works-about .work-media {
+  display: flex;
+  justify-content: flex-end;
+}
+
+section.cpa-how-works.cpa-how-works-about .work-content {
+  margin-left: 0;
+}
+
+section.cpa-how-works.cpa-how-works-about h1:after {
+  bottom: auto;
+
+  top: -45px;
+}
+.about-list ul li {
+  padding-left: 0px !important;
+}
+.about-list ul li:after {
+  background: none;
+}
+section.cpa-how-works.cpa-how-works-about .page-title {
+  margin-bottom: 0;
+}
+
+section.cpa-how-works.cpa-how-works-about .work-content p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  font-family: "Barlow", sans-serif;
+
+  letter-spacing: 0.03em;
+
+  color: #0d0d0d;
+}
+
+section.cpa-members.cpa-members-about .cpa-members-outer {
+  margin: 0;
+}
+
+section.cpa-members.cpa-members-about .page-title h1:after {
+  display: none;
+}
+
+section.cpa-members.cpa-members-about .member-box {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  position: relative;
+}
+
+section.cpa-members.cpa-members-about .member-box:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  height: calc(100% - 80px);
+  top: 60px;
+  width: 1px;
+  background: #ffffff;
+}
+
+section.cpa-members.cpa-members-about
+  .cpa-members-inner
+  .col-sm-4
+  + .col-sm-4
+  + .col-sm-4
+  .member-box:after {
+  display: none;
+}
+
+section.cpa-members.cpa-members-about .member-box h2 {
+  font-size: 24px;
+  line-height: 130%;
+  /* or 31px */
+
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  font-family: "Barlow", sans-serif;
+}
+
+section.cpa-members.cpa-members-about .member-box p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 130%;
+  text-transform: capitalize;
+  color: #ffffff;
+  font-family: "Barlow", sans-serif;
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.cpa-get-from-container {
+  padding: 80px 0 100px 0;
+}
+
+.cpa-get-box {
+  text-align: left;
+}
+
+.cpa-get-box h4 {
+  font-size: 18px;
+  line-height: 22px;
+  line-height: 100%;
+  border-bottom: 1px #000000 solid;
+  padding-bottom: 15px;
+}
+
+.cpa-get-box .text-des h5 {
+  font-family: "Barlow", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 130%;
+  /* or 31px */
+
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  color: #000000;
+}
+
+.cpa-get-box .text-des p {
+  text-align: left;
+  font-style: normal;
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 135%;
+  letter-spacing: 0.05em;
+  color: #0d0d0d;
+  padding: 0;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+section.cpa-get-from.cpa-testimonial-about .testimonials-discription p {
+  position: relative;
+  font-weight: bold;
+}
+
+section.cpa-about.cpa-about-custom {
+  text-align: left;
+}
+
+.about-inner-container {
+  margin-top: 60px;
+}
+
+.about-content {
+  margin-left: 100px;
+}
+
+.about-content h3 {
+  font-family: "Barlow", sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 135%;
+  letter-spacing: 0.05em;
+  color: #0d0d0d;
+  padding: 0;
+  text-transform: uppercase;
+  position: relative;
+  padding-right: 20px;
+  padding-top: 30px;
+}
+
+.about-content p {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 135%;
+  letter-spacing: 0.05em;
+  color: #0d0d0d;
+  padding: 0;
+  padding-right: 20px;
+  padding-top: 15px;
+}
+.about-list.about-custom-grid ul {
+  max-width: 650px;
+}
+.about-content .btn.btn-primary {
+  margin: 0; font-family: 'Bebas Neue', cursive;
+}
+
+.about-content h3:after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 97px;
+  height: 2px;
+  background: #16844c;
+  left: 0;
+  top: -9px;
+}
+
+section.cpa-about.cpa-about-custom.right-image .col-sm-4 {
+  order: 2;
+}
+
+section.cpa-about.cpa-about-custom.right-image .col-sm-8 {
+  order: 1;
+}
+
+section.cpa-about.cpa-about-custom.right-image .about-content {
+  margin-left: 0;
+  margin-right: 100px;
+}
+
+.head-title_with_line::after {
+  background: #16844c;
+  height: 2px;
+  width: 97px;
+  margin: 0 auto;
+  text-align: center;
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  padding: 0;
+  display: inline-block;
+  right: auto;
+}
+
+
+.cpa-get-from-container .text-des {padding-top: 5px;}
+.cpa-get-box .text-des p {
+	padding-top: 10px !important;
+} 
+.testimonials-discription > p {
+	max-width: 335px;
+} 
+
+
+@media only screen and (max-width: 1199px) {
+  .about-content {
+    margin-left: 0px;
+  }
+  .about-content h3 {
+    font-size: 14px;
+  }
+  .about-content p {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .about-content .btn.btn-primary {
+    margin: 0 auto;
+  }
+  .about-content h3 {
+    margin-top: 50px;
+  }
+  .about-content h3:after {
+    text-align: center;
+    margin: 0 auto;
+    right: 0;
+  }
+  section.cpa-about.cpa-about-custom.right-image .about-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  section.cpa-about.cpa-about-custom.right-image .about-content h3 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  section.cpa-about.cpa-about-custom.right-image .about-content h3:after {
+    right: 0;
+    margin: 0;
+    top: -36px;
+  }
+  section.cpa-about.cpa-about-custom.right-image .about-media {
+    margin-top: 30px;
+  }
+  section.cpa-how-works.cpa-how-works-about .work-content p {
+    text-align: center;
+  }
+  section.cpa-members.cpa-members-about .member-box h2 {
+    font-size: 16px;
+  }
+  section.cpa-members.cpa-members-about .member-box {
+    padding: 0;
+  }
+  .cpa-get-box .text-des h5 {
+    font-size: 16px;
+  }
+}

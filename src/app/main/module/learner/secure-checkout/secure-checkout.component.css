@@ -1,0 +1,358 @@
+.course-value table tr td {
+  padding: 10px 0;
+  font-size: 20px;
+  color: #0d0d0d;
+}
+
+.font-barlow1 {
+  font-family: "Barlow ", sans-serif;
+  font-size: 13px;
+  font-weight: 200;
+  color:red;
+}
+.course-value table tbody {
+  border-bottom: 1px solid #0d0d0d;
+}
+
+.course-value table tr td:last-child {
+  float: right;
+}
+.course-quick-view ul li:after {
+  background: none !important ;
+}
+.course-value table tfoot td {
+  font-size: 24px;
+}
+.form-check-input a.form-check-label {
+  cursor: pointer;
+}
+.course-value table {
+  width: 100%;
+}
+.course-quick-view ul {
+  list-style: none;
+}
+.course-quick-view .form-control-sm {
+  margin-bottom: 10px;
+}
+.modal-footer {
+  background: #efeeee;
+  font-weight: 400;
+  font-size: 14.0062px;
+  line-height: 17px;
+  color: #0d0d0d;
+  font-family: "Barlow", sans-serif;
+  justify-content: flex-start;
+  border: 0;
+  height: 102px;
+  border-radius: 0;
+  padding: 0;
+}
+
+.modal-footer p {
+  max-width: 80%;
+  margin: 0 auto;
+  width: 100%;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.list-row {
+  padding-top: 50px;
+}
+
+.modal-body {
+  max-width: 80%;
+  padding-top: 0;
+  padding-bottom: 100px;
+  margin: 0 auto;
+}
+
+.modal-header {
+  border: 0;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.course-quick-view {
+  padding-left: 83px;
+  padding-right: 60px;
+}
+
+.course-quick-view-summary {
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 1px rgb(0 0 0 / 15%);
+  padding: 50px;
+  padding-top: 100px;
+}
+
+.event-tag-live {
+  background-color: #16844c;
+  height: 25px;
+  padding: 12px 10px;
+  min-width: 107px;
+  position: absolute;
+  left: 0;
+  top: 21px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 95%;
+  text-transform: capitalize;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.time-info span {
+  display: block;
+  font-size: 14px;
+  line-height: 22px;
+  font-family: "Barlow", sans-serif;
+}
+
+.time-info label {
+  display: block;
+  font-size: 14px;
+  line-height: 22px;
+  font-family: "Barlow", sans-serif;
+  font-weight: bold;
+}
+
+.time-info {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.date-info {
+  color: #283c6b;
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+  margin-top: 15px;
+}
+
+.date-info span {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.coupan-apply input {
+  border: 0;
+  border-bottom: #0d0d0d 1px solid;
+  width: 190px;
+  
+  font-family: "Sora", sans-serif;
+}
+
+button.btn.btn-apply {
+  background: #283c6b;
+  border-radius: 4px;
+  height: 26px;
+  color: #fff;
+
+  padding: 0;
+  min-width: 77px;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.1em;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.course-value {
+  margin-top: 25px;
+}
+
+.modal-footer-btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.modal-footer-btn .btn.btn-primary {
+  margin: 0;
+  width: 150px;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.seats-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seats-count label {
+  margin-right: 10px;
+
+  font-size: 18px;
+  line-height: 130%;
+}
+
+.stepper-input.stepper__input {
+  border-radius: 8px;
+  height: 49px;
+}
+
+.info-text.font-barlow {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 30px;
+}
+
+.list-row {
+  position: relative;
+}
+
+.list-row:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #0d0d0d;
+  height: 100%;
+  width: 1px;
+  content: "";
+}
+
+.summary-list li {
+  margin-bottom: 30px;
+}
+
+.secure-payment-info {
+  font-weight: bold;
+  text-align: right;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  margin-right: 80px;
+}
+
+.enroll-no {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.enroll-no span {
+  font-weight: 500;
+}
+
+.secure-checkout-content .input-group .form-control {
+  padding-left: 0;
+}
+
+.secure-checkout-content .form-row {
+  margin-bottom: 40px;
+}
+
+.secure-checkout-content h3 {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+  margin-bottom: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.course-quick-view.secure-quick-view p.paragraph {
+  font-weight: 500;
+
+  line-height: 135%;
+}
+
+.view-summary-content h3 {
+  margin-right: 80px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+}
+
+@media only screen and (max-width: 1400px) {
+  .modal-body {
+    max-width: 95%;
+  }
+
+  .modal-header {
+    max-width: 95%;
+  }
+  .modal-footer p {
+    max-width: 95%;
+  }
+  .course-quick-view {
+    padding-left: 60px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .course-quick-view-summary {
+    margin-left: 83px;
+  }
+
+  .modal-body {
+    max-width: 90%;
+  }
+
+  .modal-header {
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .course-quick-view {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .modal-body {
+    max-width: 100%;
+  }
+
+  .secure-checkout-content .form-row {
+    margin-bottom: 0px;
+  }
+
+  .secure-checkout-content .form-row .input-group {
+    margin-bottom: 20px;
+  }
+
+  .secure-checkout-content h3 {
+    font-size: 16px;
+  }
+
+  .course-quick-view-summary {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+  }
+
+  .view-summary-content h3 {
+    margin-right: 0px;
+  }
+
+  .secure-payment-info {
+    font-weight: bold;
+    text-align: right;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  .enroll-no {
+    font-size: 14px;
+  }
+
+  .coupan-apply input {
+    width: 150px;
+  }
+
+  .modal-header {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,431 @@
+<app-hero-simple-image></app-hero-simple-image>
+<section class="edit-profile  pt-4">
+    <div class="container">
+
+        <div class="page-head edit-exam ">
+            <a routerLink="/learner/self-study" class="back-action-arrow"><img
+                    src="../../../../assets/params/images/icons/icon-back-actions.svg"></a>
+            <div class="row">
+                <div class="col-sm-8">
+                    <h3 class="heading-lg">{{SectionTitle}}</h3>
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="learner-dashboard-self">
+        <div class="container">
+
+            <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " [class.active]="viewMode == 'home-tab'" id="home-tab"
+                        (click)="viewMode = 'home-tab'" type="button" role="tab" aria-controls="home"
+                        aria-selected="true">overview & Review
+                        questions</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " [class.active]="viewMode == 'exam-tab'" id="exam-tab"
+                        (click)="viewMode = 'exam-tab'" type="button" role="tab" aria-controls="exam"
+                        aria-selected="true">final exam</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" [class.active]="viewMode == 'profile-tab'" id="profile-tab"
+                        (click)="viewMode = 'profile-tab'" type="button" role="tab" aria-controls="profile"
+                        aria-selected="false">CERTIFICATES</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" [class.active]="viewMode == 'faq-tab'" id="faq-tab"
+                        (click)="viewMode = 'faq-tab'" type="button" role="tab" aria-controls="faq"
+                        aria-selected="false">FAQ</button>
+                </li>
+
+
+            </ul>
+            <div class="tab-content" id="myTabContent" [ngSwitch]="viewMode">
+                <div class="tab-pane fade show " [ngClass]="{'active':viewMode =='home-tab' }" id="home" role="tabpanel"
+                    aria-labelledby="home-tab">
+
+                    <div class="question-review">
+                        <div class="row">
+                            <div class="col-sm-4 ">
+                                <div class="webinar-left">
+                                    <!-- <img src="../../../../../assets/params/images/banner/video-frame.png" -->
+                                    <!-- class="img-fluid"> -->
+
+
+                                    <div #video>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="webinar-right">
+                                    <div class="webinar-list mt-5">
+                                        <ul class="font-barlow text-uppercase">
+                                            <li><span>PROGRAM MATERIALS</span>
+                                                <br>
+                                                <span class="includes-list">
+                                                    Includes: 1. Table of Contents  2. Glossary of Terms<span class="break-before"> 3. Handouts  4. Forms (if applicable)</span>
+                                                </span>
+                                                <img class="icon-export" (click)="downloadHandout()"
+                                                    src="../../../../../assets/params/images/icons/icon-download-green.svg">
+
+                                            </li>
+                                            <li><span>You have watched<i class="time">{{vidViewPercent}}%</i></span>
+                                                <!-- <a href=""
+                                                    class="icon-export"><img
+                                                        src="../../../../../assets/params/images/icons/icon-download-green.svg"></a> -->
+                                            </li>
+                                            <li *ngIf="isShow"><span>download certificate</span><a
+                                                    class="icon-export"><img alt="downloadbtn"
+                                                        (click)="downloadCertificate()"
+                                                        src="../../../../../assets/params/images/icons/icon-download-green.svg"></a>
+                                            </li>
+                                            <li *ngIf="!isShow" class="disable"><span>download certificate</span><a
+                                                    class="icon-export"><img alt="downloadbtn"
+                                                        src="../../../../../assets/params/images/icons/icon-download.svg"></a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="webinar-content mt-5">
+                                        <h2 class="font-barlow heading-sm"> {{TabSectionTitle}}</h2>
+                                        <p class="paragraph font-barlow">{{TabSectionDesc}} </p>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="review-questions">
+
+                        <div *ngIf="questionCount>0 && !isReviewExamPassed " class="container">
+                            <h2 *ngIf="isReviewExamExist && !isReviewExamPassed " class="font-barlow heading-sml">review
+                                questions</h2>
+
+                            <div class="question-list" *ngIf="isVal">
+
+                                <h6 class="font-barlow heading-sm">{{ questionList[currentQuestionIndex]?.title}}
+                                </h6>
+
+                                <div class="custom_radio_group_alert">
+                                    <ng-container
+                                        *ngFor="let question of questionList[currentQuestionIndex]?.options; let i=index">
+                                        <label class="custom_radio_groups" for="quesiton_{{i}}">
+
+                                            <input
+                                                [checked]="questionList[currentQuestionIndex]?.selectedAnswer == question?.option"
+                                                (change)="reviewExamsAnswer(question?.option, question,currentQuestionIndex)"
+                                                type="radio" id="quesiton_{{i}}" name="option_{{currentQuestionIndex}}"
+                                                value="{{question?.option}}" [disabled]="isAnswerTrue" />
+
+
+                                            <span></span>{{question?.option}}</label>
+                                    </ng-container>
+
+                                </div>
+                            </div>
+
+                            <!-- <div class="btns-tabs-selected">
+                                <a (disabled)="disablePrev" [ngClass]="{'btn-previous' : currentQuestionIndex ===  0}"
+                                    (click)="prev(currentQuestionIndex)" class="btn btn-primary ">Previous</a>
+
+                                <a *ngIf="currentQuestionIndex <=  questionCount-2"
+                                    [ngClass]="{'btn-previous' : currentQuestionIndex >  questionCount-2}"
+                                    (click)="next(currentQuestionIndex)" class="btn btn-primary btn-lg">Next</a>
+                                <a *ngIf="currentQuestionIndex ===  questionCount-1 " type="button"
+                                    (click)="checkAnswers()" class="btn btn-primary btn-lg">Submit Answer</a>
+                            </div> -->
+                        </div>
+                        <div *ngIf="questionCount===0" class="container">
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade show" [ngClass]="{'active':viewMode =='exam-tab' }" id="exam" role="tabpanel"
+                    aria-labelledby="exam-tab">
+                    <div class="review-questions mt-5">
+                        <div class="container" *ngIf="finalQuestionCount>0">
+                            <h2 class="font-barlow heading-sml">final exam</h2>
+
+                            <div class="questions-no">
+                                <h3 class="font-barlow heading-sm">{{finalQuestionCount}} Questions</h3>
+                            </div>
+
+                            <div class="question-list">
+                                <ul *ngFor="let question of finalquestionList; let currentQuesIndex=index">
+                                    <li>
+                                        <div class="lihead">
+                                            <span>{{currentQuesIndex+1}}&nbsp;</span>
+                                            <h6 class="font-barlow heading-sm"> {{question?.title}}
+                                            </h6>
+                                        </div>
+                                        <div class="custom_radio_group_alert">
+                                            <ng-container
+                                                *ngFor="let option of question.options; let currentOptionIndex=index">
+                                                <label class="custom_radio_groups"
+                                                    for="radiogroup_{{currentQuesIndex}}_{{currentOptionIndex}}">
+                                                    <input [checked]="question?.selectedAnswer===option?.option"
+                                                        (change)="selectAnswer(option?.option, currentQuesIndex)"
+                                                        type="radio"
+                                                        id="radiogroup_{{currentQuesIndex}}_{{currentOptionIndex}}"
+                                                        name="radiogroup_{{currentQuesIndex}}" />
+                                                    <span></span> {{option?.option}}
+                                                </label>
+
+                                            </ng-container>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                            <div class="btns-tabs-selected justify-content-end">
+
+                                <!-- <a class="btn btn-primary btn-lg"   (click)="checkFinalAnswers()">submit all answers</a> -->
+                                <button class="btn btn-primary btn-lg" [disabled]=dsblFinalExmBtn
+                                    (click)="checkFinalAnswers()">submit all answers</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" [ngClass]="{'active':viewMode === 'profile-tab' }" id="profile"
+                    role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="question-review">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="webinar-left">
+                                    <img src="../../../../../assets/params/images/banner/certificate.jpg"
+                                        alt="downloadcertificate" class="img-fluid">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6" *ngIf="isShow">
+                                <div class="webinar-right">
+                                    <div class="webinar-list mt-5">
+                                        <ul class="font-barlow text-uppercase">
+
+                                            <li (click)="downloadCertificate()"><span>download
+                                                    certificate</span><a class="icon-export"><img
+                                                        alt="downloadcertificate"
+                                                        src="../../../../../assets/params/images/icons/icon-download-green.svg"></a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade show" [ngClass]="{'active':viewMode =='faq-tab' }" id="faq" role="tabpanel"
+                    aria-labelledby="faq-tab">
+
+                    <div *ngIf="faq!=undefined" [innerHtml]="sanitize(faq?.staticText)">
+
+                    </div>
+                    <div class=" btns-tabs-selected mb-5 mt-5">
+
+                        <a routerLink="/contact-us" class="btn btn-primary btn-lg">questions? Contact us</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+
+</section>
+
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="close()">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <img src="../../../../assets/params/images/icons/icon-cross-red.svg">
+        <h3>try again</h3>
+        <p class="paragraph mt-3 font-barlow pl-5 pr-5">The racial undertones of the “blacklist” was said from the first
+            presenter had a tax havens report that proved this compliation.
+
+
+            You have unlimited attempts.</p>
+        <p class="paragraph mt-5 font-barlow pl-5 pr-5">You have unlimited attempts.</p>
+
+
+    </div>
+
+</ng-template>
+
+<!--submit-modal-->
+<ng-template #template1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="close()">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body text-center">
+
+        <img src="../../../../assets/params/images/icons/checked.png" alt="logo" style="width: 70px;">
+        <h3 class="text-uppercase">are you sure you want to submit all answers <br />and finish the final exam?</h3>
+
+        <div class="message-button">
+            <button type="button" class="btn btn-custom-default">No</button>
+
+            <a (click)=" SubmitFinal();close()" data-dismiss="template1"
+                class="btn  btn-custom-default btn-custom-green" data-dismiss="modal">Yes</a>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <p>{{footerData?.title}}</p>
+    </div>
+</ng-template>
+<ng-template #template2>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="close()">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body text-center">
+
+        <img src="../../../../assets/params/images/icons/icon-cross-red.svg" alt="logo">
+        <h3 class="text-uppercase">YOU DID NOT PASS THE EXAM <br /><br>Your Result : {{totalPercentage}} %
+            ({{ScoreObtained}} Points)</h3>
+
+        <div class="message-button">
+            <button type="button" (click)=" retakeExam();close()" class="btn btn-custom-default">Go Back</button>
+
+            <a class="btn  btn-custom-default btn-custom-green" (click)="retakeExam();close()">Retake Exam</a>
+        </div>
+    </div>
+
+</ng-template>
+<ng-template #template3>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="close()">
+            <img src="../../../../assets/params/images/icons/icon-cross-red.svg">
+        </button>
+    </div>
+    <div class="modal-body text-center">
+
+        <img src="../../../../assets/params/images/icons/checked.png" alt="logo" style="width: 70px;">
+        <h3 class="text-uppercase">CONGRATULATIONS, YOU PASSED THE EXAM <br /></h3>
+        <label><br>Your Result : <h3> {{totalPercentage}} % ({{ScoreObtained}} Points)</h3></label>
+
+        <div class="message-button">
+            <button (click)=" retakeExam();close()" type="button" class="btn btn-custom-default">Go Back</button>
+
+            <a (click)=" certificateTab();close(); viewMode = 'profile-tab' "
+                class="btn  btn-custom-default btn-custom-green">Download
+                Certificate</a>
+        </div>
+    </div>
+
+</ng-template>
+<ng-template #template4>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="close()">
+            <img src="../../../../assets/params/images/icons/icon-cross-red.svg">
+        </button>
+    </div>
+    <div class="modal-body text-center">
+
+        <img src="../../../../assets/params/images/icons/icon-info.svg" alt="logo">
+        <h3 class="text-uppercase">You have already given this Exam <br /></h3>
+
+        <div class="message-button">
+            <button (click)=" close()" type="button" class="btn btn-custom-default">Go Back</button>
+        </div>
+    </div>
+
+</ng-template>
+
+
+<ng-template #template5 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="close()">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body text-center" style="font-family:Barlow,sans-serif !important;">
+
+        <img src="../../../../assets/params/images/icons/icon-cross-red.svg" alt="logo">
+        <h3 class=""> Incorrect <br/><br/>{{hintForQuestion}}</h3>
+
+
+    </div>
+    <!-- <div class="modal-footer">
+        <p>{{footerData?.title}}</p>
+    </div> -->
+</ng-template>
+<ng-template #template6 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="closeRightAnswrM()">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body text-center" style="font-family:Barlow,sans-serif !important;">
+
+        <img src="../../../../assets/params/images/icons/checked.png" alt="logo" style="width: 70px;">
+        <h3 class=""> Correct <br/><br/>{{hintForQuestion}}</h3>
+
+
+    </div>
+    <!-- <div class="modal-footer">
+        <p>{{footerData?.title}}</p>
+    </div> -->
+</ng-template>

@@ -1,0 +1,3 @@
+.modal-dialog.modal-lg.modal-popupemail span.required {
+  z-index: 1000 !important;
+}

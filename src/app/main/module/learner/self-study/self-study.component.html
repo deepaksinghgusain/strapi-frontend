@@ -1,0 +1,219 @@
+<app-hero-simple-image></app-hero-simple-image>
+<section class="edit-profile pt-4">
+    <div class="container">
+        <div class="page-head mb-5 mt-5">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h3 class="heading-lg">{{greeting}}, {{username}}</h3>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-type-toggle">
+                        <a href="" class="btns-toggles " routerLink="/learner/dashboard">Learners <br /> Dashboard</a>
+                        <a href="" class="btns-toggles active" routerLink="/learner/self-study">Self <br />Study</a>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container pt-5">
+        <div class="row ">
+            <div class="col-3 col-profile-first">
+                <div class="profile-image">
+                    <!-- <img *ngIf="imgUrl === ''" class="camera-icon"  /> -->
+                    <img *ngIf="imgUrl !== ''" [src]="imgUrl" class="camera-icon" width="173">
+                    <!-- <span *ngIf="imgUrl === ''">Upload image</span> -->
+                    <div *ngIf="imgUrl! === ''" class="upload-photo-area-ing 12" style="background-image:url(../../../assets/params/images/img/default-user.png); background-size:cover;width: 100%;
+                  height: 100%;"></div>
+
+
+
+
+                    <input #imageInput type="file" accept="image/*" id="imageUpload" (change)="processFile(imageInput)"
+                        name="imageUpload" />
+                </div>
+                <!-- <div class="profile-image">
+              <img class="camera-icon" src="../../../../../assets/params/images/banner/camera-icon.svg" />
+              <span>Upload image</span>
+    
+              <div class="upload-photo-area-ing 12" style="background-image:url(../../../assets/params/images/banner/default-profile.png); background-size:cover;width: 100%;
+                height: 100%;
+            "></div>
+    
+    
+              <input type="file" accept="image/*" id="imageUpload" name="imageUpload" />
+            </div> -->
+
+            </div>
+            <div class="col-9 col-profile-second">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="edit-profile-info">
+                            <ul>
+                                <li><label>Name:</label><span> {{profileData.firstName}} {{profileData.lastName}}</span>
+                                </li>
+                                <li><label>company:</label><span> {{profileData.company}}</span></li>
+                                <li><label>PTIN#:</label><span> {{profileData.ptin}}</span></li>
+                            </ul>
+                            <ul>
+                                <li><label>lOCATION:</label><span> {{ profileData.state}} , {{ profileData.country}}
+                                    </span></li>
+                                <li><label>pHONE: </label><span> {{profileData.phone}}</span></li>
+                                <li></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="btn-style btn-profile-style">
+                            <a href="" class="btn btn-primary btn-blue" routerLink="/learner/profile"><img
+                                    src="../../../../../assets/params/images/icons/icon-pencil-white.svg"
+                                    class="btn-icon">eDIT PROFILE</a>
+                            <a href="" class="btn btn-primary  mt-3" routerLink="/learner/payment-info"><img
+                                    src="../../../../../assets/params/images/icons/icon-pencil-white.svg"
+                                    class="btn-icon">eDIT payment</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="learner-dashboard-new padding-distance-lg">
+        <div class="container">
+
+            <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                        type="button" role="tab" aria-controls="home" aria-selected="true">recorded events</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">CERTIFICATES</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming"
+                        type="button" role="tab" aria-controls="upcoming" aria-selected="upcoming">SELF-STUDY LIBRARY</button>
+                </li>
+
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <div class="learner-register-events mt-4">
+                        <div class="ps" style="position: relative; max-width: 1500px; max-height: 400px;"
+                            [perfectScrollbar]="">
+                            <ul *ngFor="let evt of recEvent">
+                                <li>
+                                    <div class="register-events">
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <h2 class="heading-sm text-uppercase">{{evt.course.title}}
+                                                </h2>
+                                                <span class="font-barlow">{{evt.purchasedOn| date:" EE, MMM dd
+                                                    yyyy" }}</span>
+                                                    <!-- <h5>{{evt.instructor}}</h5> -->
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="btn-style">
+                                                    <a class="btn btn-primary" style="    width: 130px;"
+                                                        (click)="navigateToVideo(evt.course.videoUrl, evt.course.slug)">   launch
+                                                        </a>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+
+                    <div class="courses-certificate-list mt-4 ">
+                        <h2 class="text-center" *ngIf="!isShow"> No Certificate is awarded </h2>
+
+
+                        <div class="row" *ngIf="isShow">
+                            <div class="col-sm-4" *ngFor="let certificate of certificates | paginate: { itemsPerPage: 9, currentPage: p };  let i=index">
+                                <div class="white-box text-center">
+                                    <div class="cerificate-media"> <img
+                                            src="../../../../../assets/params/images/banner/certificate.jpg"
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="cerificate-content">
+                                        <h3 class="heading-sm text-uppercase">
+                                            {{certificate?.course.title}}</h3>
+                                        <p class="paragraph font-barlow ">Completed
+                                            {{certificate?.course.completedOn}}</p>
+                                        <div class="bottom-line">
+                                            <a class="btn btn-primary btn-lg"
+                                                (click)="downloadCertificate(certificate)">Download
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <pagination-controls *ngIf="certificates.length>=10" (pageChange)="onPageChange($event)" class="float-right"></pagination-controls>
+
+                </div>
+
+                <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+
+                    <div class="learner-register-events mt-4">
+                        <div class="ps" style="position: relative; max-width: 1500px; max-height: 400px;"
+                            [perfectScrollbar]="">
+                            <ul>
+                                <li *ngFor="let event of upcomingEvents">
+                                    <div class="register-events">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <h2 class="heading-sm text-uppercase">{{event.attributes.title}}</h2>
+                                                <!-- <span class="font-barlow">{{event.attributes.startDate | date:" EE MMM
+                                                    dd yyyy" }}</span> -->
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="btn-style">
+                                                    <a class="btn btn-primary"
+                                                        [routerLink]="['/course/course-detail', event?.attributes?.slug]">View</a>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</section>

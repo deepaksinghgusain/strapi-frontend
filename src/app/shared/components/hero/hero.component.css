@@ -1,0 +1,415 @@
+h2.subtitle {
+  color: #283c6b;
+  font-size: 32px;
+  line-height: 90%;
+  margin-top: 20px;
+ 
+}
+
+/**hero-image**/
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  min-height: 550px;
+}
+
+.hero-caption {
+  padding: 15% 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 0;
+  position: relative;
+}
+
+.hero-caption:after {
+  background-color: #fff;
+
+  content: "";
+  position: absolute;
+
+  width: 1px;
+  left: 15px;
+  top: 75px;
+  bottom: 20px;
+}
+
+.hero-image.hero-course-banner .hero-caption:after {
+  background-color: #0d0d0d;
+  bottom: 0;
+  min-height: 55%;
+  left: 15px;
+  top: 197px;
+  height: 360px;
+}
+
+.hero-image.hero-image-simple .hero-caption:after {
+  background-color: #0d0d0d;
+  bottom: 50px;
+  min-height: 100%;
+  left: 15px;
+}
+ 
+.hero-caption h1 {
+  font-size: 100px;
+
+  max-width: 494px;
+}
+.hero-caption h1 {
+  font-style: normal;
+  font-weight: 400;
+
+  line-height: 90%;
+  text-transform: capitalize;
+  color: #000;
+  text-shadow: 0px 4px 8px #646464;
+  word-break: break-word;
+}
+
+.hero-image.hero-image-making {
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-course-banner .hero-caption h1 {
+  font-size: 80px;
+  line-height: 90%;
+  /* or 72px */
+
+  text-transform: capitalize;
+
+  color: #0d0d0d;
+  text-shadow: none;
+}
+
+.right-hero-caption {
+  max-width: 25%;
+  flex: 0 0 25%;
+
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.video-style {
+  height: 84px;
+}
+
+.left-hero-caption {
+  max-width: 75%;
+  flex: 0 0 75%;
+  position: relative;
+}
+
+.top-caption {
+  margin-left: 80px;
+  max-width: 50%;
+}
+
+/* .left-hero-caption:after {
+  background-color: #fff;
+  content: '';
+  position: absolute;
+  height: calc(100vh - 300px);
+  width: 1px;
+  left: 0;
+  top: -269px;
+} */
+
+.video-frame-area {
+  max-width: 100%;
+  /* height: 100vh; */
+  position: relative;
+}
+
+.img-profile-fluid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cm-play img {
+  max-width: 100%;
+  width: 63px;
+  height: 63px;
+}
+
+a.cm-play {
+  position: absolute;
+  top: 16%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  z-index: 999;
+  text-align: center;
+  transform: translateY(-16%);
+  max-width: 80px;
+  cursor: pointer;
+}
+
+.first-top {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.first-top .left-video {
+  max-width: 50%;
+  flex: 0 0 50%;
+  height: 100%;
+  background: #fff;
+}
+
+.video-style {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 125px;
+  align-items: center;
+}
+
+.cp-logo {
+  background: #ffffff;
+}
+
+.left-video-content {
+  background: #283c6b;
+  padding: 0 10px;
+}
+
+.left-video-content h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 26px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: "Barlow", sans-serif;
+}
+
+.first-top .left-video.blank {
+  background: transparent;
+}
+
+.hero-image-simple .top-caption h3 {
+  font-size: 80px;
+  line-height: 90%;
+  text-transform: capitalize;
+}
+
+.hero-image-simple .left-hero-caption:after {
+  background-color: #0d0d0d;
+
+  height: calc(100% - 200px);
+
+  top: -289px;
+}
+
+.hero-image.hero-course-banner {
+  min-height: 773px;
+  background-position: center;
+}
+
+.hero-image.hero-course-banner .hero-caption {
+  padding: 15% 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 0;
+}
+
+/* .hero-image.hero-course-banner .left-hero-caption:after {
+  background-color: #0D0D0D;
+  content: '';
+  position: absolute;
+  height: calc(45vh - 0px);
+  width: 1px;
+  left: -54px;
+  top: 0;
+
+} */
+.cap-top {
+  display: flex;
+  width: 100%;
+}
+
+.hero-course-banner .hero-caption h1 {
+  font-size: 80px;
+  line-height: 90%;
+  /* or 72px */
+
+  text-transform: capitalize;
+
+  color: #0d0d0d;
+  text-shadow: none;
+}
+
+.hero-course-banner .top-caption {
+  margin-left: 0px;
+}
+
+.cap-top,
+.cap-bottom {
+  margin-left: 75px;
+}
+
+.cap-bottom-left {
+  max-width: 65%;
+  flex: 0 0 65%;
+}
+
+.cap-bottom-right {
+  max-width: 35%;
+  flex: 0 0 35%;
+}
+
+.form-inline-value {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.stepper-input.stepper__input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #efeeee;
+  border-radius: 0px 8px 8px 0px;
+  height: 63px;
+  padding: 0 10px;
+  position: relative;
+  width: 120px;
+}
+
+.form-inline-value span {
+  background: #16844c;
+  border-radius: 8px 0px 0px 8px;
+  height: 63px;
+  align-items: center;
+
+  display: flex;
+  max-width: 140px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 90%;
+  text-transform: capitalize;
+  color: #ffffff;
+
+  justify-content: center;
+}
+
+.hero-image {
+  position: relative;  
+}
+.hero-image::after {
+  content: "";
+  background-color: rgba(255,255,255,0.5);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 0;
+}
+.hero-image .container {
+	position: relative;
+	z-index: 1;
+} 
+
+@media only screen and (min-width: 1500px) {
+  .right-hero-caption {
+    max-width: 20%;
+    flex: 0 0 20%;
+  }
+
+  .left-hero-caption {
+    max-width: 80%;
+    flex: 0 0 80%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .hero-image {
+    min-height: 450px;
+  }
+  .hero-caption h1 {
+    font-size: 40px;
+
+    max-width: 158px;
+  }
+  a.back-action.position-top {
+    left: -60px;
+    top: -55px;
+  }
+
+  .top-caption {
+    margin-left: 50px;
+  }
+
+  .left-hero-caption {
+    max-width: 60%;
+    flex: 0 0 60%;
+  }
+
+  .right-hero-caption {
+    max-width: 40%;
+    flex: 0 0 40%;
+  }
+
+  .video-style {
+    height: 134px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  h2.subtitle {
+    font-size: 16px;
+    margin-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .hero-caption h1 {
+    font-size: 30px;
+
+    max-width: 112px;
+  }
+
+  .right-hero-caption {
+    max-width: 45%;
+    flex: 0 0 45%;
+  }
+
+  .left-hero-caption {
+    max-width: 55%;
+    flex: 0 0 55%;
+  }
+
+  .video-style {
+    height: 84px;
+  }
+
+  .hero-image {
+    min-height: 350px;
+  }
+
+  .top-caption {
+    margin-left: 30px;
+  }
+
+  a.cm-play {
+    max-width: 42px;
+  }
+
+  .left-video-content h3 {
+    font-size: 7px;
+    line-height: 14px;
+  }
+
+  .hero-caption {
+    padding: 75px 0;
+    padding-bottom: 0;
+    align-items: center;
+  }
+}

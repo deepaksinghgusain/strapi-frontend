@@ -1,0 +1,103 @@
+<app-hero-simple></app-hero-simple>
+<section class="cpa-about text-start">
+    <div class="container">
+
+        <div class="about-inner-container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="about-media">
+                        <h2 class="heading-lg mb-5">{{getBannerData.descTitle}}</h2>
+                        <img src="../../../../assets/params/images/about/about-profile-02.png" class="img-fluid mt-3">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="about-content">
+            
+                        <markdown  [data]="markdowndata2"> </markdown>
+
+                        <div class="about-list">
+                            <markdown [data]="markdowndata"> </markdown>
+                        </div>
+
+                        <div class="btn-custom-style text-center mt-4">
+                            <a routerLink="/auth/signup" class="btn btn-primary btn-lg">{{getBannerData.signupButton}}
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="choose-instructor">
+    <div class="container">
+
+        <h3 class="heading-lg">{{getBannerData.heading}}</h3>
+        <div class="choose-instructors-list">
+
+            <ul>
+                <li *ngFor="let items of getValues; let i=index">
+                    <div class="list-row">
+                        <h6>/0{{i+1}}</h6>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="instructor-media">
+                                    <img src="{{imageUrl}}{{items?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url}}"
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="instructor-detail">
+                                    <h5 class="heading-sm text-uppercase">{{items.attributes.firstName}}
+                                        {{items.attributes.lastName}}</h5>
+                                    <p class="font-barlow">{{items.attributes.bioData}}</p>
+                                    <div class="more">
+                                        <a (click)="openModalWithClass(items.id,i+1)" class="more"><span>Read bio</span>
+                                            <img src="../../../../assets/params/images/banner/icon-arrow.svg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</section>
+
+
+
+<section class="cpa-how-works cpa-how-works-about pt-5">
+    <div class="container">
+
+        <div class="work-container">
+            <div class="row">
+
+                <div class="col-sm-5">
+                    <div class="work-content">
+                        <div class="page-title page-title-left">
+                            <h1>{{getBannerData.footerTitle}}</h1>
+                        </div>
+
+                        <p>{{getBannerData.footerSubtitle}}</p>
+                        <div class="custom-btn mt-5">
+                            <a href="" class="btn  btn-primary btn-lg">{{getBannerData.email}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="work-media">
+                        <img src="../../../../assets/params/images/banner/how-works-bannerblack.png"
+                            class="img-fluid img-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

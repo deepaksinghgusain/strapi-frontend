@@ -1,0 +1,157 @@
+<footer class="nga-footer">
+
+  <div class="container py-5 text-center text-lg-start">
+    <div class="row">
+
+      <div class="col-sm-6 col-md-3">
+        <div class="white-box">
+          <a><img src="{{imageUrl}}{{footerData?.logo?.data?.attributes?.url}}" alt="cpe-warehouse-logo"></a>
+
+          <!-- <div class="cpa-social-icons">
+            <ul>
+              <li *ngFor="let link of socialData">
+                <a href="{{link?.url}}" target="_blank">
+                  <img alt="ad" src="{{imageUrl}}{{link?.iconImage?.data?.attributes?.url}}"></a>
+              </li>
+            </ul>
+          </div> -->
+
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="white-box">
+          <h3 class="menu-title">{{footerData?.FooterLinks?.title}}</h3>
+          <div class="footer-menu-list">
+            <ul *ngFor="let item of footerData?.FooterLinks?.links">
+              <li>
+                <a href="{{item?.href}}" [target]=" item.target === null ? '_self' :item.target">{{item?.label}}</a>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+      <div *ngFor="let item of footerData?.offices" class="col-sm-6 col-md-3">
+        <div class="white-box">
+          <h3 class="menu-title">{{item?.name}}</h3>
+
+          <div class="footer-address">
+            {{item?.address}}<br />
+
+
+          </div>
+          <div class="footer-address">
+
+
+
+            <a href="tel:1-647-946-2328" class="phone">{{item?.contact}}</a><br />
+            <a href="mailto:cpe@cpewarehouse.com">{{item?.email}}</a>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      <p>{{footerData?.title}}</p>
+    </div>
+  </div>
+<tawk></tawk>
+<!--
+  <div class="chat_box" [ngClass]="status ? 'success' : 'danger'">
+    <a (click)="clickEvent()" class="comment">
+      <i class="fa-solid fa-comment-dots"></i>
+      <i class="fa-solid fa-xmark"></i>
+    </a>
+    <div class="chat_list">
+
+      <h3><span>Chat With US</span></h3>
+      <div *ngIf="isChatToken; else register">
+        <form [formGroup]="chatMessageForm">
+          <div class="chat_grpup">
+            <div *ngFor="let message of messageArray">
+              <div class="user_list"
+                [className]=" message.state.author === userName ? 'user_chat user_list ':'admin_chat user_list '">
+                <img *ngIf="message.state.body!=''" src="/assets/params/images/img/faculty.png" alt="">
+                <div class="chat_info" *ngIf="message.state.body!=''">
+                  {{message.state.body}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chat_inputbox pt-0 border-top-0 d-flex">
+            <textarea [(ngModel)]="messageText" formControlName="outgoing" placeholder="Type Your Message..." class="form-control ng-touched ng-dirty ng-valid" autocomplete="off"></textarea>
+	  </div>
+	  <div class="chat_send_btn">
+	    <input type="submit" class="btn btn-primary" (click)="chatMessageForm.value.outgoing!='' && addConversationMessage()" value="Send Message">
+          </div>
+        </form>
+
+      </div>
+
+      <ng-template #register>
+        <form [formGroup]="chatTokenForm">
+          <div class="chat_grpup">
+            <div class="chat_inputbox regChatBox">
+              <div class="mb-3 mb_field">
+                <input type="text" class="form-control p-2"
+                  [ngClass]="{'is-invalid': submitted && (chatTokenForm.controls['username'].errors !== null && chatTokenForm.controls['username'].errors['required'])}"
+                  formControlName="username" placeholder="Enter Your Name"/>
+                <div class="invalid-feedback"
+                  *ngIf="submitted && (chatTokenForm.controls['username'].errors !== null && chatTokenForm.controls['username'].errors['required'])">
+                  Please Enter Your Name
+                </div>
+              </div>
+              <div class="mb-3 mb_field">
+                <input type="email" class="form-control p-2"
+                  [ngClass]="{'is-invalid': submitted && (chatTokenForm.controls['email'].errors !== null && (chatTokenForm.controls['email'].errors['pattern'] || chatTokenForm.controls['email'].errors['required']))}"
+                  formControlName="email" placeholder="Enter Your Email"/>-->
+                  <!-- <label>Enter Your Email</label> -->
+               <!--  <div class="invalid-feedback"
+                  *ngIf="submitted && (chatTokenForm.controls['email'].errors !== null && chatTokenForm.controls['email'].errors['pattern'])">
+                  Please Enter Valid Email Address
+                </div>
+                <div class="invalid-feedback"
+                  *ngIf="submitted && (chatTokenForm.controls['email'].errors !== null && chatTokenForm.controls['email'].errors['required'])">
+                  Please Enter Your Email
+                </div>
+              </div>
+              <ng-controller [formGroup]="chatMessageForm" (keydown.enter)="getUserChatToken()">
+            
+              <div class="mb-3">
+                <textarea name="" id="" formControlName="outgoing" class="form-control message p-2" placeholder="Type Your Message And Press Enter"></textarea>
+              
+              
+              </div>
+            </ng-controller>
+              <button class="btn btn-primary" type="submit" (click)="getUserChatToken()" [disabled]="!userRegBtn">
+                <span *ngIf="userRegBtn; else other">Start Chat</span>
+                <ng-template #other>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </ng-template>
+
+              </button>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+
+
+
+    </div>
+
+  </div>
+-->
+
+
+
+</footer>

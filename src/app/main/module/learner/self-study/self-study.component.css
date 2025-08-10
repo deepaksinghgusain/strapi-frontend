@@ -1,0 +1,288 @@
+.list-row.row {
+  margin-bottom: 80px;
+}
+.learner-report-image {
+  display: flex;
+  justify-content: flex-end;
+}
+.profile-image {
+  width: 217px;
+  height: 217px;
+  position: relative;
+  line-height: 217px;
+}
+.profile-image .camera-icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+input#imageUpload {
+  position: absolute;
+  border: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+.edit-profile-info {
+  font-family: "Barlow", sans-serif;
+  display: flex;
+}
+.btn-style.btn-profile-style .btn.btn-primary {
+  min-width: 200px;
+}
+.edit-profile-info ul {
+  width: 48%;
+
+  justify-content: center;
+}
+.edit-profile-info li {
+  margin-bottom: 20px;
+}
+.edit-profile-info label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 130%;
+  /* or 31px */
+
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  color: #283c6b;
+}
+.edit-profile-info span {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 130%;
+  /* or 31px */
+
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  color: #000000;
+}
+.edit-profile-info .btn-style {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  float: right;
+}
+
+.edit-profile-info .btn.btn-primary {
+  min-width: 182px;
+
+  font-family: "Bebas Neue", cursive;
+}
+
+.learner-register-events h5 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  text-transform: uppercase;
+  color: #283c6b;
+  margin: 18px 0 0;
+}
+.learner-register-events li {
+  padding: 40px 0 30px 0;
+  border-bottom: 1px solid rgba(13, 13, 13, 0.6);
+}
+.learner-register-events .heading-sm {
+  margin-bottom: 15px;
+}
+.register-events span {
+  font-size: 14px;
+}
+.register-events .btn.btn-primary {
+  letter-spacing: 0.1em;
+  max-width: 150px;
+}
+.text-pay-container .cpa-social-icons.cpa-social-icons-package {
+  margin-left: 25px;
+
+  justify-content: flex-end;
+  display: flex;
+}
+a.more-link img {
+  margin-left: 11px;
+}
+
+.text-pay-container .cpa-social-icons ul li a img {
+  width: 32px;
+  height: 32px;
+}
+.white-box.text-center {
+  border: 1px solid #0d0d0d;
+  margin: 20px 0;
+}
+
+.cerificate-media img {
+  width: 100%;
+}
+.cerificate-content {
+  padding: 20px 30px;
+}
+.cerificate-content h3 {
+  max-width: 320px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  font-size: 14px;
+  margin-top: 20px;
+  min-height: 57px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.bottom-line {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 20px;
+  margin-top: 30px;
+}
+.courses-certificate-list .row {
+  margin: 0 -35px;
+}
+.courses-certificate-list .col-sm-4 {
+  padding: 0 35px;
+}
+.courses-certificate-list {
+  border-bottom: 1px solid rgba(13, 13, 13, 0.6);
+  padding-bottom: 50px;
+}
+.input-type-toggle {
+  display: flex;
+  justify-content: flex-end;
+  background: #e5e5e5;
+  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 100px;
+  height: 60px;
+  max-width: 280px;
+  float: right;
+  width: 100%;
+}
+.btns-toggles.active {
+  background: #283c6b;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 0px 4px rgba(0, 0, 0, 0.35);
+  border-radius: 100px;
+  color: #fff;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: capitalize;
+}
+.btns-toggles {
+  width: 50%;
+  flex: 0 0 50%;
+  justify-content: center;
+  align-items: center;
+
+  display: flex;
+  color: #283c6b;
+  text-align: center;
+}
+
+.register-events .btn-style {
+  display: flex;
+  justify-content: flex-end;
+  float: right;
+}
+
+@media only screen and (min-width: 1199px) and (max-width: 1500px) {
+  .edit-profile-info label {
+    font-size: 14px;
+  }
+  .edit-profile-info span {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .edit-profile-info label {
+    font-size: 14px;
+  }
+  .edit-profile-info span {
+    font-size: 14px;
+  }
+
+  .profile-image {
+    width: 117px;
+    height: 117px;
+
+    line-height: 117px;
+  }
+
+  .courses-certificate-list .row {
+    margin: 0 -15px;
+  }
+  .courses-certificate-list .col-sm-4 {
+    padding: 0 15px;
+  }
+  .btn-style.btn-profile-style .btn.btn-primary {
+    min-width: 100px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .edit-profile-info {
+    flex-direction: column;
+  }
+  .edit-profile-info ul {
+    width: 100%;
+  }
+  .profile-image {
+    width: 65px;
+    height: 65px;
+
+    line-height: 65px;
+  }
+  .btn-style.btn-profile-style .btn.btn-primary {
+    margin: 0;
+  }
+  .input-type-toggle {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+  .btn-style.btn-profile-style .btn.btn-primary {
+    min-width: 100px;
+    max-width: 100%;
+  }
+}
+
+.profile-image span {
+  position: absolute;
+  border: 0;
+
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+
+  color: #fff;
+  text-align: center;
+  top: 60%;
+  transform: translateY(-37%);
+  font-family: "Barlow", sans-serif;
+}
+
+.hero-image.hero-image-simple {
+  min-height: 720px;
+}

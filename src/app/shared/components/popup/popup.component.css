@@ -1,0 +1,10 @@
+.link-resend.link {
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 135%;
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
+    color: #283c6b;
+    cursor: pointer;
+  }

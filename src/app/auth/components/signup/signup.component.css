@@ -1,0 +1,52 @@
+.white-container.white-container-signup {
+  height: auto !important;
+}
+
+.password-see {
+  z-index: 999 !important;
+}
+.font-barlow {
+  font-family: "Barlow ", sans-serif;
+  font-size: 13px;
+  font-weight: 200;
+  color: grey;
+}
+.white-container.white-container-signup {
+  height: auto;
+}
+
+.white-container.white-container-signup .col-sm-6.pr-4 {
+  padding-right: 60px;
+}
+
+.white-container.white-container-signup .error-message-show {
+  margin-top: 5px;
+}
+@media only screen and (max-width: 767px) {
+  .white-container.white-container-signup .form-row {
+    margin: 0;
+  }
+  .white-container.white-container-signup {
+    padding-top: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .input-group {
+    margin-bottom: 20px;
+  }
+  .white-container.white-container-signup .col-sm-6.pr-4 {
+    padding-right: 0;
+  }
+  .white-container.white-container-signup .login-card:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background-color: #0d0d0d;
+    height: 100%;
+    width: 1px;
+  }
+}
+.invalid-feedback.check-fed-error {
+  margin-left: 2px;
+}

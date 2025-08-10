@@ -1,0 +1,255 @@
+<section class="hero-image hero-course-banner"
+    style="background-image:url({{imageUrl+heroImageSection?.backgroundImage?.data?.attributes?.formats?.large?.url}}); background-size:cover;">
+    <div class="container">
+        <div class="hero-caption">
+            <div class="cap-top">
+                <div class="left-hero-caption">
+                    <div class="top-caption">
+                        <h1 class="heading-sm font-barlow">{{packageData?.title}}</h1>
+
+                    </div>
+
+                </div>
+                <div class="right-hero-caption">
+
+                </div>
+            </div>
+            <div class="cap-bottom">
+                <div class="cap-bottom-left">
+                    <h3 class="heading-lg">{{courseCount}} COURSES INCLUDED</h3>
+
+                </div>
+                <div class="cap-bottom-right">
+                    <div class="form-inline-value">
+                        <!-- <span>{{packageData?.price * seats | currency:'USD':'symbol'  || totalPrice | currency:'USD':'symbol'}}</span> -->
+
+
+                        <span *ngIf="packageData?.discountedPrice>0; else other;">
+                            {{packageData?.discountedPrice* seats | currency:'USD':'symbol'}}
+
+                            <h5> <s> {{actualPrice* seats | currency:'USD':'symbol'}}</s></h5>
+
+                        </span>
+                        <ng-template #other>
+                            <span *ngIf="packageData?.price!=null">{{packageData?.price * seats | currency:'USD':'symbol'}}</span>
+                            <span *ngIf="packageData?.price ==null">{{actualPrice * seats | currency:'USD':'symbol'}}</span>
+
+                        </ng-template>
+                        <div class="stepper-input stepper__input">
+                            <div class="form-check-inline">
+                                <button (click)="seatDecrementer()" class="btn-types btn-plus">
+                                    <img alt="minu" src="../../../../../assets/params/images/icons/minus.svg"></button>
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="text" [value]="seats" disabled class="form-control">
+                            </div>
+                            <div class="form-check-inline">
+                                <button (click)="seatIncrementer()" class="btn-types btn-minus">
+                                    <img alt="plus" src="../../../../../assets/params/images/icons/plus.svg"></button>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <a class="btn btn-primary"
+                                (click)="enrollNow2(packageData)">{{heroImageSection?.button[0]?.label}}</a>
+                        </div>
+                    </div>
+
+                    <div class="form-info-text">
+                        <small class="font-barlow">{{this.heroImageSection?.purchaseTerms}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="courses-catalogue-package padding-distance-md">
+    <div class="container">
+
+
+        <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="courseoutline-tab" data-bs-toggle="tab"
+                    data-bs-target="#courseoutline" type="button" role="tab" aria-controls="courseoutline"
+                    aria-selected="true" (click)="outlineTabCalled()">package outline</button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq" type="button"
+                    role="tab" aria-controls="faq" aria-selected="false" (click)="faqTabCalled()">faq</button>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="courseoutline" role="tabpanel"
+                aria-labelledby="courseoutline-tab">
+                <div class="package-course-items padding-distance-md">
+
+                    <div class="row">
+                        <div class="col-sm-5 ">
+                            <h3 class="font-barlow">{{packageData?.desc}}</h3>
+                            <div class="event-course-image mt-4 mb-4">
+                                <img alt="packageimage" src="{{imageUrl + packageData?.image?.data?.attributes?.url}}"
+                                    class="img-fluid">
+                                <div class="event-tag">Package deal</div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-sm-6 offset-sm-1">
+                            <div class="package-deal-right-content">
+                                <markdown [data]="packageOutline">
+
+                                </markdown>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+
+                <div class="package-course-items padding-distance-md">
+                    <h3 class="heading-sm   font-barlow">{{packageData?.faqs?.faq[0]?.question}}</h3>
+                    <div class="row">
+
+                        <div class="col-sm-12 ">
+                            <div class="package-deal-right-content">
+
+                                <div class="about-list faq mt-3 ml-5">
+                                    <markdown [data]='faq'>
+
+                                    </markdown>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section *ngIf="showCourseIncluded" class="courses-catalogue courses-catalogue-package-deal  padding-distance pb-5">
+    <div class="container">
+        <div class="page-head mb-1">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="heading-lg">[{{this.courseCount}}] COURSES INCLUDED IN THIS PACKAGE</h3>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="courses-cat-list courses-cat-list-package  mt-4">
+            <div class="row">
+                <div class="col-sm-4" *ngFor="let item of PackageCourses">
+                    <div class="course-list-box">
+                        <a>
+                            <div class="course-list-media">
+                                <img src="{{imageUrl + item?.image?.data?.attributes?.url}}" class="img-fluid">
+                            </div>
+
+                            <div class="course-cat-content">
+                                <h5 class="heading-sm text-uppercase">{{ (item?.title.length>50)?
+                                    (item?.title | slice:0:50)+'......':(item?.title) }}</h5>
+
+                                <div class="about-list list-margins">
+                                    <ul *ngIf="item.category == 'Recorded'">
+                                       
+                                        <li>Instructor: {{item?.instructor }} </li>
+                                    </ul>
+                                    <ul  *ngIf="item.category != 'Recorded'">
+                                        <li>{{item?.startDate | date:"E dd MMM yyyy"}} </li>
+                                        <li>Instructor: {{item?.instructor }} </li>
+                                    </ul>
+                                </div>
+
+                                <div class="course-logo">
+                                    <a href="" class="course-logo"><img _ngcontent-angular-starter-c31=""
+                                            alt="courseimage"
+                                            src="../../../../assets/params/images/banner/course-logo.svg"></a>
+                                </div>
+
+                            </div>
+                            <div class="course-footer-cat">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <a class="course-view font-barlow"
+                                            (click)="openModalWithquickview(item.id)">QUICK VIEW </a>
+
+                                    </div>
+                                    <div class="col-6">
+                                        <a [routerLink]="['/course/course-detail', item?.slug]" target="_blank"
+                                            class="btn btn-primary btn-lg btn-blue btbn-icon btn-sm">read
+                                            more </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+
+<ng-template #template1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="closeM()">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body text-center">
+
+        <img src="../../../../assets/params/images/icons/icon-cross-red.svg"  alt="logo">
+        <h3 class="text-uppercase">Some courses are expired in the package, Please <a href="/contact-us">contact us</a>  for recording</h3>
+
+
+    </div>
+    <!-- <div class="modal-footer">
+        <p>{{footerData?.title}}</p>
+    </div> -->
+</ng-template>
+<ng-template #template2 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+            (click)="closeM()">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body text-center">
+
+        <img src="../../../../assets/params/images/icons/icon-cross-red.svg"  alt="logo">
+        <h3 class="text-uppercase">Package has no courses</h3>
+
+
+    </div>
+    <!-- <div class="modal-footer">
+        <p>{{footerData?.title}}</p>
+    </div> -->
+</ng-template>

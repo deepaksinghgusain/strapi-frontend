@@ -1,0 +1,235 @@
+<div class="hero-inner-banner" style="background-image:url(../../../assets/params/images/banner/inner-banner.png); background-size:cover;
+">
+    <div class="container">
+        <div class="inner-caption">
+            <h1 class="login-head-title">
+                edit payment information
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+
+    <div class="white-container white-container-signup profile-container-style">
+
+
+
+        <div class="login-card">
+            <div class="login-card-back">
+                <a routerLink="/learner/dashboard" class="back-action"><img
+                        src="../../../../assets/params/images/icons/arrow-back.svg"></a>
+
+            </div>
+            <h3>payment information</h3>
+
+            <form [formGroup]="editPaymentForm" (ngSubmit)="onSubmit(template)">
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6 ">
+                                    <div class="input-group ">
+                                        <span class="required">*</span>
+                                        <!-- <img src="../../../../assets/params/images/icons/icon-user.svg"
+                                            class="icon-input"> -->
+                                        <input type="name" class="form-control form-control-sm"
+                                            [ngClass]="{ 'is-invalid': (f['name'].touched || submitted) && f['name'].errors}"
+                                            formControlName="name" id="name" placeholder="Enter your name"  [readOnly]="cartExists && editFields !== 'name'">
+                                        <div class="error-message-show"
+                                            *ngIf="(f['name'].touched || submitted) && f['name'].errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="f['name'].errors['required']"><span>! &nbsp; Enter the
+                                                    Name</span></div>
+                                                    <div *ngIf="f['name'].errors['pattern']">! &nbsp; Only Alphabets and spaces are allowed</div>                                            <!-- <div *ngIf="f['firstname'].errors['pattern']">First Name must contain only
+                                                  alphabets
+                                                </div> -->
+                                        </div>
+                                        <app-text-edit controlName="name" (enableEdit)="onEnableControl($event)" *ngIf="cartExists">
+                                        </app-text-edit>
+                                        <!-- <div class="password-edit-icon">
+                                            <img src="../../../../assets/params/images/icons/icon-editpencil.svg"
+                                                class="icon-input">
+
+                                        </div> -->
+
+                                    </div>
+                                    <div class="error-message-show">
+                                        <!-- <span>! Enter First Name</span> -->
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--6-->
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-sm-6 ">
+                            <div class="input-group">
+                                <span class="required">*</span>
+                                <img src="../../../../assets/params/images/icons/icon-visacard.svg" class="icon-input">
+                                <input type="email" class="form-control form-control-sm"
+                                    [ngClass]="{ 'is-invalid': (f['cardNumber'].touched || submitted) && f['cardNumber'].errors}"
+                                    formControlName="cardNumber" id="email" placeholder="**** **** **** ****"  [readOnly]="cartExists && editFields !== 'cardNumber'">
+                                <div class="error-message-show"
+                                    *ngIf="(f['cardNumber'].touched || submitted) && f['cardNumber'].errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['cardNumber'].errors['required']"><span>! &nbsp; Enter the Card
+                                            Number</span></div>
+                                            <div *ngIf="f['cardNumber'].errors['pattern']">! &nbsp; Only Numbers are allowed</div>
+                                            <div *ngIf="f['cardNumber'].errors['maxlength']"><span>! &nbsp; Card Number must not exceed 16 digits</span> </div>    
+                                            <div *ngIf="f['cardNumber'].errors['minlength']"><span>! &nbsp; Card Number must be atleast 16 digits</span> </div>    
+                                    <!-- <div *ngIf="f['firstname'].errors['pattern']">First Name must contain only
+                                          alphabets
+                                        </div> -->
+                                </div>
+                                <app-text-edit controlName="cardNumber" (enableEdit)="onEnableControl($event)" *ngIf="cartExists">
+                                </app-text-edit>
+                                <!-- <div class="password-edit-icon">
+                                    <img src="../../../../assets/params/images/icons/icon-editpencil.svg"
+                                        class="icon-input">
+
+                                </div> -->
+                            </div>
+                        </div>
+                        <!--6-->
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-6 ">
+                                    <div class="input-group">
+                                        <span class="required">*</span>
+                                        <img src="../../../../assets/params/images/icons/icon-card.svg"
+                                            class="icon-input">
+                                        <input type="text" class="form-control form-control-sm" formControlName="ExpiryDate" (input)="checkExpiry($event)"
+                                            id="email"  [ngClass]="{ 'is-invalid': (f['ExpiryDate'].touched || submitted) && f['ExpiryDate'].errors}"
+                                            formControlName="ExpiryDate" [readOnly]="cartExists && editFields !== 'ExpiryDate'"  placeholder="01/26">
+                                            <div class="error-message-show"
+                                            *ngIf="(f['ExpiryDate'].touched || submitted) && f['ExpiryDate'].errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="f['ExpiryDate'].errors['required']"><span>! &nbsp; Enter the Card Expiry Date</span></div>
+                                            <div *ngIf="f['ExpiryDate'].errors['pattern']">! &nbsp; Only Numbers are allowed</div>
+                                            <div *ngIf="f['ExpiryDate'].errors['pattern']">! &nbsp; Invalid Card Expiry Date </div>
+                                            <!-- <div *ngIf="f['firstname'].errors['pattern']">First Name must contain only
+                                                alphabets
+                                                </div> -->
+                                        </div>
+                                        <div class="error-message-show" *ngIf="errorMsg">! &nbsp; {{successText}} </div>
+                                      
+                                        <app-text-edit controlName="ExpiryDate" (enableEdit)="onEnableControl($event)" *ngIf="cartExists">
+                                        </app-text-edit>
+                                        <!-- <div class="password-edit-icon">
+                                            <img src="../../../../assets/params/images/icons/icon-editpencil.svg"
+                                                class="icon-input">
+
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <!--6-->
+                                <div class="col-sm-6 ">
+                                    <div class="input-group">
+                                        <span class="required">*</span>
+                                        <img src="../../../../assets/params/images/icons/icon-key.svg"
+                                            class="icon-input">
+                                        <input type="password" class="form-control form-control-sm" [readOnly]="cartExists && editFields !== 'cvv'" [ngClass]="{ 'is-invalid': (f['cvv'].touched || submitted) && f['cvv'].errors}"
+                                        formControlName="cvv"
+                                            id="email" placeholder="***">
+                                            <div class="error-message-show"
+                                            *ngIf="(f['cvv'].touched || submitted) && f['cvv'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['cvv'].errors['required']"><span>! &nbsp; Enter the CVC number</span></div>
+                                            <div *ngIf="f['cvv'].errors['pattern']"><span>! &nbsp; Only Numbers are allowed</span></div>
+                                            <div *ngIf="f['cvv'].errors['maxlength']"><span>! &nbsp; CVC number must not exceed 3 or 4 digits</span> </div>
+                                            <!-- <div *ngIf="f['firstname'].errors['pattern']">First Name must contain only
+                                                  alphabets
+                                                </div> -->
+                                        </div>
+                                        <app-text-edit controlName="cvv" (enableEdit)="onEnableControl($event)" *ngIf="cartExists">
+                                        </app-text-edit>
+                                        <!-- <div class="password-edit-icon">
+                                            <img src="../../../../assets/params/images/icons/icon-editpencil.svg"
+                                                class="icon-input">
+
+                                        </div> -->
+                                        <div class="help-box">
+                                            <img src="../../../../../assets/params/images/icons/icon-help.svg">
+                                            <div class="box-info-cvv">
+                                                <p>CVC Number is the security <br />3 or 4-digits behind your card</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--6-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div ng-app="customDirectives">
+                    <span custom-popover popover-html="Hello!" popover-placement="bottom"
+                        popover-label="Click to view Pop Over"></span>
+                </div>
+
+
+
+
+                <div class="form-row mt-5">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="input-group mt-1">
+                                <!-- <a class="w-100 btn nga-btn nga-btn-primary grren mb-4" (click)="openModal(template)"> -->
+                                <button class="w-100 btn nga-btn nga-btn-primary grren mb-4"  type="submit">
+                                    save changes
+
+                                </button>
+                            </div>
+                        </div>
+                        <!--6-->
+                        <div class="col-sm-6">
+
+                        </div>
+                        <!--6-->
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">
+            <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" (click)="close()"
+            data-dismiss="modal">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body">
+        <img *ngIf="errorMsg " src="../../../../assets/params/images/icons/icon-cross-red.svg" alt="logo">
+        <img *ngIf="!errorMsg" src="../../../../assets/params/images/banner/icon-tick.svg" alt="logo">
+        <h3 class="mt-5">{{successText}}</h3>
+   
+
+        <div class="message-button">
+
+            <a (click)="close()" class="btn  btn-custom-default btn-custom-green">Close</a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <p>{{footerData.title}}</p>
+    </div>
+</ng-template>

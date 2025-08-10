@@ -1,0 +1,86 @@
+<section class="cart-container">
+  <div class="container">
+    <div class="page-title mt-5">
+      <h2 class="heading-lg">shopping cart</h2>
+    </div>
+    <div class="cart-design-box">
+
+      <table class="table font-barlow text-uppercase">
+        <tbody>
+          <tr *ngFor="let cart of cartItems; let i = index">
+            <td><b>{{ i+1 }}.</b></td>
+            <td><img src="{{ getImage(cart?.course) }}" alt="box=cart"></td>
+            <td>
+              <div class="box-item">
+                <h2>{{ cart?.course?.title }}</h2>
+                <h3>ENROLLMENTS: {{ cart?.qty }}</h3>
+
+              </div>
+            </td>
+            <td>
+              <div
+                *ngIf="(cart?.course?.discount || cart?.course?.discountedPrice || cart?.course?.discounted_price) >0; else price">
+
+                <s> {{(cart?.qty * cart?.course?.price > 0) ? (cart?.qty * cart?.course?.price |
+                  currency:'USD':'symbol') : ''}}</s> <b> {{ (cart?.qty *
+                  cart?.course?.discount | currency:'USD':'symbol') || ( cart?.qty * cart?.course?.discountedPrice |
+                  currency:'USD':'symbol') || ( cart?.qty * cart?.course?.discounted_price |
+                  currency:'USD':'symbol')}}</b>
+              </div>
+              <ng-template #price>
+                <b *ngIf="cart?.packageId !=0 && cart?.course?.price !=null">
+                  {{ (cart?.qty * cart?.course?.price  ) >= 0 ? (cart?.qty * cart?.course?.price |
+                  currency:'USD':'symbol') : (cart?.course?.includedCoursePrice * cart?.qty) | currency:'USD':'symbol'}}
+                </b>
+                <b *ngIf="cart?.packageId != 0 && cart?.course?.price ==null "> {{  cart?.qty * cart?.course?.includedCoursePrice  | currency:'USD':'symbol' }}</b>
+
+                <b *ngIf="cart?.courseId !=0">
+                  {{cart?.qty * cart?.course?.price |
+                  currency:'USD':'symbol'}}
+                </b>
+              </ng-template>
+            </td>
+            <td>
+              <a class="icon-trash" (click)="openModal(template, cart?.course?.price, i)">
+                <img alt="trash" src="../../../../../assets/params/images/icons/icon-trash.svg"></a>
+
+              <ng-template #template>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">
+                    <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+                  </h4>
+                  <button type="button" class="close close-modal pull-right" aria-label="Close" (click)="close()"
+                    data-dismiss="modal">
+                    <img alt="close" src="../../../../assets/params/images/icons/btn-close.svg">
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                  <img src="../../../../assets/params/images/icons/icon-cross-red.svg" alt="logo">
+                  <h3 class="mt-5">are you sure you want to remove this item?</h3>
+
+                  <div class="message-button mt-5 mb-5">
+                    <button (click)="close()" type="button" class="btn btn-custom-default mb-5">No</button>
+                    <button (click)="deleteItemFromCart(cart?.course,cart?.qty )"
+                      class="btn  btn-custom-default btn-custom-green mb-5">Yes</button>
+                    <!-- <a href="" class="btn  btn-custom-default btn-custom-green mb-5">Yes</a> -->
+                  </div>
+                </div>
+
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="cart-button" *ngIf="cartItems?.length > 0">
+        <!-- <button type="button" class="btn btn-primary btn-lg" (click)="openModalWithquickview()" >check out now</button> -->
+        <button type="button" (click)="checkout()" class="btn btn-primary btn-lg">check out now</button>
+      </div>
+      <div class="no_item_in_cart" *ngIf="showEmpty">
+        <p style="color:grey"> No Items in cart.</p>
+      </div>
+
+    </div>
+    
+  </div>
+</section>

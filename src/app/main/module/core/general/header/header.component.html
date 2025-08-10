@@ -1,0 +1,135 @@
+<header class="fixed-top nga-navbar">
+
+  <div class="container">
+    <nav class="navbar navbar-expand-lg ">
+
+      <a class="navbar-brand">
+        <img alt="logo" src="{{headerlogo}}" routerLink="/"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> 
+        <i class="fa fa-bars" aria-hidden="true"></i>
+
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-left">
+          <li class="nav-item" *ngFor="let header of headerData?.navLinks">
+            <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-current="page"
+              routerLink="{{header?.href}}">
+              {{header?.label}}</a>
+          </li>
+
+
+        </ul>
+        <div class="d-flex top-information">
+  
+          <!-- <div class="searchBox ">
+              <input type="search" placeholder="Search">
+              <i class="fa fa-search"></i>
+            </div> -->
+  
+  
+          <div class="searchBox" [ngClass]="{togglesearch: activeClass, togglesearchclose: !activeClass}">
+            <ng-autocomplete *ngIf="searchbox" #auto class="form-ng-input" [data]="data" [searchKeyword]="keyword"
+              placeholder="Search for CPE" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+              (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+            </ng-autocomplete>
+            <i (click)="showhideSerachbox()" class="fsearch"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                height="19" viewBox="0 0 20 19" fill="none">
+                <circle cx="7.97941" cy="7.97941" r="6.97941" stroke="#646464" stroke-width="2" />
+                <line x1="13.8902" y1="12.4762" x2="18.7472" y2="17.3333" stroke="#646464" stroke-width="2" />
+              </svg></i>
+  
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.name"></a>
+            </ng-template>
+  
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
+  
+          <div class="custom-shopping"> <a routerLink="/learner/shopping-cart">
+              <img alt="cart" src="../../../assets/params/images/icons/shop-icon.svg">
+              <span class="text-light"> {{cartQty>0 ? cartQty :'' }}</span>
+            </a>
+          </div>
+  
+          <div *ngIf="!tokenCheck" class="custom-signin"> <button type="button" class="btn btn-sm  me-2"
+              routerLink="/auth/login">Sign In</button></div>
+          <div *ngIf="tokenCheck" class="custom-signin"><span routerLink="/learner/dashboard"
+              class="welcome-text">Dashboard</span>
+            <button type="button" class="btn btn-sm btn-logout me-2" (click)="openModal(template)">
+              <img alt="logout" src="../../../../../../assets/params/images/icons/icon-logout.svg"></button>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="d-flex top-information nav-desktop">
+  
+        <!-- <div class="searchBox ">
+            <input type="search" placeholder="Search">
+            <i class="fa fa-search"></i>
+          </div> -->
+
+
+        <div class="searchBox" [ngClass]="{togglesearch: activeClass, togglesearchclose: !activeClass}">
+          <ng-autocomplete *ngIf="searchbox" #auto class="form-ng-input" [data]="data" [searchKeyword]="keyword"
+            placeholder="Search" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+            (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+          </ng-autocomplete>
+          <i (click)="showhideSerachbox()" class="fsearch"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="20px" height="20px"><g fill="#7f4d9e" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M21,3c-9.39844,0 -17,7.60156 -17,17c0,9.39844 7.60156,17 17,17c3.35547,0 6.46094,-0.98437 9.09375,-2.65625l12.28125,12.28125l4.25,-4.25l-12.125,-12.09375c2.17969,-2.85937 3.5,-6.40234 3.5,-10.28125c0,-9.39844 -7.60156,-17 -17,-17zM21,7c7.19922,0 13,5.80078 13,13c0,7.19922 -5.80078,13 -13,13c-7.19922,0 -13,-5.80078 -13,-13c0,-7.19922 5.80078,-13 13,-13z"></path></g></g></svg></i>
+
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+          </ng-template>
+
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+
+        <div class="custom-shopping"> <a routerLink="/learner/shopping-cart">
+            <img alt="cart" src="../../../assets/params/images/icons/shop-icon.svg" style="height: 20px;">
+            <span class="text-light"> {{cartQty>0 ? cartQty :'' }}</span>
+          </a>
+        </div>
+
+        <div *ngIf="!tokenCheck" class="custom-signin"> <button type="button" class="btn btn-sm  me-2"
+            routerLink="/auth/login">Sign In</button></div>
+        <div *ngIf="tokenCheck" class="custom-signin"><span routerLink="/learner/dashboard"
+            class="welcome-text">Dashboard</span>
+          <button type="button" class="btn btn-sm btn-logout me-2" (click)="openModal(template)">
+            <img alt="logout" src="../../../../../../assets/params/images/icons/icon-logout.svg" style="height: 20px;"></button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo" height="65px">
+    </h4>
+    <button type="button" class="close close-modal pull-right" aria-label="Close" (click)="close()"
+      data-dismiss="modal">
+      <img alt="close" src="../../../../assets/params/images/icons/btn-close.svg">
+    </button>
+  </div>
+  <div class="modal-body modal-logout">
+
+
+    <h3 class="mt-5">Are you sure you want to log out?</h3>
+    <h4 class="mt-4">Click log out to confirm or cancel to return to the dashboard</h4>
+    <div class="message-button mt-5">
+      <button type="button" class="btn btn-custom-default" (click)="close()">cancel</button>
+      <a class="btn  btn-custom-default btn-custom-blue" (click)="logout()">log out</a>
+    </div>
+  </div>
+  <div class="modal-footer mt-5">
+    <p>{{footerData?.title}}</p>
+  </div>
+</ng-template>

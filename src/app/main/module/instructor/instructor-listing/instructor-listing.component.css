@@ -1,0 +1,19 @@
+.btn-custom-style  .btn.btn-primary.btn-lg{
+    float:left;
+    width:100%;
+    font-family: 'Bebas Neue', cursive; font-family: 'Bebas Neue', cursive;
+
+     
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+.more {
+     
+    bottom: -5px;
+    
+}
+ 
+.instructor-media img {
+    width:70%;
+}
+.about-content{display: flex;height: 100%;flex-wrap: wrap;}

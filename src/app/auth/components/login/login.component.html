@@ -1,0 +1,164 @@
+<div class="hero-inner-banner" style="background-image:url({{environmentUrl+heroImg}}); background-size:cover;
+">
+  <div class="container">
+    <div class="inner-caption">
+      <h1 class="login-head-title">
+        {{heroTitle?.title}}      </h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="container mb-5">
+
+  <div class="white-container login-box">
+
+
+
+    <div class="login-card">
+      <h1 class="mobile-head">cpe warehouse</h1>
+      <div class="login-card-back">
+        <a routerLink="" class="back-action"><img src="../../../../assets/params/images/icons/arrow-back.svg"></a>
+
+        <h3>{{loginTitle?.signinTitle}}</h3>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-row">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="input-group">
+                <span class="required">*</span>
+                <img src="../../../../assets/params/images/icons/icon-email.svg" class="icon-input">
+                <input type="email" class="form-control form-control-sm" formControlName="email" id="email"
+                  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Email Address">
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <div *ngIf="f['email'].errors['required']">! Enter email address</div>
+                  <div *ngIf="f['email'].errors['pattern']">! Incorrect email. Please enter correct email.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--6-->
+            <div class="col-sm-6">
+
+            </div>
+            <!--6-->
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="input-group input-pass">
+                <span class="required">*</span>
+                <img src="../../../../assets/params/images/icons/icon-lock.svg" class="icon-input">
+                <input [type]="fieldTextType ? 'text' : 'password'" class="form-control form-control-sm "
+                  [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" formControlName="password"
+                  id="password" placeholder="Password">
+                <div *ngIf="fieldTextType" class="password-see">
+
+                  <svg style="cursor: pointer;" (click)="toggleFieldTextType()" width="20" height="11"
+                    viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10 1.101C12.5557 1.101 14.718 2.15706 16.0853 3.04585C17.7029 4.09691 18.5337 5.11303 18.751 5.5C18.5337 5.88697 17.7029 6.90558 16.0853 7.95665C14.7208 8.84294 12.5585 9.9015 10 9.9015C7.44429 9.9015 5.27923 8.84544 3.91472 7.95665C2.29711 6.90558 1.4663 5.88947 1.24897 5.5C1.4663 5.11303 2.29711 4.09691 3.91472 3.04585C5.27923 2.15706 7.44429 1.101 10 1.101ZM10 0C4.47593 0 0 4.399 0 5.5C0 6.601 4.47593 11 10 11C15.5213 11 20 6.601 20 5.5C20 4.399 15.5213 0 10 0ZM10 2.1995C7.99175 2.1995 6.36314 3.67749 6.36314 5.5C6.36314 7.32252 7.99175 8.8005 10 8.8005C12.0083 8.8005 13.6369 7.32252 13.6369 5.5C13.6369 3.67749 12.0083 2.1995 10 2.1995ZM9.02063 5.5C8.17056 5.5 7.48281 4.87585 7.48281 4.1044C7.48281 3.33296 8.17056 2.70881 9.02063 2.70881C9.8707 2.70881 10.5585 3.33296 10.5585 4.1044C10.5585 4.87585 9.8707 5.5 9.02063 5.5Z"
+                      fill="#646464" />
+                  </svg>
+
+                </div>
+
+                <div *ngIf="!fieldTextType" class="password-see">
+
+
+                  <svg style="cursor: pointer;" (click)="toggleFieldTextType()" xmlns="http://www.w3.org/2000/svg"
+                    width="21" height="17" viewBox="0 0 21 17" fill="none">
+                    <path d="M19.5 1L2 16" stroke="#646464" stroke-width="1.5" />
+                    <path
+                      d="M10.5 3.70109C13.1835 3.70109 15.4539 4.85315 16.8895 5.82274C18.588 6.96936 19.4604 8.07785 19.6886 8.5C19.4604 8.92215 18.588 10.0334 16.8895 11.18C15.4568 12.1468 13.1864 13.3016 10.5 13.3016C7.81651 13.3016 5.54319 12.1496 4.11045 11.18C2.41197 10.0334 1.53961 8.92488 1.31142 8.5C1.53961 8.07785 2.41197 6.96936 4.11045 5.82274C5.54319 4.85315 7.81651 3.70109 10.5 3.70109ZM10.5 2.5C4.69972 2.5 0 7.29891 0 8.5C0 9.70109 4.69972 14.5 10.5 14.5C16.2974 14.5 21 9.70109 21 8.5C21 7.29891 16.2974 2.5 10.5 2.5ZM10.5 4.89946C8.39133 4.89946 6.68129 6.5118 6.68129 8.5C6.68129 10.4882 8.39133 12.1005 10.5 12.1005C12.6087 12.1005 14.3187 10.4882 14.3187 8.5C14.3187 6.5118 12.6087 4.89946 10.5 4.89946ZM9.47166 8.5C8.57909 8.5 7.85695 7.81911 7.85695 6.97753C7.85695 6.13595 8.57909 5.45506 9.47166 5.45506C10.3642 5.45506 11.0864 6.13595 11.0864 6.97753C11.0864 7.81911 10.3642 8.5 9.47166 8.5Z"
+                      fill="#646464" />
+                  </svg>
+                </div>
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                  <div *ngIf="f['password'].errors['required']">! Enter Password</div>
+                </div>
+
+                <!-- <div class="password-see" *ngIf="!fieldTextType">
+                  <svg  xmlns="http://www.w3.org/2000/svg" width="21" height="17" viewBox="0 0 21 17" fill="none">
+                    <path d="M19.5 1L2 16" stroke="#646464" stroke-width="1.5" />
+                    <path
+                      d="M10.5 3.70109C13.1835 3.70109 15.4539 4.85315 16.8895 5.82274C18.588 6.96936 19.4604 8.07785 19.6886 8.5C19.4604 8.92215 18.588 10.0334 16.8895 11.18C15.4568 12.1468 13.1864 13.3016 10.5 13.3016C7.81651 13.3016 5.54319 12.1496 4.11045 11.18C2.41197 10.0334 1.53961 8.92488 1.31142 8.5C1.53961 8.07785 2.41197 6.96936 4.11045 5.82274C5.54319 4.85315 7.81651 3.70109 10.5 3.70109ZM10.5 2.5C4.69972 2.5 0 7.29891 0 8.5C0 9.70109 4.69972 14.5 10.5 14.5C16.2974 14.5 21 9.70109 21 8.5C21 7.29891 16.2974 2.5 10.5 2.5ZM10.5 4.89946C8.39133 4.89946 6.68129 6.5118 6.68129 8.5C6.68129 10.4882 8.39133 12.1005 10.5 12.1005C12.6087 12.1005 14.3187 10.4882 14.3187 8.5C14.3187 6.5118 12.6087 4.89946 10.5 4.89946ZM9.47166 8.5C8.57909 8.5 7.85695 7.81911 7.85695 6.97753C7.85695 6.13595 8.57909 5.45506 9.47166 5.45506C10.3642 5.45506 11.0864 6.13595 11.0864 6.97753C11.0864 7.81911 10.3642 8.5 9.47166 8.5Z"
+                      fill="#646464" />
+                  </svg>
+                    
+                </div> -->
+                <div class="password-confirm" style="display:none ;">
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M9.99984 1.66699C5.40484 1.66699 1.6665 5.40533 1.6665 10.0003C1.6665 14.5953 5.40484 18.3337 9.99984 18.3337C14.5948 18.3337 18.3332 14.5953 18.3332 10.0003C18.3332 5.40533 14.5948 1.66699 9.99984 1.66699ZM9.99984 16.667C6.324 16.667 3.33317 13.6762 3.33317 10.0003C3.33317 6.32449 6.324 3.33366 9.99984 3.33366C13.6757 3.33366 16.6665 6.32449 16.6665 10.0003C16.6665 13.6762 13.6757 16.667 9.99984 16.667Z"
+                      fill="#16844C" />
+                    <path
+                      d="M8.33273 11.3228L6.4169 9.4103L5.24023 10.5903L8.3344 13.6778L13.9227 8.08947L12.7444 6.91113L8.33273 11.3228Z"
+                      fill="#16844C" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" formControlName="remember">
+          <label class="form-check-label" for="rememberPassword">Remember password</label>
+        </div>
+
+        <div class="form-row mt-2 form-member mb-1">
+          <p><a href="" routerLink="/auth/resetpassword"><span class="red">*</span>Forgot your password?</a></p>
+
+        </div>
+        <div class="form-row mt-0 form-member">
+          <p><a routerLink="/auth/signup">Create account</a></p>
+
+        </div>
+
+        <div class="form-row mt-4">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="input-group mt-1">
+                <!-- <button *ngIf="count===0" class="w-100 btn nga-btn nga-btn-primary " type="submit">
+                  sign in
+                </button> -->
+                <button [disabled]=" !loginForm.valid  || count!==0"  class="w-100 btn nga-btn nga-btn-primary " type="submit">
+                    {{buttonTitle?.label}}
+                </button>
+              </div>
+
+
+            </div>
+            <!--6-->
+            <div class="col-sm-6">
+
+            </div>
+            <!--6-->
+          </div>
+        </div>
+
+
+
+      </form>
+
+      <!-- <div class="cpa-social-icons login-social">
+        <ul>
+          <li><a href="https://www.facebook.com/cpewarehouse" target="_blank"><img src="../../../assets/params/images/icons/facebook.svg"></a></li>
+          <li><a href="https://twitter.com/CpeWarehouse" target="_blank"><img src="../../../assets/params/images/icons/twitter.svg"></a></li>
+          <li><a href="https://www.linkedin.com/company/cpewarehouse" target="_blank"><img src="../../../assets/params/images/icons/icon-linked-white.svg"></a></li>
+          <li><a href="https://www.instagram.com/cpe_warehouse/" target="_blank"><img src="../../../assets/params/images/icons/icon-insta-white.svg"></a></li>
+        </ul>
+
+      </div> -->
+    </div>
+
+
+
+  </div>
+</div>

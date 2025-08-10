@@ -1,0 +1,35 @@
+<div class="hero-inner-banner" style="background-image:url({{environmentUrl+heroImg}}); background-size:cover;
+">
+  <div class="container">
+    <div class="inner-caption title_lines">
+      <h1 class="login-head-title">
+      {{heroTitle?.title}} </h1>
+    </div>
+  </div>
+</div>
+
+<section class="making-differnce">
+    <div class="container">
+    
+      <div class="row">
+        <div class="col-6">
+          <div class="difference-professional title_line">
+           
+            <markdown [data]="markdowndata"> </markdown> 
+ 
+          </div>
+          
+        </div>
+        <div class="col-6">
+          <div class="difference-professional">
+           <h5>{{titleWithLogo?.title}}</h5>
+           <img src="{{environmentUrl+logoImg}}"  >
+          </div>
+          
+        </div>
+        
+  
+      </div>
+  
+    </div>
+  </section>

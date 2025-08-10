@@ -1,0 +1,432 @@
+<div class="hero-inner-banner"
+    style="background-image:url(../../../assets/params/images/banner/inner-banner.png); background-size:cover;">
+    <div class="container">
+        <div class="inner-caption">
+            <h1 class="login-head-title">
+                edit profile information
+            </h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container mb-5">
+
+    <div class="white-container white-container-signup profile-container-style">
+
+
+
+        <div class="login-card">
+            <div class="login-card-back">
+                <a routerLink="/learner/dashboard" class="back-action">
+                    <img src="../../../../assets/params/images/icons/arrow-back.svg">
+                </a>
+
+            </div>
+            <h3>user</h3>
+
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit(template)">
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6 pr-4">
+                                    <div class="input-group">
+                                        <span class="required">*</span>
+                                        <img src="../../../../assets/params/images/icons/icon-user.svg"
+                                            class="icon-input">
+                                        <input type="name"
+                                            [ngClass]="{ 'is-invalid': (f['firstname'].touched || submitted) && f['firstname'].errors}"
+                                            class="form-control form-control-sm" formControlName="firstname"
+                                            placeholder="First Name" >
+                                       
+                                        <div class="error-message-show"
+                                            *ngIf="(f['firstname'].touched || submitted) && f['firstname'].errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="f['firstname'].errors['required']"><span>! &nbsp; Enter First
+                                                    Name</span></div>
+                                            <!-- <div *ngIf="f['firstname'].errors['pattern']">First Name must contain only
+                                                  alphabets
+                                                </div> -->
+                                        </div>
+                                        <!-- <app-text-edit  controlName="firstname" (enableEdit)="onEnableControl($event)">
+                                        </app-text-edit> -->
+
+                                    </div>
+                                    <div class="error-message-show">
+                                        <!-- <span>! &nbsp; Enter First Name</span> -->
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 pr-4">
+                                    <div class="input-group">
+                                        <span class="required">*</span>
+                                        <img src="../../../../assets/params/images/icons/icon-user.svg"
+                                            class="icon-input">
+                                        <input type="name"
+                                            [ngClass]="{ 'is-invalid': (f['lastname'].touched || submitted) && f['lastname'].errors}"
+                                            formControlName="lastname" class="form-control form-control-sm"
+                                            formControlName="lastname" id="name" placeholder="Last Name" >
+                                        <!-- <app-text-edit controlName="lastname" (enableEdit)="onEnableControl($event)">
+                                        </app-text-edit> -->
+                                        <div class="error-message-show"
+                                            *ngIf="(f['lastname'].touched || submitted) && f['lastname'].errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="f['lastname'].errors['required']"> <span>! &nbsp; Enter Last
+                                                    Name</span></div>
+                                            <!-- <div *ngIf="f['lastname'].errors['pattern']">Last Name must contain only
+                                                alphabets
+                                                </div> -->
+                                        </div>
+                                        <!-- <div class="password-edit-icon">
+                                            <img src="../../../../assets/params/images/icons/icon-editpencil.svg"
+                                                class="icon-input">
+
+                                        </div> -->
+                                        <!-- <app-text-edit controlName="lastname" (enableEdit)="onEnableControl($event)">
+                                        </app-text-edit> -->
+                                    </div>
+                                    <div class="error-message-show">
+                                        <!-- <span>! &nbsp;Enter last Name</span> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--6-->
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-sm-6 pr-4">
+                            <div class="input-group">
+                                <span class="required">*</span>
+                                <img src="../../../../assets/params/images/icons/icon-email.svg" class="icon-input">
+                                <input type="email" class="form-control form-control-sm"
+                                    [ngClass]="{ 'is-invalid': (f['email'].touched || submitted) && f['email'].errors}"
+                                    formControlName="email" id="email" placeholder="Email Address" [readOnly]="true">
+                                    <div class="form-row mt-2 form-member mb-1">
+                                        <p>Kindly contact the admin for editing the email</p>
+                
+                                    </div>
+                                <!-- <app-text-edit controlName="email" (enableEdit)="onEnableControl($event)">
+                                </app-text-edit> -->
+                                <!-- <div class="error-message-show"
+                                    *ngIf="(f['email'].touched || submitted ) && f['email'].errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['email'].errors['required']">! &nbsp; Enter Email</div>
+                                    <div *ngIf="f['email'].errors['email']">! &nbsp; Email must be a valid email address
+                                    </div>
+                                </div> -->
+                                <!-- <app-text-edit  controlName="email" (enableEdit)="onEnableControl($event)">
+                                </app-text-edit> -->
+                            </div>
+                        </div>
+                        <!--6-->
+                        <div class="col-sm-6 pr-4">
+
+                        </div>
+                        <!--6-->
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6 pr-4">
+                                    <div class="input-group">
+                                        <span class="required">*</span>
+                                        <img src="../../../../assets/params/images/icons/icon-lock.svg"
+                                            class="icon-input">
+                                        <input type="password" class="form-control form-control-sm"
+                                            value="**********" [readOnly]="true">
+                                        <div class="password-see">
+                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="21" height="17"
+                                                viewBox="0 0 21 17" fill="none">
+                                                <path d="M19.5 1L2 16" stroke="#646464" stroke-width="1.5" />
+                                                <path
+                                                    d="M10.5 3.70109C13.1835 3.70109 15.4539 4.85315 16.8895 5.82274C18.588 6.96936 19.4604 8.07785 19.6886 8.5C19.4604 8.92215 18.588 10.0334 16.8895 11.18C15.4568 12.1468 13.1864 13.3016 10.5 13.3016C7.81651 13.3016 5.54319 12.1496 4.11045 11.18C2.41197 10.0334 1.53961 8.92488 1.31142 8.5C1.53961 8.07785 2.41197 6.96936 4.11045 5.82274C5.54319 4.85315 7.81651 3.70109 10.5 3.70109ZM10.5 2.5C4.69972 2.5 0 7.29891 0 8.5C0 9.70109 4.69972 14.5 10.5 14.5C16.2974 14.5 21 9.70109 21 8.5C21 7.29891 16.2974 2.5 10.5 2.5ZM10.5 4.89946C8.39133 4.89946 6.68129 6.5118 6.68129 8.5C6.68129 10.4882 8.39133 12.1005 10.5 12.1005C12.6087 12.1005 14.3187 10.4882 14.3187 8.5C14.3187 6.5118 12.6087 4.89946 10.5 4.89946ZM9.47166 8.5C8.57909 8.5 7.85695 7.81911 7.85695 6.97753C7.85695 6.13595 8.57909 5.45506 9.47166 5.45506C10.3642 5.45506 11.0864 6.13595 11.0864 6.97753C11.0864 7.81911 10.3642 8.5 9.47166 8.5Z"
+                                                    fill="#646464" />
+                                            </svg> -->
+
+                                        </div>
+                                        <div class="password-confirm" style="display:none ;">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                viewBox="0 0 20 20" fill="none">
+                                                <path
+                                                    d="M9.99984 1.66699C5.40484 1.66699 1.6665 5.40533 1.6665 10.0003C1.6665 14.5953 5.40484 18.3337 9.99984 18.3337C14.5948 18.3337 18.3332 14.5953 18.3332 10.0003C18.3332 5.40533 14.5948 1.66699 9.99984 1.66699ZM9.99984 16.667C6.324 16.667 3.33317 13.6762 3.33317 10.0003C3.33317 6.32449 6.324 3.33366 9.99984 3.33366C13.6757 3.33366 16.6665 6.32449 16.6665 10.0003C16.6665 13.6762 13.6757 16.667 9.99984 16.667Z"
+                                                    fill="#16844C" />
+                                                <path
+                                                    d="M8.33273 11.3228L6.4169 9.4103L5.24023 10.5903L8.3344 13.6778L13.9227 8.08947L12.7444 6.91113L8.33273 11.3228Z"
+                                                    fill="#16844C" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="error-message-show">
+                                        <span></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--6-->
+
+                    </div>
+                    <div class="form-row mt-2 form-member mb-1">
+                        <p><a href="" routerLink="/auth/changepassword">Change password</a></p>
+
+                    </div>
+                </div>
+
+
+
+                <div class="additinoal-info">
+                    <h3>Additional Information</h3>
+
+                    <div class="form-row">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6 pr-4">
+                                        <div class="input-group">
+                                            <span class="required"></span>
+                                            <img src="../../../../assets/params/images/icons/icon-pin.svg" alt="pin"
+                                                class="icon-input">
+                                            <input type="text" class="form-control form-control-sm"
+                                                formControlName="Pcode" 
+                                                [ngClass]="{ 'is-invalid': (f['Pcode'].touched || submitted) && f['Pcode'].errors}"
+                                                placeholder="Ptin#">
+                                      
+                                            <div class="error-message-show"
+                                                *ngIf="(f['Pcode'].touched || submitted) && f['Pcode'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f['Pcode'].errors['required']">! &nbsp; Enter PTIN#</div>
+                                                <div *ngIf="f['Pcode'].errors['pattern']">! &nbsp; PTIN# must start with
+                                                    p, followed by 8 digits
+                                                </div>
+                                                <!-- <div *ngIf="f['Pcode'].errors['minlength']"> ! &nbsp; PTIN# must be 9 digits </div> -->
+                                            </div>
+                                            <small class="font-barlow">for enrolled agents only</small>
+                                            <!-- <app-text-edit controlName="Pcode" (enableEdit)="onEnableControl($event)">
+                                            </app-text-edit> -->
+                                        </div>
+                                        <div class="error-message-show">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 pr-4">
+                                        <div class="input-group">
+                                            <!-- <span class="required">*</span> -->
+
+                                            <img src="../../../../assets/params/images/icons/icon-location.svg"
+                                                alt="location" class="icon-input">
+                                            <input type="text" class="form-control form-control-sm"
+                                                formControlName="address" 
+                                                [ngClass]="{ 'is-invalid': (f['address'].touched || submitted) && f['address'].errors}"
+                                                placeholder="Billing Address">
+                                           
+                                                <!-- <app-text-edit controlName="address" (enableEdit)="onEnableControl($event)">
+                                                </app-text-edit> -->
+                                        </div>
+                                        <div class="error-message-show">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--6-->
+
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6 pr-4">
+                                        <div class="input-group">
+                                            <span class="required"></span>
+                                            <img src="../../../../assets/params/images/icons/company.svg" alt="company"
+                                                class="icon-input">
+                                            <input type="text" class="form-control form-control-sm" 
+                                                formControlName="company"
+                                                [ngClass]="{ 'is-invalid': (f['company'].touched || submitted) && f['company'].errors}"
+                                                placeholder="Company / Firm Name">
+                                           
+                                            <div class="error-message-show"
+                                                *ngIf="(f['company'].touched || submitted)  && f['company'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f['company'].errors['required']">! &nbsp; Enter Company name
+                                                </div>
+                                            </div>
+                                            <!-- <app-text-edit controlName="company" (enableEdit)="onEnableControl($event)">
+                                            </app-text-edit> -->
+                                        </div>
+                                        <div class="error-message-show">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 pr-4">
+                                        <div class="input-group">
+                                            <span class="required">*</span>
+                                            <img src="../../../../assets/params/images/icons/icon-flag.svg" alt="flag"
+                                                class="icon-input">
+                                            <!-- <input type="text" class="form-control form-control-sm" [readOnly]="editFields !== 'country'"
+                                                [ngClass]="{ 'is-invalid': (f['country'].touched || submitted) && f['country'].errors}"
+                                                formControlName="country" placeholder="country"> -->
+                                                <select (change)="getState()" type="text" class="form-control form-control-sm"
+                                                formControlName="country"  >
+                                                <option value="">Select The Country</option>
+                                                  <option *ngFor="let item of countries" [value]="item.name">{{item.name}}</option>
+                                               
+                                              </select>
+                                            <div class="error-message-show "
+                                                *ngIf="(f['country'].touched || submitted)  && f['country'].errors">
+                                                <div *ngIf="f['country'].errors['required']">! &nbsp; Enter Country
+                                                </div>
+                                            </div>
+                                            <!-- <app-text-edit controlName="country" (enableEdit)="onEnableControl($event)">
+                                            </app-text-edit> -->
+                                        </div>
+                                        <div class="error-message-show">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--6-->
+
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-1">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6 pr-4">
+                                        <div class="input-group">
+                                            <span class="required">*</span>
+                                            <img src="../../../../assets/params/images/icons/icon-flag.svg" alt="flag"
+                                                class="icon-input">
+                                            <!-- <input type="text" class="form-control form-control-sm" [ngClass]="{ 'is-invalid': (f['state'].touched || submitted) && f['state'].errors}" 
+                                                formControlName="state"  placeholder="province / state"> -->
+                                         
+                                            <select type="text" class="form-control form-control-sm"
+                                                formControlName="state">
+                                                <option value="">Select The State</option>
+                                                <option *ngFor="let item of states" [value]="item.name">{{item.name}}
+                                                </option>
+
+                                            </select>
+                                            <div class="error-message-show "
+                                                *ngIf="(f['state'].touched || submitted)  && f['state'].errors">
+                                                <div *ngIf="f['state'].errors['required']">! &nbsp; Enter Province /
+                                                    State
+                                                </div>
+                                            </div>
+                                            <!-- <app-text-edit controlName="state" (enableEdit)="onEnableControl($event)">
+                                            </app-text-edit> -->
+                                        </div>
+                                        <div class="error-message-show">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 pr-4">
+                                        <div class="input-group">
+                                            <!-- <span class="required">*</span> -->
+
+                                            <img src="../../../../assets/params/images/icons/icon-phone.svg" alt="phone"
+                                                class="icon-input">
+                                            <input type="text" class="form-control form-control-sm"
+                                                formControlName="phone"
+                                                [ngClass]="{ 'is-invalid': (f['phone'].touched || submitted) && f['phone'].errors}"
+                                                placeholder="Phone" >
+                                            
+                                            <div class="error-message-show"
+                                                *ngIf="(f['phone'].touched || submitted)  && f['phone'].errors"
+                                                class="invalid-feedback">
+                                                <!-- <div *ngIf="f['phone'].errors['required']">! &nbsp; Enter Phone</div> -->
+                                                <div *ngIf="f['phone'].errors['pattern']">! &nbsp; Only Numbers are
+                                                    allowed</div>
+                                                <div *ngIf="f['phone'].errors['minlength']">! &nbsp; Phone must not be
+                                                    less than 10 digits
+                                                </div>
+                                                <div *ngIf="f['phone'].errors['maxlength']">! &nbsp; Phone must not
+                                                    exceed 10 digits </div>
+                                            </div>
+                                            <!-- <app-text-edit controlName="phone" (enableEdit)="onEnableControl($event)">
+                                            </app-text-edit> -->
+                                        </div>
+                                        <div class="error-message-show">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--6-->
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="form-row">
+                    <span class="case-required">* Required</span>
+                </div>
+                <div class="form-row mt-5">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="input-group mt-1">
+                                <button class="w-100 btn nga-btn nga-btn-primary mb-4"
+                                    [disabled]=" !profileForm.valid || count!==0 ">
+                                    save changes
+
+                                </button>
+                            </div>
+                        </div>
+                        <!--6-->
+                        <div class="col-sm-6">
+
+                        </div>
+                        <!--6-->
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" (click)="close()"
+            data-dismiss="modal">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body">
+        <img *ngIf="errorMsg " src="../../../../assets/params/images/icons/icon-cross-red.svg" alt="logo">
+        <img  *ngIf="!errorMsg" src="../../../../assets/params/images/banner/icon-tick.svg" alt="logo">
+        <h3 class="mt-5">{{successText}}</h3>
+
+        <div class="message-button">
+
+            <a (click)="close()" class="btn  btn-custom-default btn-custom-blue">Close</a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <p>{{footerData.title}}</p>
+    </div>
+</ng-template>

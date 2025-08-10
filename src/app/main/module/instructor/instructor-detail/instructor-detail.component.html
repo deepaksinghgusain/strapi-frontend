@@ -1,0 +1,75 @@
+<button (click)="close()" class="close close-modal pull-right">
+    <img src="../../../../assets/params/images/icons/btn-close.svg">
+</button>
+
+<div class="modal-body modal-body-instructor">
+    <div class="list-row">
+        <h6>/0{{instructorIndex}}</h6>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="instructor-media">
+                    <img src="{{imageUrl}}{{getInstructorData.profilePic}}" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="instructor-detail">
+                            <div class="instructor-detail-top  mb-4">
+                                <h5 class="heading-sm text-uppercase">Instructor:</h5>
+                                <h5 class="heading-sm text-uppercase color-blue">{{getInstructorData.name}}</h5>
+                            </div>
+                            <div class="instructor-detail-bio">
+                                <h5 class="heading-sm text-uppercase">Bio:</h5>
+                                <div class="font-barlow mt-3" [innerHTML]="sanitize(getInstructorData.bio)">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="instructor-detail">
+                            <h5 class="heading-sm text-uppercase">teaches COURSE TOPICS:</h5>
+
+                            <ul class="mt-3">
+                                <li *ngFor="let item of getInstructorData.topics">{{item}}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="courses-taught">
+
+                            <h5 class="heading-sm text-uppercase">courses taught:</h5>
+                            <div class="taught-list">
+                                <!-- <perfect-scrollbar class="custom-scrollbar custom-scrollbar-sm"
+                                    scrollXMarginOffset="30"> -->
+                                <perfect-scrollbar style="max-width: 750px; max-height: 400px;" [config]="">
+
+                                    <ul *ngIf="getInstructorData.coursesTitle.length>0">
+                                        <li style="cursor: pointer;" *ngFor="let res of getInstructorData.coursesTitle" (click)="redirectToCourseDetail(res.attributes.slug)" >{{res.attributes.title}}
+                                        </li>
+                                    </ul>
+                                        <ul *ngIf="getInstructorData.coursesTitle.length==0">
+                                       <h3  >  NO COURSES FOUND </h3>
+                                        </ul>
+                                    <!-- </perfect-scrollbar> -->
+                                 
+                                </perfect-scrollbar>
+
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <p>{{footerData?.title}}</p>
+</div>

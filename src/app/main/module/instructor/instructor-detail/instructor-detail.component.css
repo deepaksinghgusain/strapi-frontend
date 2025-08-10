@@ -1,0 +1,46 @@
+.instructor-detail ul li {
+    font-family: 'Barlow', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 135%;
+    letter-spacing: 0.05em;
+    position: relative;
+    color: #0D0D0D;
+    list-style: none;
+    padding-left: 20px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+}
+
+.instructor-detail ul li:after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 4px;
+    border-radius: 100px;
+    height: 4px;
+    background: #000000;
+    left: 3px;
+    top: 11px;
+}
+
+.courses-taught {
+    margin-top: 20px;
+}
+.taught-list{
+     height: 280px !important;
+    overflow-y: auto;
+    
+}
+.close-modal {background: transparent;
+    border: 0;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    z-index: 9999;
+    cursor: pointer;
+  }
+  .list-row .courses-taught .taught-list {
+    padding-right: 11px;
+}

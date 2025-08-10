@@ -1,0 +1,470 @@
+<section class="hero-image hero-course-banner"
+    style="background-image:url({{imageUrl+heroImageSection?.backgroundImage?.data?.attributes?.formats?.large?.url}}); background-size:cover;">
+    <div class="container">
+        <div class="hero-caption">
+            <div class="cap-top">
+                <div class="left-hero-caption">
+                    <div class="top-caption">
+                        <h1 class="heading-sm font-barlow" *ngIf="courseData?.title !=null">{{courseData?.title}} </h1>
+
+                    </div>
+
+                </div>
+                <div class="right-hero-caption">
+
+                </div>
+            </div>
+            <div class="cap-bottom">
+                <div class="cap-bottom-left">
+                    <h3 class="heading-lg" *ngIf="courseData?.category?.data?.attributes?.title!='Live'">
+                        {{courseData?.category?.data?.attributes?.title}}</h3>
+                    <h3 class="heading-lg"
+                        *ngIf="hoursToGo<=0 && daysToGo < 0 && courseData?.category?.data?.attributes?.title=='Live'">
+                        {{courseData?.category?.data?.attributes?.title}}</h3>
+
+                    <h3 class="heading-lg"
+                        *ngIf="daysToGo <= 0 && hoursToGo > 0 && hoursToGo > 1 && courseData?.category?.data?.attributes?.title=='Live'">
+                        {{hoursToGo}} hours To Go</h3>
+                    <h3 class="heading-lg"
+                        *ngIf="daysToGo <= 0 && hoursToGo === 1 && courseData?.category?.data?.attributes?.title=='Live'">
+                        {{hoursToGo}} hour To Go</h3>
+
+
+                    <h3 class="heading-lg"
+                        *ngIf="hoursToGo > 0 && daysToGo === 1 && courseData?.category?.data?.attributes?.title=='Live'">
+                        {{daysToGo}} Day To Go</h3>
+
+                    <h3 class="heading-lg"
+                        *ngIf=" hoursToGo  > 0 && daysToGo > 1 && courseData?.category?.data?.attributes?.title=='Live'">
+                        {{daysToGo}} Days To Go</h3>
+
+
+                    <div *ngIf="courseData?.category?.data?.attributes?.title!=='Recorded'"
+                        class="course-start-info font-barlow">
+                        <label>{{courseData?.startDate | date:" EE MMM dd yyyy"}}</label>
+                        <span>{{courseData?.startDate | date:"hh:mm a"}} - {{courseData?.endDate | date:'h:mm a'}}
+                            {{twoLettertimezone || ''}}
+                        </span>
+
+                    </div>
+                </div>
+                <div class="cap-bottom-right">
+                    <div class="form-inline-value">
+
+
+
+
+
+
+                        <span *ngIf="
+                              courseData?.discount > 0;
+                                else other
+                              ">
+                            {{
+                            courseData?.discount * seats
+                            | currency: "USD":"symbol"
+                            }}
+                            <s>
+                                {{
+                                courseData?.price * seats | currency:'USD':'symbol'
+                                }}
+                            </s>
+
+                            <!-- <span><s>
+                                    5 
+                                </s></span> -->
+                        </span>
+                        <ng-template #other>
+                            <span>
+                                {{
+                                courseData?.price * seats | currency:'USD':'symbol'
+                                }}
+                            </span>
+                        </ng-template>
+
+
+                        <div class="stepper-input stepper__input">
+                            <div class="form-check-inline">
+                                <button (click)="seatDecrementer()" class="btn-types btn-plus">
+                                    <img alt="minus" src="../../../../../assets/params/images/icons/minus.svg"></button>
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="text" [value]="seats" disabled class="form-control">
+                            </div>
+                            <div class="form-check-inline">
+                                <button (click)="seatIncrementer()" class="btn-types btn-minus">
+                                    <img alt="plus" src="../../../../../assets/params/images/icons/plus.svg"></button>
+                            </div>
+                        </div>
+                        <div class="btn-enroll">
+                            <button (click)="enrollNow2(coursesDetail,template,templateExpired)"
+                                class="btn btn-primary">{{heroImageSection?.button[0].label}}</button>
+                            <!-- <a href="" class="btn btn-primary">{{heroImageSection?.button[0].label}}</a> -->
+                        </div>
+                    </div>
+
+                    <div class="form-info-text">
+                        <small class="font-barlow">{{heroImageSection?.purchaseTerms}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="courses-catalogue-package padding-distance-md">
+    <div class="container">
+
+
+        <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+
+            <li class="nav-link " role="presentation" *ngFor="let item of courseTabs; let i =index">
+                <button (click)="openTabContent(i)" class="nav-link"
+                    [ngClass]="(i===showTabContent)?'nav-link active':'nav-link'" id="faq-tab" data-bs-toggle=""
+                    data-bs-target="" type="button" role="tab" aria-controls="faq"
+                    aria-selected="false">{{item?.title}}</button>
+            </li>
+
+        </ul>
+        <div *ngFor="let tab of courseTabs; let i=index">
+
+            <div class="tab-content" id="myTabContent" *ngIf="showTabContent===i">
+
+                <div class="tab-pane fade show active" id={{tab?.title}} role="tabpanel"
+                    aria-labelledby="courseoutline-tab">
+                    <div class="package-course-tabs padding-distance-md"
+                        *ngIf="tab.index==='Outline' || tab.index==='Credits' || tab.index==='GivingBack'  ">
+                        <div class="row">
+                            <div class="col-sm-5  mb-4">
+                                <div *ngIf="tab?.featureTitle !==null" [innerHTML]="sanitize(tab?.featureTitle)"> </div>
+                                <br>
+                                <div class="couseD_heading" style="font-family:Barlow,sans-serif !important;"
+                                    *ngIf="tab.index==='Outline'" [innerHTML]="sanitize(courseData?.shortDesc)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="tabdynamic ">
+                                    <div class="package-deal-right-content">
+
+                                        <div class="event-course-image  mb-4" *ngIf="tab.index==='Outline' else next ">
+                                            <img alt="tabimage"
+                                                src="{{imageUrl+ courseData?.image?.data?.attributes?.url}}"
+                                                class="img-fluid">
+                                        </div>
+
+                                        <ng-template #next>
+                                            <div class="event-course-image mb-4">
+                                                <img alt="tabimage" *ngIf="tab?.image?.data?.attributes?.url"
+                                                    src="{{imageUrl+ tab?.image?.data?.attributes?.url }}"
+                                                    class="img-fluid">
+                                            </div>
+                                        </ng-template>
+
+                                        <div *ngIf="tab?.content" [innerHTML]="sanitize(tab?.content)">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div *ngIf="tab.index==='Outline' && tab.index!=='Credits' && tab.index!=='GivingBack'" class="cpa-social-icons cpa-social-icons-package ng-star-inserted">
+                                      
+                                        <div class="">
+                                            <label class="share">share with</label>
+
+
+                                        </div>
+
+
+                                        <ul>
+                                            <li>
+                                                <a [href]="sharingUrls.fb" target="_blank">
+                                                    <img alt="fb"
+                                                        src="../../../assets/params/images/icons/facebook.svg"></a>
+                                            </li>
+                                            <li>
+                                                <a [href]="sharingUrls.twitter" target="_blank">
+                                                    <img alt="twitter"
+                                                        src="../../../assets/params/images/icons/twitter.svg"></a>
+                                            </li>
+                                            <li>
+                                                <a [href]="sharingUrls.linkedin" target="_blank">
+                                                    <img alt="linkedin"
+                                                        src="../../../assets/params/images/icons/icon-linked-white.svg"></a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.instagram.com/cpe_warehouse/" target="_blank">
+                                                    <img alt="insta"
+                                                        src="../../../assets/params/images/icons/insta.svg"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="package-deal-right-content tabdynamic">
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="package-course-tabs padding-distance-md "
+                        *ngIf="tab.title ==='FAQ' || tab.index ==='Other' ">
+
+                        <div *ngif="tab?.featureTitle!=null" class="heading-sm text-uppercase font-barlow"
+                            [innerHTML]="sanitize(tab?.featureTitle)">
+                        </div>
+
+                        <div class="row">
+
+                            <div class="package-deal-right-content">
+                                <div class="about-list faq mt-3 ml-5">
+                                    <div [innerHTML]="sanitize(tab?.content)">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12">
+                                    <div *ngIf="tab.index==='Other' && tab?.title !=='Faculty' && tab?.title !=='FAQ'" class="cpa-social-icons cpa-social-icons-package ng-star-inserted">
+                                      
+                                        <div class="">
+                                            <label class="share">share with</label>
+
+
+                                            <ul>
+                                                <li>
+                                                    <a [href]="sharingUrls.fb" target="_blank">
+                                                        <img alt="fb"
+                                                            src="../../../assets/params/images/icons/facebook.svg"></a>
+                                                </li>
+                                                <li>
+                                                    <a [href]="sharingUrls.twitter" target="_blank">
+                                                        <img alt="twitter"
+                                                            src="../../../assets/params/images/icons/twitter.svg"></a>
+                                                </li>
+                                                <li>
+                                                    <a [href]="sharingUrls.linkedin" target="_blank">
+                                                        <img alt="linkedin"
+                                                            src="../../../assets/params/images/icons/icon-linked-white.svg"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.instagram.com/cpe_warehouse/" target="_blank">
+                                                        <img alt="insta"
+                                                            src="../../../assets/params/images/icons/insta.svg"></a>
+                                                </li>
+                                            </ul>
+                                        </div> 
+
+
+                                    </div>
+                              
+
+
+                             
+                            </div>
+                        </div>
+                     
+                    </div>
+
+                    <div class="package-course-tabs padding-distance-md" *ngIf="tab.title ==='Faculty'">
+
+                        <ul class="choose_instructors">
+                            <li *ngFor="let instructor of faculties ;let i=index">
+                                <div class="list-row">
+                                    <!-- <h6>/0{{i+1}}</h6> -->
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <div class="instructor-media">
+                                                <img alt="instructor" *ngIf="(instructor?.imgurl !== '') "
+                                                    src="{{imageUrl}}{{instructor.imgurl}}" class="img-fluid">
+
+                                                <img alt="instructor" *ngIf="instructor?.imgurl == '' "
+                                                    src="../../../../../assets/params/images/img/faculty2.png"
+                                                    class="img-fluid">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <div class="instructor-detail">
+                                                <h5 class="heading-sm text-uppercase">{{instructor.title}} </h5>
+                                                <div class="font-barlow" [innerHTML]="sanitize(instructor.bio)">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div><br>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+<section class="courses-catalogue courses-catalogue-package-deal  padding-distance pb-5">
+    <div class="container">
+        <div class="page-head mb-1">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="heading-lg">{{apiSection?.title}}</h3>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div *ngIf="relatedCourses.length===0; else course">
+            <h4 class="text-center">There are no related courses</h4>
+        </div>
+
+        <div class="courses-cat-list mt-4">
+            <ng-template #course>
+                <div class="row">
+
+                    <div class="col-sm-4" *ngFor="let item of relatedCourses ; let i =index">
+
+                        <div class="course-list-box">
+
+                            <div class="course-list-media">
+
+                                <img alt="courseimage" *ngIf="( item?.image?.data?.attributes?.url!= null) "
+                                    src="{{imageUrl + item?.image?.data?.attributes?.url}}" class="img-fluid">
+
+                                <img alt="courseimage" *ngIf="( item?.image?.data?.attributes?.url === null) "
+                                    src="../../../../assets/params/images/img/no-image.png" class="img-fluid">
+
+
+                            </div>
+
+                            <div class="course-cat-content">
+                                <h5 class="heading-sm text-uppercase"
+                                    *ngIf="item?.title !== undefined && item?.title.length>50"
+                                    [innerHtml]="sanitize  (item?.title | slice:0:50) ">
+                                </h5>
+                                <h5 class="heading-sm text-uppercase"
+                                    *ngIf="item?.title !== undefined  && item?.title .length<=50"
+                                    [innerHtml]="sanitize(item?.title) ">
+                                </h5>
+
+                               
+                                <div class="about-list list-margins" *ngIf="item?.category == 'Recorded' " >
+                                    <ul>
+                
+                                        <li>Instructor: {{item?.faculty }} </li>
+                                    </ul>
+                                </div>
+                                <div class="about-list list-margins" *ngIf="item?.category != 'Recorded' ">
+                                    <ul>
+                                        <li>{{item?.startDate | date:" EE MMM dd yyyy"}} </li>
+                                        <li>Instructor: {{item?.faculty }} </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                            <div class="course-footer-cat">
+
+                                <a href="" class="course-logo"><img _ngcontent-angular-starter-c31=""
+                                        src="../../../../assets/params/images/banner/course-logo.svg" /></a>
+
+
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <a (click)="openModalWithquickview(item?.id)"
+                                            class="course-view font-barlow">QUICK VIEW </a>
+
+                                    </div>
+
+                                    <div class="col-6">
+                                        <a (click)="goToDetail(item?.slug)"
+                                            class="btn btn-primary btn-lg btn-blue btbn-icon btn-sm">read
+                                            more <img alt="courselogo"
+                                                src="../../../../assets/params/images/icons/arrow-white.svg"></a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </ng-template>
+            <div class="btn-custom-style text-center mt-3 mb-5">
+                <a routerLink="/course/course-listing" class="btn btn-primary btn-lg">{{apiSection?.button.label}}</a>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+<ng-template #templateExpired>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" (click)="close()"
+            data-dismiss="modal">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body">
+
+
+        <!-- <h3>Email Sent Successfully. Please your inbox for the link !</h3> -->
+        <h3>Course expired! Please
+            <a style="cursor: pointer;" href='/contact-us'>Contact Us </a>for Recording
+        </h3>
+        <div class="message-button">
+            <button type="button" class="btn btn-custom-default" (click)="close()">Close</button>
+            <!-- <a  routerLink="/auth/login" class="btn  btn-custom-default btn-custom-blue" >login</a> -->
+        </div>
+    </div>
+    <!-- <div class="modal-footer">
+      <p>{{footerData?.title}}</p>
+    </div> -->
+</ng-template>
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+        </h4>
+        <button type="button" class="close close-modal pull-right" aria-label="Close" (click)="close()"
+            data-dismiss="modal">
+            <img src="../../../../assets/params/images/icons/btn-close.svg">
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <img src="../../../../assets/params/images/icons/icon-cross-red.svg" alt="logo">
+        <!-- <h3>Email Sent Successfully. Please your inbox for the link !</h3> -->
+        <h3>Course Already Purchased</h3>
+        <div class="message-button">
+            <button type="button" class="btn btn-custom-default" (click)="close()">Close</button>
+            <!-- <a  routerLink="/auth/login" class="btn  btn-custom-default btn-custom-blue" >login</a> -->
+        </div>
+    </div>
+    <!-- <div class="modal-footer">
+      <p>{{footerData?.title}}</p>
+    </div> -->
+</ng-template>

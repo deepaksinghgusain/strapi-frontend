@@ -1,0 +1,36 @@
+@import url('https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css');
+
+.success_page {
+	width: 100%;
+	text-align: center;
+	padding: 80px 0;
+	margin-top: 75px;
+}
+.success_box {
+	width: 760px;
+	margin: 0 auto;
+	box-shadow: 0px 0px 10px 2px rgba(100, 100, 100, 0.15);
+	max-width: 100%;
+	min-height: 350px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+.success_box h1 {
+	font-size: 3rem;
+}
+.success_box p {
+	font-size: 18px;
+	margin-bottom: 30px;
+}
+.success_box .btn-primary {
+	min-width: 160px;
+} 
+
+.success_box .fa-duotone {
+	font-size: 45px;
+	color: #16844c;
+	margin-bottom: 13px;
+} 

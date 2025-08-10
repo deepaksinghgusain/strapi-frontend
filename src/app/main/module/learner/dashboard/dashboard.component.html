@@ -1,0 +1,375 @@
+<app-hero-simple-image></app-hero-simple-image>
+<section class="edit-profile pt-4">
+  <div class="container">
+    <div class="page-head mb-5 mt-5">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3 class="heading-lg">{{greeting}}, {{profileData.firstName}}</h3>
+        </div>
+        <div class="col-sm-6">
+          <div *ngIf="message==''" class="input-type-toggle">
+            <a href="" class="btns-toggles active">Learners <br /> Dashboard</a>
+            <a href="" class="btns-toggles" routerLink="/learner/self-study">Self <br />Study</a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="container pt-5">
+    <div class="row ">
+      <div class="col-3 col-profile-first">
+        <div class="profile-image">
+          <!-- <img *ngIf="imgUrl === ''" class="camera-icon"  /> -->
+          <img *ngIf="imgUrl !== ''" [src]="imgUrl" class="camera-icon" width="173">
+          <!-- <span *ngIf="imgUrl === ''">Upload image</span> -->
+          <div *ngIf="imgUrl! === ''" class="upload-photo-area-ing 12" style="background-image:url(../../../assets/params/images/img/default-user.png); background-size:cover;width: 100%;
+            height: 100%;"></div>
+
+
+
+
+          <input #imageInput type="file" accept="image/*" id="imageUpload" (change)="processFile(imageInput)"
+            name="imageUpload" />
+        </div>
+
+      </div>
+      <div class="col-9 col-profile-second">
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="edit-profile-info">
+              <ul>
+                <li><label>Name:</label><span> {{profileData.firstName}} {{profileData.lastName}}</span></li>
+                <li><label>company:</label><span> {{profileData.company}}</span></li>
+                <!-- <li><label>PTIN#:</label><span> {{profileData.ptin}}</span></li>-->
+              </ul>
+              <ul>
+                <li><label>lOCATION:</label><span> {{ profileData.state}} , {{ profileData.country}} </span></li>
+                <li><label>pHONE: </label><span> {{profileData.phone}}</span></li>
+                <li></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-sm-3">
+            <div class="btn-style btn-profile-style">
+              <a href="" class="btn btn-primary btn-blue" routerLink="/learner/profile"><img
+                  src="../../../../../assets/params/images/icons/icon-pencil-white.svg" class="btn-icon">eDIT
+                PROFILE</a>
+              <a href="" class="btn btn-primary  mt-3" routerLink="/learner/payment-info"><img
+                  src="../../../../../assets/params/images/icons/icon-pencil-white.svg" class="btn-icon">eDIT
+                payment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="learner-dashboard padding-distance-lg">
+    <h2 *ngIf="message!=''" style="text-align: center;">{{message}}</h2>
+    <div class="container" *ngIf="message==''">
+
+      <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+            role="tab" aria-controls="home" aria-selected="true">
+            <h4>REGISTERED EVENTS</h4>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+            role="tab" aria-controls="profile" aria-selected="false">
+            <h4>CERTIFICATES</h4>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab"
+            aria-controls="past" aria-selected="false">
+            <h4>PAST EVENTS</h4>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button"
+            role="tab" aria-controls="upcoming" aria-selected="upcoming">
+            <h4>UPCOMING EVENTS</h4>
+          </button>
+        </li>
+        <!-- Heading Invoice navigation tab -->
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="invoice1-tab" data-bs-toggle="tab" data-bs-target="#invoice1" type="button"
+            role="tab" aria-controls="invoice1" aria-selected="invoice1">
+            <h4>Invoice</h4>
+          </button>
+        </li>
+        <!-- Heading Invoice navigation tab -->
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"
+          ng-controller="TestController">
+
+          <div class="learner-register-events mt-4">
+            <div class="ps" style="position: relative; max-width: 1500px; max-height: 400px;" [perfectScrollbar]="">
+              <ul *ngFor="let evt of regEvent">
+                <li>
+                  <div class="register-events">
+                    <div class="row">
+                      <div class="col-sm-7">
+                        <h2 class="heading-sm text-uppercase">{{evt.course.title}}
+                        </h2>
+                        <span class="font-barlow">{{evt.course.startDate | date:" EE, MMM dd yyyy" }} <br>
+                          {{evt.course.startDate | date:"hh:mm a " }}-{{evt.course.endDate | date:"hh:mm a " }}
+                          {{twoLettertimezone || ''}}</span>
+                      </div>
+                      <!-- Show download button when handouts exist -->
+                      <div class="col-sm-2">
+                        <div class="row">
+                          <div *ngIf="evt.course.handout && evt.course.handout.data" class="col-sm-6">                         
+                            <div class="btn-style">
+                              <a *ngIf="evt.course.handout.data.length > 0" class="btn btn-primary" (click)="downloadHandout(evt)">Handouts</a>                           
+                            </div>
+                          </div>
+                        <div class="col-sm-6">
+                          <div class="btn-style">
+                            <a class="btn btn-primary" (click)="gotowebinar(evt.course.webinarId,evt.joinUrl)">launch
+                              Webinar</a>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+
+          <div class="courses-certificate-list mt-4 ">
+            <h2 class="text-center" *ngIf="certificates===undefined || certificates.length===0"> No Certificate is
+              awarded </h2>
+
+
+            <div class="row" *ngIf="certificates!==undefined && certificates.length>0">
+              <div class="col-sm-4"
+                *ngFor="let certificate of certificates | paginate: { itemsPerPage: 9, currentPage: p };let i=index">
+                <div class="white-box text-center">
+                  <!-- <div class="img-fluid" [innerHtml]= "certificatehtml" > -->
+                  <div class="cerificate-media">
+                    <img alt="certificate" src="../../../../../assets/params/images/banner/certificate.jpg"
+                      class="img-fluid">
+                  </div>
+
+                  <div class="cerificate-content">
+                    <h3 class="heading-sm text-uppercase">{{certificate?.course?.title}}</h3>
+                    <p class="paragraph font-barlow ">Completed {{certificate?.course?.completedOn}}</p>
+                    <div class="bottom-line">
+                      <a class="btn btn-primary btn-lg" (click)="downloadCertificate(certificate)">Download
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <pagination-controls *ngIf="certificates.length>=10" (pageChange)="onPageChange($event)"
+              class="float-right"></pagination-controls>
+          </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+
+          <div class="learner-register-events mt-4">
+            <div class="ps" style="position: relative; max-width: 1500px; max-height: 400px;" [perfectScrollbar]="">
+              <ul>
+                <li *ngFor="let pastevent of pastEvents">
+                  <div class="register-events">
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <h2 class="heading-sm text-uppercase">{{pastevent?.course?.title}}</h2>
+                        <span class="font-barlow">{{pastevent?.course?.startDate | date:" EE, MMM dd yyyy" }}</span>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="row">
+                          <div *ngIf="pastevent.course.handout && pastevent.course.handout.data" class="col-sm-6">                         
+                            <div class="btn-style">
+                              <a *ngIf="pastevent.course.handout.data.length > 0" class="btn btn-primary" (click)="downloadHandout(pastevent)">Handouts</a>                           
+                            </div>
+                          </div>
+                        <div class="col-sm-6">
+                        <div class="btn-style">
+                          <a class="btn btn-primary" *ngIf="pastevent?.watchRecording"
+                            onClick="window.open('https://asteridadminqa.essentialdemo.com/uploads/New_Wine_Hillsong_Worship_1_048575ff2f.mp4');">watch
+                            recording</a>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+
+          <div class="learner-register-events mt-4">
+            <div class="ps" style="position: relative; max-width: 1500px; max-height: 400px;" [perfectScrollbar]="">
+              <ul>
+                <li *ngFor="let event of upcomingEvents">
+                  <div class="register-events">
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <h2 class="heading-sm text-uppercase">{{event.attributes.title}}</h2>
+                        <span class="font-barlow">{{event.attributes.startDate | date:" EE, MMM dd yyyy" }}</span>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="btn-style">
+                          <a class="btn btn-primary"
+                            [routerLink]="['/course/course-detail', event?.attributes?.slug]">View</a>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- Start : Content of  Invoice navigation tab -->
+        <div class="tab-pane fade" id="invoice1" role="tabpanel" aria-labelledby="invoice1-tab">
+
+          <div class="learner-register-events mt-4">
+            <div class="ps" style="position: relative; max-width: 1500px; max-height: 400px;" [perfectScrollbar]="">
+              <div class="row">
+                <div class="col-sm-2">
+                  <h4 class="heading-sm text-decoration-underline">Invoice No.</h4>
+                </div>
+                <div class="col-sm-5">
+                  <h4 class="heading-sm text-decoration-underline">Invoice Detail</h4>
+                </div>
+                <div class="col-sm-2">
+                  <h4 class="heading-sm text-decoration-underline">Price</h4>
+                </div>
+                <div class="col-sm-2 text-right">
+                  <h4 class="heading-sm text-decoration-underline">Download Invoice</h4>
+                </div>
+
+              </div>
+              <ul>
+                <li *ngFor="let invoice of invoices">
+                  <div class="register-events">
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <h4 class="btn heading-sm text-primary" style="padding-left: 0px;"
+                          (click)="downloadInvoice(invoice)">{{invoice.id}}</h4>
+                      </div>
+                      <div class="col-sm-5">
+                        <h4 class="heading-sm text-capitalize" *ngFor="let OrderItems of invoice.attributes.OrderItems">
+                          {{OrderItems.title}}
+                        </h4>
+                      </div>
+                      <div class="col-sm-2">
+                        <h4 class="heading-sm text-uppercase">$ {{invoice.attributes.finalPrice}}</h4>
+                      </div>
+                      <div class="col-sm-2 text-right">
+                        <span class="btn"><img style="height:30px; width:30px;" class="btn"
+                            (click)="downloadInvoice(invoice)"
+                            src="../../../../../assets/params/images/icons/icon-download-green.svg" class="icon-export">
+                        </span>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- End  : Content of  Invoice navigation tab -->
+      </div>
+
+    </div>
+
+    <div class="text-pay-container padding-distance-lg">
+      <div class="container">
+        <!--<div class="page-title page-title-left">
+          <h1>TAX BYTES</h1>
+        </div>-->
+        <div class="row">
+          <div class="col-sm-8">
+           <!-- <p class="paragraph font-barlow">A blog created by CPE Warehouse to provide all tax professionals with
+              relevant updates and information. Subscribe to stay up to date and learn more!</p>-->
+          </div>
+          <div class="col-sm-4">
+            <div class="cpa-social-icons cpa-social-icons-package mt-0">
+
+              <ul>
+                <li><a href="https://www.facebook.com/profile.php?id=61564929272372" target="_blank"><img
+                      src="../../../assets/params/images/icons/facebook.svg"></a></li>
+                <li><a href="https://x.com/CMEAvenue2024" target="_blank"><img
+                      src="../../../assets/params/images/icons/twitter.svg"></a>
+                </li>
+                <li><a href="https://www.linkedin.com/in/cme-avenue-682845325/" target="_blank"><img
+                      src="../../../assets/params/images/icons/in.svg"></a></li>
+                <li><a href="https://www.instagram.com/cmeavenue24/" target="_blank"><img
+                      src="../../../assets/params/images/icons/insta.svg"></a></li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="dashboard-list-control">
+      <div class="container" *ngFor="let rssChannel of rssItems; let rssIndex=index">
+        <div class="list-row row" *ngFor="let item of rssChannel">
+          <div class="col-sm-4">
+
+            <div class="dashboard-list-left">
+              <span class="font-barlow">Date : {{item?.pubDate._text | date :'dd-MM-yyyy'}}</span>
+              <h3 class="heading-sm text-uppercase mb-3">{{item?.title._text}}</h3>
+              <p class="paragraph font-barlow" [innerHtml]="item.description._text"></p>
+              <a (click)="redirectUrl(item?.link._text)" class="more-link" style="cursor: pointer;">Read more <img
+                  src="../../../../../assets/params/images/icons/arrow-blue.svg" class="ml-5"></a>
+
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="learner-report-image" *ngIf="item?.enclosure?._attributes?.url!=''">
+              <img (click)="redirectUrl(item?.link._text)" style=" width: 35%;cursor: pointer;"
+                src="{{item?.enclosure?._attributes?.url}}">
+            </div>
+            <div class="learner-report-image" *ngIf="!item?.enclosure">
+              <img (click)="redirectUrl(item?.link._text)" style=" width: 35%;cursor: pointer;"
+                src="../../../../assets/params/images/img/no-image.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

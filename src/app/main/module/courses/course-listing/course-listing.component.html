@@ -1,0 +1,324 @@
+<div class="nn course_listing">
+  <app-hero class="course-hero-image"></app-hero>
+</div>
+
+<section class="courses-catalogue">
+  <div class="container">
+    <div class="page-head mb-0 mt-4">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="course-content">
+            <h3>
+              ELEVATE YOUR PROFESSIONAL EDUCATION WITH CME AVENUE
+            </h3>
+            <p>
+              Rely on CME Avenue for customized continuing education in medical coding, billing, management, and auditing. 
+              When you enroll with us, you'll access a personalized learner profile through our user-friendly learning management software. 
+              Here, you can conveniently view your purchases, invoices, course recordings, handouts, and more. 
+              Each live event offers top-tier education from experts, featuring interactive Q&A sessions to deepen your understanding.
+              Plus, all associated course materials are available for download before and after the presentation.
+              <br><br>Need more details about our course options or how to navigate our platform? Feel free to reach out to us—we're here to address any questions or concerns you may have.
+            
+              </p>
+          </div>
+  
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="courses-catalogue padding-distance">
+  <div class="container">
+    <div class="page-head mb-2 mt-1">
+      <div class="row">
+        <div class="col-sm-8">
+
+        </div>
+        <div class="col-sm-4">
+          <div class="input-group-search">
+            <div class="form-outline">
+              <input type="search" id="form1" [(ngModel)]="search" (ngModelChange)="searchTitle(search)"
+                class="form-control" placeholder="Search courses" />
+              <button type="button" class="btns">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 30 28" fill="none">
+                  <circle cx="12.3848" cy="12.3848" r="11.3848" stroke="#0D0D0D" stroke-width="2" />
+                  <line x1="21.168" y1="19.7553" x2="28.7066" y2="27.2938" stroke="#0D0D0D" stroke-width="2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+          role="tab" aria-controls="home" aria-selected="true">
+          All courses
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+          role="tab" aria-controls="profile" aria-selected="false">
+          FREE courses
+        </button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="courses-cat-list mt-4">
+          <perfect-scrollbar class="custom-scrollbar" [ngStyle]="{
+                  height: LiveCourseListing.length > 6 ? '1300px' : 'auto'
+                }" scrollXMarginOffset="30">
+            <div class="row">
+              <h3 class="noRecords" *ngIf="LiveCourseListing.length === 0">
+                No records found
+              </h3>
+              <div class="col-sm-4" *ngFor="let course of LiveCourseListing">
+                <div class="course-list-box aaa">
+                  <div class="course-list-media">
+
+                    <img alt="courseimage" *ngIf="(course?.attributes?.image?.data?.attributes?.url != null) "
+                      src="{{environmentUrl+course?.attributes?.image?.data?.attributes?.url}}" class="img-fluid">
+
+                    <img alt="courseimage" *ngIf="(course?.attributes?.image?.data?.attributes?.url === null) "
+                      src="../../../../assets/params/images/img/no-image.png" class="img-fluid">
+                  </div>
+
+                  <div class="course-cat-content pb-0">
+                    <div class="course-cat-content-width" style="position: relative;">
+                      <h5 class="heading-sm text-uppercase" style="height: 65px;">
+                        {{course?.attributes?.title}}
+                      </h5>                      
+                      <div style="position: absolute; bottom:0">
+                        <div class="about-list list-margins" *ngIf="course?.attributes?.category?.data?.attributes?.title == 'Recorded' ">
+                          <ul>
+                            <li>Faculty: {{course?.attributes?.instructors?.data[0]?.attributes?.firstName}}
+                              {{course?.attributes?.instructors?.data[0]?.attributes?.lastName}} </li>
+                            <li class="pt-3" style="height: 60px;"><span class="fw-bold">Credits:</span>{{course?.attributes?.creditsInfo}}</li>
+                          </ul>
+                        </div>
+                        <div class="about-list list-margins" *ngIf="course?.attributes?.category?.data?.attributes?.title != 'Recorded' ">
+                          <ul>
+                            <li>{{course?.attributes?.startDate | date:" EE MMM dd yyyy"}} </li>
+                            <li>{{course?.attributes?.startDate | date:'h:mm a'}} -
+                              {{course?.attributes?.endDate | date:'h:mm a'}} {{twoLettertimezone || ''}}</li>
+                            <li>Faculty: {{course?.attributes?.instructors?.data[0]?.attributes?.firstName}}
+                              {{course?.attributes?.instructors?.data[0]?.attributes?.lastName}} </li>
+                            <li class="pt-3" style="height: 60px;"><span class="fw-bold">Credits:</span>{{course?.attributes?.creditsInfo}}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="course-footer-cat mt-0">
+
+                    <div class="row align-items-center">
+                      <div class="col-6">
+                        <div class="course-price">
+
+
+                          <div>
+                            <a (click)="openModalWithquickview(course?.id)" class="course-view font-barlow">
+                              QUICK VIEW
+                              <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 14L8 7.5L0.999999 1" stroke="#104A8E" stroke-width="2" />
+                                <path d="M6 14L13 7.5L6 1" stroke="#104A8E" stroke-width="2" />
+                              </svg>
+                            </a>
+
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <div class="col-6">
+                        <a [routerLink]="[
+                                  '/course/course-detail',
+                                  course?.attributes?.slug
+                                ]" class="btn btn-primary btn-lg btn-blue btbn-icon btn-sm">read more
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </perfect-scrollbar>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="courses-cat-list mt-4">
+          <div class="row">
+            <h3 class="noRecords" *ngIf="FreeCourseListing.length === 0">
+              No records found
+            </h3>
+            <div class="col-sm-4" *ngFor="let course of FreeCourseListing">
+              <div class="course-list-box">
+                <a>
+                  <div class="course-list-media">
+                    <!-- <img
+                          src="../../../../assets/params/images/banner/cat-list-img.png"
+                          class="img-fluid"
+                        /> -->
+                    <img alt="courseimage" *ngIf="(course?.attributes?.image?.data?.attributes?.url != null) "
+                      src="{{environmentUrl+course?.attributes?.image?.data?.attributes?.url}}" class="img-fluid">
+
+                    <img alt="courseimage" *ngIf="(course?.attributes?.image?.data?.attributes?.url === null) "
+                      src="../../../../assets/params/images/img/no-image.png" class="img-fluid">
+                  </div>
+                  
+                  <div class="course-cat-content pb-0">
+                    <div class="course-cat-content-width" style="position: relative;">
+                      <h5 class="heading-sm text-uppercase" style="height: 65px;">
+                        {{course?.attributes?.title}}
+                      </h5>                      
+                      <div style="position: absolute; bottom:0">
+                        <div class="about-list list-margins" *ngIf="course?.attributes?.category?.data?.attributes?.title == 'Recorded' ">
+                          <ul>
+                            <li>Faculty: {{course?.attributes?.instructors?.data[0]?.attributes?.firstName}}
+                              {{course?.attributes?.instructors?.data[0]?.attributes?.lastName}} </li>
+                            <li class="pt-3" style="height: 60px;"><span class="fw-bold">Credits:</span>{{course?.attributes?.creditsInfo}}</li>
+                          </ul>
+                        </div>
+                        <div class="about-list list-margins" *ngIf="course?.attributes?.category?.data?.attributes?.title != 'Recorded' ">
+                          <ul>
+                            <li>{{course?.attributes?.startDate | date:" EE MMM dd yyyy"}} </li>
+                            <li>{{course?.attributes?.startDate | date:'h:mm a'}} -
+                              {{course?.attributes?.endDate | date:'h:mm a'}} {{twoLettertimezone || ''}}</li>
+                            <li>Faculty: {{course?.attributes?.instructors?.data[0]?.attributes?.firstName}}
+                              {{course?.attributes?.instructors?.data[0]?.attributes?.lastName}} </li>
+                            <li class="pt-3" style="height: 60px;"><span class="fw-bold">Credits:</span>{{course?.attributes?.creditsInfo}}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="course-footer-cat mt-0">
+
+                    <div class="row align-items-center">
+                      <div class="col-6">
+                        <a (click)="openModalWithquickview(course?.id)" class="course-view font-barlow">
+                          QUICK VIEW
+                          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 14L8 7.5L0.999999 1" stroke="#104A8E" stroke-width="2" />
+                            <path d="M6 14L13 7.5L6 1" stroke="#104A8E" stroke-width="2" />
+                          </svg>
+                        </a>
+                      </div>
+                      <div class="col-6">
+                        <a [routerLink]="[
+                                '/course/course-detail',
+                                course?.attributes?.slug
+                              ]" class="btn btn-primary btn-lg btn-blue btbn-icon btn-sm">read more
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--4-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="cpa-instructors">
+  <div class="container">
+
+    <div class="page-head mb-4">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3 class="heading-lg">{{instructorSection?.title}}</h3>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="nstructors-outer">
+
+      <div class="instructors-container">
+        <owl-carousel-o [options]="custommembers1">
+
+          <ng-container *ngFor="let items of instructorData,let i=index">
+
+            <ng-template carouselSlide>
+              <div class="instructor-box">
+                <span>/0{{i+1}}</span>
+                <div class="member-area-content">
+                  <div class="member-area-media">
+                    <img alt="instructor" *ngIf="(items?.attributes?.image?.data !== null) "
+                      src="{{imageUrl}}{{items?.attributes?.image?.data?.attributes?.url}}" class="img-fluid">
+                    <img alt="instructor" *ngIf="(items?.attributes?.image?.data == null) "
+                      src="../../../../assets/params/images/img/faculty.png" class="img-fluid">
+                  </div>
+                  <h5 class="heading-sm text-uppercase mt-4">{{items?.attributes?.firstName}}
+                    {{items?.attributes?.lastName}}</h5>
+                </div>
+              </div>
+            </ng-template>
+
+          </ng-container>
+
+        </owl-carousel-o>
+        <div class="btn-custom-style text-center mt-2">
+          <a routerLink="/instructor/instructor-listing"
+            class="btn btn-primary btn-lg mt-4">{{instructorSection?.button?.label}}</a>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+
+<section class="cpa-how-works cpa-how-works-about pt-1">
+  <div class="container">
+
+    <div class="work-container">
+      <div class="row">
+
+        <div class="col-sm-5">
+          <div class="work-content work-content-works">
+            <div class="page-title page-title-left">
+              <!-- <h1>questions? we are <br />happy to help</h1> -->
+
+              <h1>{{questionsection?.title}}</h1>
+
+            </div>
+
+            <p>{{questionsection?.subtitle}}</p>
+            <div class="custom-btn mt-5">
+              <a routerLink={{questionsection?.button?.href}}
+                class="btn  btn-primary btn-lg">{{questionsection?.button?.label}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="work-media">
+            <img alt="question image" src="{{imageUrl}}{{questionsection?.image?.data?.attributes?.url}}"
+              class="img-fluid img-sm">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

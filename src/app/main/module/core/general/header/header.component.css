@@ -1,0 +1,441 @@
+.nga-navbar .navbar-nav .nav-item .nav-link {
+  color: #7f4d9e;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
+  ng-autocomplete.ng-autocomplete.form-ng-input {
+    width: 230px;font-family: 'Barlow', sans-serif; position: absolute; right:-12px;
+  
+}
+
+.navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
+  color: white;
+
+}
+
+.nga-navbar {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 11px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 11px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 11px 10px 0 rgb(0 0 0 / 12%);
+  background: rgba(242, 243, 246, 10);
+
+  border-radius: 0px;
+  height: 75PX;
+  display: flex;
+  align-items: center;
+  z-index: 9;
+}
+
+
+
+
+
+ul.navbar-nav.me-auto.header-log-space {
+  margin-left: 80px;
+}
+
+.searchBox {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  position: relative;
+}
+
+.searchBox input {
+  background-color: #F0F0F0;
+  border: none;
+  outline: none;
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  border-radius: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  color: #646464;
+  transition: all 1s;
+  position: absolute;
+  right: 0;
+}
+
+.searchBox input::placeholder {
+  color: #646464;
+  opacity: 1;
+  font-weight: 400;
+}
+
+.searchBox i {
+
+ 
+ 
+  text-align: center;
+ 
+  cursor: pointer;
+  transition: all .5s;
+  z-index: 99999;
+}
+
+.searchBox:hover input {
+  width: 230px;
+  opacity: 1;
+  padding: 5px 20px;
+  height: 38px;
+  padding-right: 32px;
+  font-family: 'Barlow', sans-serif;
+}
+
+.searchBox:hover input:placeholder {
+  font-size: 15px;
+  line-height: 18px;
+
+
+  color: #646464;
+  opacity: 1;
+}
+
+.searchBox:hover input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #646464;
+  opacity: 1;
+}
+
+.searchBox:hover input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #646464;
+  opacity: 1;
+}
+
+.searchBox i svg circle,
+.searchBox i svg line {
+  stroke: #fff;
+}
+
+.searchBox.togglesearch i svg circle,
+.searchBox.togglesearch i svg line {
+
+  stroke: #646464;
+} 
+
+.custom-signin {
+  margin: 0 10px;
+}
+
+.custom-shopping {
+  margin: 0 10px;
+  text-align: center;
+}
+
+.custom-signin .btn {
+  background: #ffffff;
+  width:50px;
+  height: 50px;
+  border-radius: 100px;
+  color: #7f4d9e;
+  font-size: 14px;
+  line-height: 50px;
+  padding: 0;
+
+}
+
+/* .navbar{ width:100%;} */
+
+i.fa.fa-bars {
+  color: #f99;
+  background: #FFFFFF;
+  width: 31px;
+  height: 31px;
+  border-radius: 100px;
+  line-height: 31px;
+  color: #283C6B;
+  cursor: pointer;
+}
+
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.custom-signin button.btn.btn-logout {
+  background: transparent;
+  border: 0;
+  width: auto;
+  height: auto;
+  margin: 0 10px; line-height: normal;
+}
+span.welcome-text {
+  color: #7f4d9e;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0.1em;
+      /* margin-top: 13px; */
+      margin-top: 0;
+  padding: 0 8px;
+cursor: pointer;
+ 
+}
+.modal-body.modal-logout h4 {
+  font-weight: 400;
+  font-size: 23.3438px;
+  line-height: 90%;
+  text-transform: capitalize;
+  color: #283C6B;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1500px){
+.navbar-left {
+  margin-left: 30px;
+
+}
+}
+@media only screen and (min-width: 1500px) {
+  
+  .navbar-left {
+    margin-left: 110px;
+
+  } 
+}
+@media only screen and (min-width: 1201px) and (max-width: 1399px)
+{
+  ng-autocomplete.ng-autocomplete.form-ng-input {
+    width: 210px;
+}
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .nga-navbar .navbar-nav .nav-item .nav-link {
+    font-size: 14px;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+  .navbar-brand  {
+    width: 170px;
+    padding-bottom: 8px;
+  }
+  .navbar-brand  img{
+    width: 180px;
+  }
+  .custom-signin {
+    margin: 0;
+  }
+  header ng-autocomplete.ng-autocomplete.form-ng-input {
+    width: 207px;
+    font-family: Barlow,sans-serif;
+    position: absolute;
+    right: -12px;
+}
+}
+@media only screen and (min-width: 768px){
+  .d-flex.top-information {
+    display: none!important;
+}
+.nav-desktop.d-flex.top-information{
+  display: flex !important;
+}
+.nav-desktop.d-flex.top-information span.welcome-text {
+  display: inline-table;
+}
+
+}
+@media only screen and (min-width: 768px) and (max-width: 1000px){
+  .custom-signin{
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+}
+ng-autocomplete.ng-autocomplete.form-ng-input.hero-caption[_ngcontent-asterid-lms-c111] h1[_ngcontent-asterid-lms-c111] {
+  right: -7px;
+}
+}
+
+@media only screen and (max-width: 991px) {
+  .custom-signin button.btn.btn-logout {
+  
+    margin: 0; 
+  }
+  .modal-body.modal-logout h4 {
+  
+    font-size: 16px;
+     margin-top: 15px !important;
+  
+  }
+  
+  .nga-navbar[_ngcontent-asterid-lms-c55] {
+  
+    background: #283C6B;
+  
+    height: 76px;
+ 
+}
+span.welcome-text{ display: none;}
+
+  .nga-navbar .navbar-nav .nav-item .nav-link { color:#283C6B;}
+  .navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover{ color:#283C6B;}
+  button.navbar-toggler {
+    position: absolute;
+    right: 5px;
+    padding: 0;
+    top: 12px;
+  }
+
+  .d-flex.top-information {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 50px;
+     top:20px;
+  }
+
+  .searchBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+
+  }
+
+  .custom-shopping {
+    margin: 0 5px;
+    text-align: center;
+    margin-left: 15px;
+  }
+
+  .custom-signin {
+    margin: 0 5px;
+  }
+.fsearch svg{    width: 16px;
+  height: 21px;
+  display: inline-table;}
+  .custom-signin .btn {
+    background: transparent;
+    width: auto;
+    height: auto;
+    border-radius: 100px;
+    color: #fff;
+    font-size: 12px;
+    border: 0; line-height:14px;margin-right: 0!important;    display: flex;
+  }
+  .custom-shopping img{ width: 15px; height: 16px;}
+  .custom-signin button.btn.btn-logout img{ width: 17px; height: 16px;}
+  .navbar-brand img {
+    max-width: 180px;
+    cursor: pointer;
+  }
+
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    position: absolute;
+    top: 68px;
+    background: #fff;
+    width: 100%;
+    padding: 0 20px;
+    padding-bottom: 15px;
+  }
+}
+
+.navbar-brand {
+  cursor: pointer; padding-top: 0;
+}
+
+@media ( max-width:767px ) {
+  .custom-shopping {
+  margin-left: 0;
+}
+  
+  .searchBox i svg circle,
+.searchBox i svg line {
+  stroke: #fff !important;
+}
+  .searchBox {
+    position: static;
+  }
+  .searchBox ng-autocomplete.ng-autocomplete.form-ng-input
+  {
+    border: 1px solid rgb(175,172,172)!important;
+    border-radius: 12px;
+    background-color: #fff;
+    left: 25px;
+    right: 25px!important;
+    bottom: 15px;
+    width: auto!important;
+  }
+  
+.nav-desktop.d-flex.top-information{
+  display: none !important;
+}
+  .d-flex.top-information {
+    position: static!important;
+    justify-content: start;
+    display: inline-flex!important;
+    width: 100%;
+}
+  .searchBox, .custom-shopping a
+  {
+    margin: 0 5px;
+    cursor: pointer;
+    height: 36px;
+    width: 36px;
+    background-color: #49597f;
+    border-radius: 50%;
+    display: table;
+    line-height: 36px;
+    text-align: center;
+  }
+  .custom-signin{
+    margin: 0 5px 0 20px;
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+  }
+  .custom-signin button.btn.btn-logout img {
+    filter: brightness(0%);
+  }
+  span.welcome-text {
+    display: inline-table;
+    min-width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #ffffff;
+    font-style: normal;
+    background: #495a7f;
+    border-radius: 2px;
+    height: 35px;
+    font-weight: 500;
+    line-height: 35px;
+    margin-top: 0;
+  }
+  .custom-signin button.btn.btn-logout {
+    margin: 0 0 0 15px;
+}
+
+
+  .nga-navbar .container {
+    max-width: 100%;position: static;
+  }
+  .navbar {
+    position: static;}
+  
+  .fixed-top.nga-navbar{right: 0;left: 0;} 
+  #navbarSupportedContent {
+    left: 0;
+    right: 0;
+    padding-bottom: 70px!important;
+  } 
+  .d-flex.top-information{top: calc(50% - 11px);}
+  button.navbar-toggler{top: calc(50% - 17px);}
+
+}
+
+@media only screen and (max-width: 340px) {
+.navbar-brand img {
+  max-width: 120px;
+ 
+}
+.navbar-brand {
+  padding-top: 7px;
+}
+}

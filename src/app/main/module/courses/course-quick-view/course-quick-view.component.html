@@ -1,0 +1,200 @@
+<div class="modal-header">
+    <a href="/"> <h4 class="modal-title pull-left">  <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+    </h4></a>
+   
+    <button type="button" class="close close-modal pull-right" aria-label="Close" data-dismiss="modal"
+        (click)="close()">
+        <img src="../../../../assets/params/images/icons/btn-close.svg">
+    </button>
+</div>
+
+<div class="modal-body modal-body-instructor">
+    <div class="list-row">
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-5">
+                <div class="course-quick-view">
+                    <h2 class="heading-lg">course quick view </h2>
+                    <h3 class="heading-sm text-uppercase font-barlow mt-3 mb-3">{{quickViewData?.title}}</h3>
+
+                    <!-- <p class="font-barlow">As a finance professional, you wear multiple hats when dealing with clients. And learning how to manage your stress is a crucial component to success. Did you know that EAs, CPAs, and finance professionals face significantly more stress than the average professional, as per Financial Planning magazine?</p> -->
+
+                    <markdown [data]="markdown">
+                    </markdown>
+                    <!-- <div class="quick-content about-list">
+                    <h2>In our “Stress Less & Manage Better” Workshop, you will:</h2>
+                    <ul>
+                        <li>Learn to become more resilient, invoking your natural capacity at addressing challenges affecting your behavior, relationships, body, peace of mind and bottom line</li>
+                        <li>Acquire a skill set to help you manage your stress levels and avoid burning out during the most chaotic time of the year</li>
+                        <li>Explore how stress affects your body and how you could create balance and harmony with tools you already have</li>
+                        <li>Leave this workshop confident and equipped with techniques you can apply to cultivate a more balanced mental health.</li>
+                    </ul>
+                </div> -->
+                </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-12 col-lg-7">
+
+                <form>
+
+
+                    <div class="course-quick-view-summary">
+
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="view-summary-card">
+                                    <div class="event-course-image  mb-4">
+                                        <img src="{{imageUrl+quickViewData?.image?.data?.attributes?.url}}"
+                                            class="img-fluid">
+
+
+                                        <div class="event-tag-live">
+                                            {{quickViewData?.category?.data?.attributes?.title}}</div>
+                                        <!-- <div *ngIf="eventName==='Live'" class="event-tag-live">Live event</div>
+                                        <div *ngIf="eventName==='Recorded'" class="event-tag-live">Recorded</div>
+                                        <div *ngIf="eventName==='In Person'" class="event-tag-live">In-Person</div> -->
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="view-summary-content">
+                                    <h3 class="text-uppercase font-barlow heading-sm">{{quickViewData?.title}}</h3>
+                                    <div *ngIf="quickViewData?.category?.data?.attributes?.title !='Recorded'"
+                                        class="time-info">
+                                        <label>{{quickViewData?.startDate | date:" EE MMM dd yyyy"}}</label>
+                                        <span>{{quickViewData?.startDate | date:"hh:mm a"}} - {{quickViewData?.endDate |
+                                            date:'h:mm a' }} </span>
+                                    </div>
+                                    <div class="date-info">
+                                        <span><img src="../../../../../assets/params/images/icons/date-picker.png"
+                                                (click)="addToCalendar()"></span>+ ADD TO MY CALENDAR
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="seats-count">
+                                    <label>seats:</label>
+                                    <div class="stepper-input stepper__input">
+
+
+                                        <div class="form-check-inline">
+                                            <button class="btn-types btn-plus" (click)="seatDecrementer()">
+                                                <img src="../../../../../assets/params/images/icons/minus.svg"></button>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <input type="text" disabled [value]="seats" class="form-control">
+                                        </div>
+
+                                        <div class="form-check-inline">
+                                            <button class="btn-types btn-minus" (click)="seatIncrementer()">
+                                                <img src="../../../../../assets/params/images/icons/plus.svg"></button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-8">
+                                <div class="coupan-apply">
+                                    <input type="text" [disabled]="true" placeholder="COUPON CODE" [(ngModel)]="couponValue" [ngModelOptions]="{standalone: true}">
+                                    <button type="submit" [disabled]="true" class="btn btn-apply"  (click)="applyCoupon()"  >{{couponRes?'applied':'Apply'}}</button>
+                                    <br/>
+                                    <span *ngIf="couponRes">coupon successfully applied</span>
+                                    <span class="text-danger">{{couponErrMsg}}</span>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+
+                                <div class="info-text font-barlow">* If need to purchase 10 or more seats, please
+                                    contact us
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+
+                                <div class="course-value">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>original price:</td>
+                                                <td *ngIf="courseData?.discount>0">
+                                                    <span><s>{{ finalPrice * seats | currency:'USD':'symbol'}}</s>
+                                                        {{ courseData?.discount * seats | currency:'USD':'symbol'}}
+                                                    </span>
+                                                </td>
+                                                <td *ngIf="courseData?.discount==0||courseData?.discount==null">{{ finalPrice * seats | currency:'USD':'symbol'}}</td>
+                                                <!-- <td>CA${{ finalPrice }} * seats</td> -->
+                                            </tr>
+
+                                        </tbody>
+                                        <tfoot>
+
+                                            <tr>
+                                                <td>TOTAL PRICE: </td>
+                                                <td *ngIf="courseData?.discount>0">
+                                                      {{ courseData?.discount * seats | currency:'USD':'symbol'}}
+                                                </td>
+                                                <td *ngIf="courseData?.discount==0||courseData?.discount==null">{{ finalPrice * seats | currency:'USD':'symbol'}}</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" [checked]="agreeTerms" (change)="agreeTerms = !agreeTerms"
+                                        class="form-check-input">
+                                    <label class="form-check-label" for="rememberPassword">By placing this order, I
+                                        acknowledge that I <br /> have read and agree to the<a target="_blank"
+                                            routerLink="/payment-terms"><u> purchase terms and
+                                                conditions</u></a> <br /> </label>
+                                </div>
+                                <div class="modal-footer-btn">
+                                    <button (click)="checkout(coursesDetail,template)"  [disabled]="!agreeTerms" class="btn btn-primary" class="btn btn-primary">check out now</button>
+                                    <button  (click)="enrollNow2(coursesDetail,template)" [disabled]="!agreeTerms" class="btn btn-primary">add to cart</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <p>{{footerData.title}}</p>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left"> <img src="../../../../assets/params/images/banner/login-logo.svg" alt="logo">
+      </h4>
+      <button type="button" class="close close-modal pull-right" aria-label="Close" (click)="closeM()" data-dismiss="modal">
+        <img src="../../../../assets/params/images/icons/btn-close.svg">
+      </button>
+    </div>
+    <div class="modal-body">
+  
+      <img src="../../../../assets/params/images/banner/icon-tick.svg" alt="logo">
+      <!-- <h3>Email Sent Successfully. Please your inbox for the link !</h3> -->
+  <h3>Course Already Purchased</h3>
+      <div class="message-button">
+        <button type="button" class="btn btn-custom-default" (click)="closeM()">Close</button>
+        <!-- <a  routerLink="/auth/login" class="btn  btn-custom-default btn-custom-blue" >login</a> -->
+      </div>
+    </div>
+    <!-- <div class="modal-footer">
+      <p>{{footerData?.title}}</p>
+    </div> -->
+  </ng-template>
