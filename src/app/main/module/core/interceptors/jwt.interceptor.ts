@@ -15,7 +15,7 @@ export class JwtInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
-      const url = request.url.split('/')
+    const url = request.url.split('/')
     const isLoggedIn = localStorage.getItem('login');
     const isRegistered = localStorage.getItem('register');
     const tokenStatic = environment.rotoken;
@@ -72,7 +72,7 @@ export class JwtInterceptor implements HttpInterceptor {
     }
 
 
-
     return next.handle(request);
+
   }
 }

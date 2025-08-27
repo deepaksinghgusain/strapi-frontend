@@ -162,7 +162,6 @@ export class CourseListingComponent implements OnInit, OnDestroy {
         this.instructorSection = res?.data[0]?.attributes?.blocks.filter((x: { __component: string, Index: String }) => x.__component === 'blocks.api-section' && x.Index === 'Catalogue>Instructors')[0];
         this.metaService.addSEOTags(res?.data[0]?.attributes?.seo);
         this.cd.detectChanges();
-
       }
     }))
   }
