@@ -32,6 +32,7 @@ export class JwtInterceptor implements HttpInterceptor {
         if (token) {
           request = request.clone({
             setHeaders: {
+              Authorization: `Bearer ${token}`,
               'Cache-Control': 'no-cache, no-store, must-revalidate, post- check=0, pre-check=0',
               'Pragma': 'no-cache',
               'Expires': '0'

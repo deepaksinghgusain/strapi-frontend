@@ -31,13 +31,14 @@ export class SecureCheckoutComponent implements OnInit {
   couponRes: any = false;
 
 
-  gtagData: { 
-    id: any; 
-    name: any; 
-     brand: any; 
-     category: any; 
-    quantity: any; 
-    price: any; }[] = []
+  gtagData: {
+    id: any;
+    name: any;
+    brand: any;
+    category: any;
+    quantity: any;
+    price: any;
+  }[] = []
   couponType: any;
   title: any;
   cartId = Number(localStorage.getItem('cartId')) || 0;
@@ -90,8 +91,8 @@ export class SecureCheckoutComponent implements OnInit {
 
       this.cartData.data = resp.data.attributes;
       this.cartItems = this.cartData.data.CartItem;
-      console.log("this.cartitems",this.cartData.data.total);
-      
+      console.log("this.cartitems", this.cartData.data.total);
+
       if (this.cartItems.length > 0) {
         this.cartItems?.forEach((course: any, index: any) => {
           var items = [];
@@ -222,23 +223,21 @@ export class SecureCheckoutComponent implements OnInit {
       this.cartService
         .applyCoupon(this.couponValue)
         .subscribe((couponResp: any) => {
-          console.log("couponRes",couponResp);
-          
-          if (couponResp.statusCode == 200) 
-           
-           {
+          console.log("couponRes", couponResp);
+
+          if (couponResp.statusCode == 200) {
             // this.couponValue = couponResp.id;
 
             if (couponResp.amount_off != null) {
 
 
-              if (couponResp.amount_off  >= this.finalPrice) {
+              if (couponResp.amount_off >= this.finalPrice) {
                 this.couponErrMsg = "Invalid Coupon."
                 this.couponRes = false;
               }
               else {
                 this.couponType = 'amountOff';
-                this.finalPrice -= couponResp.amount_off ;
+                this.finalPrice -= couponResp.amount_off;
                 this.finalPrice = this.finalPrice.toFixed(2)
                 this.couponValueOFF = couponResp.amount_off;
                 this.couponRes = true;
@@ -248,17 +247,17 @@ export class SecureCheckoutComponent implements OnInit {
             } else {
               this.couponType = 'percentOff'
               this.couponValueOFF = couponResp.percent_off;
-              const discountedPrice:any = ((this.finalPrice * couponResp.percent_off) / 100).toFixed(2)
+              const discountedPrice: any = ((this.finalPrice * couponResp.percent_off) / 100).toFixed(2)
               this.finalPrice -= discountedPrice;
               this.finalPrice = this.finalPrice.toFixed(2)
               this.couponRes = true;
             }
           }
-        }, (err)=>{
+        }, (err) => {
           if (err.error.error.status == 400 || err.error.error.status == 404) {
             this.couponErrMsg = 'Invalid coupon.';
-            this.couponRes =false
-  
+            this.couponRes = false
+
           }
         });
     }
@@ -282,43 +281,39 @@ export class SecureCheckoutComponent implements OnInit {
 
     let freeEvents: number = 0;
     let lengthOfCartItems = this.cartItems.length
-    console.log('items', this.cartItems)
 
     this.cartItems.map((data: any, index: any) => {
-      
-      if (data.course.price === 0  && data.courseId>0) {
+
+      if (data.course.price === 0 && data.courseId > 0) {
         freeEvents = freeEvents + 1;
-      }else{
-      
-               if(data.course.price !=null && data.course.price==0 ){
-                   freeEvents = freeEvents +1;
-               }else{
-                if(data.course.price == null  && data.course.includedCoursePrice == 0){
-                  freeEvents = freeEvents+1;
-                }
-               }
+      } else {
+
+        if (data.course.price != null && data.course.price == 0) {
+          freeEvents = freeEvents + 1;
+        } else {
+          if (data.course.price == null && data.course.includedCoursePrice == 0) {
+            freeEvents = freeEvents + 1;
+          }
+        }
       }
 
-
-
-
-      const eachPrice:any = (data?.course?.discounted_price || data?.course?.discount) > 0
+      const eachPrice: any = (data?.course?.discounted_price || data?.course?.discount) > 0
         ? (data?.course?.discounted_price || data?.course?.discount)
-        : ((data?.course?.price) >= 0 && (data?.course?.price) !=null )? (data?.course?.price) : data?.course?.includedCoursePrice;
-       
-        let couponDiscountedPrice:any; 
-       if(this.couponType=='percentOff'){
-         const discountedAmount:any=((eachPrice*this.couponValueOFF)/100).toFixed(2)
-          couponDiscountedPrice = (eachPrice -discountedAmount).toFixed(2)
-       }
-       else{
-        const discountedAmount:any = ((this.couponValueOFF)/(lengthOfCartItems*data.qty)).toFixed(2)
-        couponDiscountedPrice = (eachPrice -discountedAmount).toFixed(2)
-        
-       }
-      // console.log("pric",couponDiscountedPrice);
-      const priceIncents:any =  (couponDiscountedPrice*100).toFixed(0)
-      
+        : ((data?.course?.price) >= 0 && (data?.course?.price) != null) ? (data?.course?.price) : data?.course?.includedCoursePrice;
+
+      let couponDiscountedPrice: any;
+      if (this.couponType == 'percentOff') {
+        const discountedAmount: any = ((eachPrice * this.couponValueOFF) / 100).toFixed(2)
+        couponDiscountedPrice = (eachPrice - discountedAmount).toFixed(2)
+      }
+      else {
+        const discountedAmount: any = ((this.couponValueOFF) / (lengthOfCartItems * data.qty)).toFixed(2)
+        couponDiscountedPrice = (eachPrice - discountedAmount).toFixed(2)
+
+      }
+
+      const priceIncents: any = (couponDiscountedPrice * 100).toFixed(0)
+
       this.checkoutData.push({
         name: data.course.title,
         default_price_data: {
@@ -330,12 +325,12 @@ export class SecureCheckoutComponent implements OnInit {
         // "qtyArray":qtyArray,
         coupon: '',
         orderId: 0,
-        discountCoupon: this.couponRes ==true?{
+        discountCoupon: this.couponRes == true ? {
           name: this.couponValue ? this.couponValue : '',
           value: this.couponValueOFF ? this.couponValueOFF : '',
-          type:this.couponType ? this.couponType : '',
+          type: this.couponType ? this.couponType : '',
           email: localStorage.getItem('email')
-        } :{}
+        } : {}
       });
 
       this.gtagData.push(
@@ -348,11 +343,9 @@ export class SecureCheckoutComponent implements OnInit {
           "brand": "CPE",
         }
       );
-      //console.log("course1",data.course);
+
       const format = JSON.parse(this.cartItems[index]['course']['formats']);
       let imageURL = format?.thumbnail?.url
-
-
 
       delete this.cartItems[index]['id'];
       this.cartItems[index]['title'] = this.cartItems[index]['course']['title'];
@@ -360,8 +353,8 @@ export class SecureCheckoutComponent implements OnInit {
       //CALCULATING ACTUAL PRICEE OF THE PARTICULAR COURSE AND PACKAGE :-
 
       let particularPrice;
-     
-      if (this.cartItems[index]['course']['discount']>0 || this.cartItems[index]['course']['discounted_price']>0) {
+
+      if (this.cartItems[index]['course']['discount'] > 0 || this.cartItems[index]['course']['discounted_price'] > 0) {
         particularPrice = this.cartItems[index]['course']['discount'] || this.cartItems[index]['course']['discounted_price']
       } else if (this.cartItems[index]['course']['price']) {
         particularPrice = this.cartItems[index]['course']['price']
@@ -372,20 +365,20 @@ export class SecureCheckoutComponent implements OnInit {
       // const particularPrice = this.cartItems[index]['course']['discount'] 
       // || this.cartItems[index]['course']['discounted_price'] ||  this.cartItems[index]['course']['includedCoursePrice']
       // ? this.cartItems[index]['course']['discount'] || this.cartItems[index]['course']['discounted_price'] ||  this.cartItems[index]['course']['includedCoursePrice'] :this.cartItems[index]['course']['price']
-      console.log("particularPrice",particularPrice);
-      
+      console.log("particularPrice", particularPrice);
+
       this.cartItems[index]['price'] = particularPrice
 
       // PRICE  AFTER COUPON APPLIED (finalPrice)
 
       // console.log("cartItems",this.cartItems);
-      
-      let noOfEnroll =  this.cartItems[index].Enrolls.length
+
+      let noOfEnroll = this.cartItems[index].Enrolls.length
       // console.log("no of Enroll",noOfEnroll);
-      
+
 
       if (this.couponValue != null && this.couponType == 'amountOff') {
-        this.cartItems[index]['finalPrice'] = (particularPrice - (this.couponValueOFF / (lengthOfCartItems*noOfEnroll))).toFixed(2)
+        this.cartItems[index]['finalPrice'] = (particularPrice - (this.couponValueOFF / (lengthOfCartItems * noOfEnroll))).toFixed(2)
       } else if (this.couponValue != null && this.couponType == 'percentOff') {
         this.cartItems[index]['finalPrice'] = (particularPrice - (this.couponValueOFF * particularPrice) / 100).toFixed(2);
       }
@@ -550,12 +543,12 @@ export class SecureCheckoutComponent implements OnInit {
         OrderItems: this.cartItems,
         userId: this.cartData.data.userId,
         totalPrice: this.cartData.data.total,
-        discountCode: this.couponRes==true?this.couponValue :'',
-        discountPrice: this.couponRes==true?this.couponValueOFF : 0,
+        discountCode: this.couponRes == true ? this.couponValue : '',
+        discountPrice: this.couponRes == true ? this.couponValueOFF : 0,
         finalPrice: this.finalPrice,
         stripeOrderId: '',
         orderStatus: 'pending',
-        discountType: this.couponRes==true?this.couponType:'',
+        discountType: this.couponRes == true ? this.couponType : '',
         userName: localStorage.getItem('username'),
         email: localStorage.getItem('email'),
         receiptUrl: '',
@@ -623,27 +616,27 @@ export class SecureCheckoutComponent implements OnInit {
 
 
   addGoogleTracking(orderid: string, orderData: any) {
- 
+
     localStorage.setItem('oid', orderid);
     localStorage.setItem('odata', JSON.stringify(orderData));
     localStorage.setItem('ogtagdata', JSON.stringify(this.gtagData,));
     console.log(this.checkoutData)
     // console.log("orderData",orderData);
-   
-    console.log("orderDataPrice",orderData?.data?.attributes?.totalPrice,this.gtagData)
+
+    console.log("orderDataPrice", orderData?.data?.attributes?.totalPrice, this.gtagData)
     this.gtagservice.pushEvent('checkout_progress',
-    {
-      "items": this.gtagData,
-      "coupon": this.couponValue || '',
-      'currency':'USD',
-      'value': orderData?.data?.attributes?.totalPrice,
-      "category": 'TaxCourse',
-      "brand": "CPE", 
-      "list_name": undefined,
-      "list_position": 0,
-      "variant": undefined,
-    }
-  );
+      {
+        "items": this.gtagData,
+        "coupon": this.couponValue || '',
+        'currency': 'USD',
+        'value': orderData?.data?.attributes?.totalPrice,
+        "category": 'TaxCourse',
+        "brand": "CPE",
+        "list_name": undefined,
+        "list_position": 0,
+        "variant": undefined,
+      }
+    );
   }
   openModal(title: any, btnStatus: boolean) {
     const initialState = {

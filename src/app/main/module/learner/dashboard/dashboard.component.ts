@@ -136,9 +136,6 @@ export class DashboardComponent implements OnInit {
       for (let feed = 0; feed < this.rssLinks.length; feed++) {
         this.rssItems.push(this.rssLinks[feed][res.url[feed]].rss.channel.item)
       }
-
-      console.log('rssItems', this.rssItems)
-
     });
   }
 
@@ -268,10 +265,16 @@ getinvoiceList()
         }
 
       })
+
+      console.log(coursesPurchased);
+      
+
       this.certificates = coursesPurchased.filter((item: any) => item.status.toLowerCase() === 'completed' && item.category.toLowerCase() == "live");
 
       this.pastEvents = coursesPurchased.filter((element: any) => element.category.toLowerCase() == "live" && new Date(element?.course?.endDate) <= new Date(localTime));
       this.regEvent = coursesPurchased.filter((element: any) => element.category.toLowerCase() == "live" && new Date(element?.course?.endDate) > new Date(localTime));
+      
+      
       //sorting 
       this.pastEvents = this.pastEvents.sort((a: any, b: any) => (Date.parse(a.startDate) < Date.parse(b.startDate)) ? 1 : -1);
 
