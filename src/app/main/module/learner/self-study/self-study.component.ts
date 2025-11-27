@@ -12,7 +12,6 @@ import { PopupComponent } from 'src/app/shared/components/popup/popup.component'
 import { environment } from 'src/environments/environment';
 import { CourseService } from '../../core/services/course.service';
 
-
 class ImageSnippet {
   constructor(public src: string, public file: File) { }
 }
@@ -147,18 +146,18 @@ export class SelfStudyComponent implements OnInit {
 
         let usercourse = element?.attributes;
 
-        if(course.instructors.data.length>1){
+        if(course?.instructors?.data.length>1){
           course.instructors.data.forEach((element: any) => {
         let instructname= element.attributes.firstName + " " + element.attributes.lastName
          name.push(instructname)
           });
         instructor=name.join(',')
         }
-        else if(course.instructors.data.length==0){
+        else if(course?.instructors?.data.length==0){
           instructor =''
         }
         else{
-         instructor=course.instructors?.data[0]?.attributes?.firstName + " " + course.instructors?.data[0]?.attributes?.lastName
+         instructor=course?.instructors?.data[0]?.attributes?.firstName + " " + course?.instructors?.data[0]?.attributes?.lastName
         }
 
 

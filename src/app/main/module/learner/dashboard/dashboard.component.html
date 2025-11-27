@@ -6,14 +6,6 @@
         <div class="col-sm-6">
           <h3 class="heading-lg">{{greeting}}, {{profileData.firstName}}</h3>
         </div>
-        <div class="col-sm-6">
-          <div *ngIf="message==''" class="input-type-toggle">
-            <a href="" class="btns-toggles active">Learners <br /> Dashboard</a>
-            <a href="" class="btns-toggles" routerLink="/learner/self-study">Self <br />Study</a>
-
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -67,8 +59,12 @@
 
     </div>
   </div>
-
-
+  <div class="container">
+    <div *ngIf="message==''" class="input-type-toggle">
+      <a href="" class="btns-toggles active">Learners <br /> Dashboard</a>
+      <a href="" class="btns-toggles" routerLink="/learner/self-study">Self <br />Study</a>
+    </div>
+  </div>
   <div class="learner-dashboard padding-distance-lg">
     <h2 *ngIf="message!=''" style="text-align: center;">{{message}}</h2>
     <div class="container" *ngIf="message==''">
@@ -127,18 +123,19 @@
                       <!-- Show download button when handouts exist -->
                       <div class="col-sm-2">
                         <div class="row">
-                          <div *ngIf="evt.course.handout && evt.course.handout.data" class="col-sm-6">                         
+                          <div *ngIf="evt.course.handout && evt.course.handout.data" class="col-sm-6">
                             <div class="btn-style">
-                              <a *ngIf="evt.course.handout.data.length > 0" class="btn btn-primary" (click)="downloadHandout(evt)">Handouts</a>                           
+                              <a *ngIf="evt.course.handout.data.length > 0" class="btn btn-primary"
+                                (click)="downloadHandout(evt)">Handouts</a>
                             </div>
                           </div>
-                        <div class="col-sm-6">
-                          <div class="btn-style">
-                            <a class="btn btn-primary" (click)="gotowebinar(evt.course.webinarId,evt.joinUrl)">launch
-                              Webinar</a>
+                          <div class="col-sm-6">
+                            <div class="btn-style">
+                              <a class="btn btn-primary" (click)="gotowebinar(evt.course.webinarId,evt.joinUrl)">launch
+                                Webinar</a>
+                            </div>
                           </div>
                         </div>
-                      </div>
                       </div>
                     </div>
                   </div>
@@ -198,19 +195,20 @@
                       </div>
                       <div class="col-sm-3">
                         <div class="row">
-                          <div *ngIf="pastevent.course.handout && pastevent.course.handout.data" class="col-sm-6">                         
+                          <div *ngIf="pastevent.course.handout && pastevent.course.handout.data" class="col-sm-6">
                             <div class="btn-style">
-                              <a *ngIf="pastevent.course.handout.data.length > 0" class="btn btn-primary" (click)="downloadHandout(pastevent)">Handouts</a>                           
+                              <a *ngIf="pastevent.course.handout.data.length > 0" class="btn btn-primary"
+                                (click)="downloadHandout(pastevent)">Handouts</a>
                             </div>
                           </div>
-                        <div class="col-sm-6">
-                        <div class="btn-style">
-                          <a class="btn btn-primary" *ngIf="pastevent?.watchRecording"
-                            onClick="window.open('https://asteridadminqa.essentialdemo.com/uploads/New_Wine_Hillsong_Worship_1_048575ff2f.mp4');">watch
-                            recording</a>
+                          <div class="col-sm-6">
+                            <div class="btn-style">
+                              <a class="btn btn-primary" *ngIf="pastevent?.watchRecording"
+                                onClick="window.open('https://asteridadminqa.essentialdemo.com/uploads/New_Wine_Hillsong_Worship_1_048575ff2f.mp4');">watch
+                                recording</a>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
                       </div>
 
                     </div>
@@ -320,7 +318,7 @@
         </div>-->
         <div class="row">
           <div class="col-sm-8">
-           <!-- <p class="paragraph font-barlow">A blog created by CPE Warehouse to provide all tax professionals with
+            <!-- <p class="paragraph font-barlow">A blog created by CPE Warehouse to provide all tax professionals with
               relevant updates and information. Subscribe to stay up to date and learn more!</p>-->
           </div>
           <div class="col-sm-4">

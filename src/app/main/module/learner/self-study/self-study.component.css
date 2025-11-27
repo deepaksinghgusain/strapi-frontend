@@ -160,15 +160,20 @@ a.more-link img {
   border-bottom: 1px solid rgba(13, 13, 13, 0.6);
   padding-bottom: 50px;
 }
+
+.padding-distance-lg {
+  padding: 50px 0;
+}
+
 .input-type-toggle {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   background: #e5e5e5;
   box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.15);
   border-radius: 100px;
   height: 60px;
   max-width: 280px;
-  float: right;
+  margin-top: 30px;
   width: 100%;
 }
 .btns-toggles.active {

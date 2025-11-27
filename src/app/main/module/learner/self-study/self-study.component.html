@@ -6,15 +6,6 @@
                 <div class="col-sm-8">
                     <h3 class="heading-lg">{{greeting}}, {{username}}</h3>
                 </div>
-                <div class="col-sm-4">
-                    <div class="input-type-toggle">
-                        <a href="" class="btns-toggles " routerLink="/learner/dashboard">Learners <br /> Dashboard</a>
-                        <a href="" class="btns-toggles active" routerLink="/learner/self-study">Self <br />Study</a>
-
-
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -84,6 +75,12 @@
 
         </div>
     </div>
+    <div class="container">
+        <div class="input-type-toggle">
+            <a href="" class="btns-toggles " routerLink="/learner/dashboard">Learners <br /> Dashboard</a>
+            <a href="" class="btns-toggles active" routerLink="/learner/self-study">Self <br />Study</a>
+        </div>
+    </div>
 
     <div class="learner-dashboard-new padding-distance-lg">
         <div class="container">
@@ -99,7 +96,8 @@
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming"
-                        type="button" role="tab" aria-controls="upcoming" aria-selected="upcoming">SELF-STUDY LIBRARY</button>
+                        type="button" role="tab" aria-controls="upcoming" aria-selected="upcoming">SELF-STUDY
+                        LIBRARY</button>
                 </li>
 
             </ul>
@@ -118,15 +116,14 @@
                                                 </h2>
                                                 <span class="font-barlow">{{evt.purchasedOn| date:" EE, MMM dd
                                                     yyyy" }}</span>
-                                                    <!-- <h5>{{evt.instructor}}</h5> -->
+                                                <!-- <h5>{{evt.instructor}}</h5> -->
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="btn-style">
                                                     <a class="btn btn-primary" style="    width: 130px;"
-                                                        (click)="navigateToVideo(evt.course.videoUrl, evt.course.slug)">   launch
-                                                        </a>
-
-
+                                                        (click)="navigateToVideo(evt.course.videoUrl, evt.course.slug)">
+                                                        launch
+                                                    </a>
                                                 </div>
                                             </div>
 
@@ -137,7 +134,6 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
@@ -145,9 +141,9 @@
                     <div class="courses-certificate-list mt-4 ">
                         <h2 class="text-center" *ngIf="!isShow"> No Certificate is awarded </h2>
 
-
                         <div class="row" *ngIf="isShow">
-                            <div class="col-sm-4" *ngFor="let certificate of certificates | paginate: { itemsPerPage: 9, currentPage: p };  let i=index">
+                            <div class="col-sm-4"
+                                *ngFor="let certificate of certificates | paginate: { itemsPerPage: 9, currentPage: p };  let i=index">
                                 <div class="white-box text-center">
                                     <div class="cerificate-media"> <img
                                             src="../../../../../assets/params/images/banner/certificate.jpg"
@@ -166,12 +162,10 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
-                    <pagination-controls *ngIf="certificates.length>=10" (pageChange)="onPageChange($event)" class="float-right"></pagination-controls>
+                    <pagination-controls *ngIf="certificates && certificates.length >= 10"
+                        (pageChange)="onPageChange($event)" class="float-right"></pagination-controls>
 
                 </div>
 
