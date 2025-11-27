@@ -7,7 +7,7 @@ import { PopupComponent } from 'src/app/shared/components/popup/popup.component'
 import { AuthService } from '../../services/auth.service';
 import Validation from '../../validator/validation';
 import { environment } from '../../../../environments/environment';
-
+import { Country, State, City }  from 'country-state-city';
 
 
 @Component({
@@ -34,7 +34,7 @@ export class SignupComponent {
   errorMsg: any = false;
   passwordMatch: boolean = false;
   count = 0;
-  countries: any = [];
+  countries: any = Country.getAllCountries();
   states: any = [];
   match :boolean =false;
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private landingPageService: LandingPageService,
@@ -45,7 +45,7 @@ export class SignupComponent {
   }
   ngOnInit(): void {
     this.getSignupeData()
-    this.getData();
+    // this.getData();
     this.environmentUrl = environment.apibaseurl
 
 
@@ -134,20 +134,15 @@ export class SignupComponent {
 
   getState() {
     if (this.signInForm.value.country != '') {
-      this.authService.getStates(this.signInForm.value.country).subscribe((res: any) => {
-        this.states = res.data.states;
-      })
+      let country = this.countries.find((country: any) => country.name === this.signInForm.value.country);
+      
+      this.states = State.getAllStates().filter((state: any) => state.countryCode === country.isoCode)
     } else {
       this.states = []
     }
 
   }
-  getData() {
-    this.authService.getCountries().subscribe((res: any) => {
-      this.countries = res.data;
-    })
-  }
-
+  
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
