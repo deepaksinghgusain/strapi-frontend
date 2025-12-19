@@ -459,7 +459,7 @@ downloadInvoice(invoice: any) {
           .replace("{{program}}", program)
         this.certificatehtml = this.sanitizer.bypassSecurityTrustHtml(html);
         this.certificatehtml = html;
-        let doc = new jsPDF('l', 'px', [700, 1200]);
+        let doc = new jsPDF('l', 'mm', [580, 800]);
         doc.html(this.certificatehtml, {
           callback: function (doc: any) {
             doc.save(`certificate_${title}.pdf`);
