@@ -656,7 +656,7 @@ export class ExamComponent implements OnInit, AfterViewInit {
 
     let data : any = { "lastVideoView": this.videoWatchTime }
 
-    if(this.videoWatchTime > 70) {
+    if(this.vidViewPercent > 70 && this.courseCompletedOn === null) {
       data.status ="Completed";
       data.completedOn = moment(new Date()).format("Y-M-D")
     }
@@ -665,7 +665,6 @@ export class ExamComponent implements OnInit, AfterViewInit {
     if (jsonData) {
       try {
         this.updateUserCourse(jsonData)
-        this.isShow = true;
       } catch (error) {
         console.log(error);
         
@@ -797,8 +796,16 @@ export class ExamComponent implements OnInit, AfterViewInit {
 
   // Update last video viewed and isReview Exam Passed ;
   updateUserCourse(data: any) {
-    this.examService.updateUserCourse(this.userCourseId, data).subscribe((res) => {
-     
+    
+   this.examService.updateUserCourse(this.userCourseId, data).subscribe((res: any) => {
+       if(res) {
+        this.courseCompletedOn = res?.data?.attributes?.completedOn
+
+        if(res?.data?.attributes?.status === "Completed") {
+          this.isShow = true;
+        }
+       }
     })
+
   }
 }
