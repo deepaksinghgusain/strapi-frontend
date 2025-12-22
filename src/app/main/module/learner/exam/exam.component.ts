@@ -228,7 +228,7 @@ export class ExamComponent implements OnInit, AfterViewInit {
       this.videoWatchTime = video.currentTime.toFixed(0)
       localStorage.setItem("videoWatchTime",this.videoWatchTime)
       if(video.duration>0){
-        this.vidViewPercent = ((this.videoWatchTime*100)/video.duration).toFixed(2)
+        this.vidViewPercent = ((this.videoWatchTime*100)/video.duration).toFixed(2) 
       }
     });
   }
@@ -653,9 +653,23 @@ export class ExamComponent implements OnInit, AfterViewInit {
   }
 
   sendVidViewToUsercourse(){
-    const jsonData = { "data": { "lastVideoView": (this.videoWatchTime) } }
+
+    let data : any = { "lastVideoView": this.videoWatchTime }
+
+    if(this.videoWatchTime > 70) {
+      data.status ="Completed";
+      data.completedOn = moment(new Date()).format("Y-M-D")
+    }
+
+    const jsonData = { "data": data  }
     if (jsonData) {
-      this.updateUserCourse(jsonData)
+      try {
+        this.updateUserCourse(jsonData)
+        this.isShow = true;
+      } catch (error) {
+        console.log(error);
+        
+      }
     }
   }
 
@@ -784,6 +798,7 @@ export class ExamComponent implements OnInit, AfterViewInit {
   // Update last video viewed and isReview Exam Passed ;
   updateUserCourse(data: any) {
     this.examService.updateUserCourse(this.userCourseId, data).subscribe((res) => {
+     
     })
   }
 }
